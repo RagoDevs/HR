@@ -5,13 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.7rem;
+    padding: 0 1rem;
 }
 
 .topnav-logo {
     display: flex;
     align-items: center;
-    margin: 0 1rem;
+    
 }
 
 .topnav-logo img {

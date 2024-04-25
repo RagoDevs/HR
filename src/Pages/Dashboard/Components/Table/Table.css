@@ -1,0 +1,28 @@
+.dash-table {
+    width: 100%;
+    background-color: white;
+    padding: .5rem;
+}
+
+.dash-table table {
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    border-collapse: collapse;
+    overflow: scroll;  
+}
+
+.dash-table table th {
+    color: rgb(56, 56, 139);
+    height: 3rem;
+    font-size: 18px;
+    position: sticky;
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+.dash-table table td {
+    padding: 1.2rem .8rem;
+    border-bottom: 1px solid rgb(241, 237, 237);
+}
