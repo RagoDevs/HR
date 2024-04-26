@@ -1,0 +1,36 @@
+.emply-table {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.11)
+     0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
+}
+
+.emply-table table {
+    border-collapse: collapse;
+    padding: 0 .3rem;
+}
+
+.emply-table table th {
+    width: 100%;
+    text-align: start;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: rgb(233, 236, 236);
+}
+
+.emply-table table tr td {
+    padding: .9rem;
+    border-bottom: 1px solid rgb(218, 211, 211);
+}
+
+.emply-table table td p {
+    background-color: rgb(187, 245, 226);
+}
+
+.emply-table table td img {
+    height: 2.3rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    padding-right: .7rem;
+}

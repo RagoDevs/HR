@@ -1,207 +1,55 @@
 .employee {
     width: 100%;
     height: 100vh;
+
+    display: grid;
+    grid-template-columns: 17rem  1fr;
+    grid-template-rows: 5rem 1fr ;
 }
 
-.container {
-    width: 100%;
-    height: 91.9vh;
-    display: flex;
+.topnav {
+    grid-column: 1 / span 2;
+    grid-row: 1;
 }
 
-.main {
-    width: 100%;
-    height: 100%;
+.sidenav {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.employee-main {
+    grid-column: 2 ;
+    grid-row: 2;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    background-color: #f4f6f8;
+}
+
+.employeemain-area-one {
+    grid-column: 1;
+    grid-row: 1;
+
     display: flex;
     flex-direction: column;
-    background-color: #f2f4f7;
-    padding: 0 1rem;
 }
 
-.main-wrappers {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    width: 100%;
-    height: 100%;
-    gap: 1rem;
-}
-
-.wrapper-one {
-    grid-column: 1 / span 3;
-    width: 100%;
-}
-
-.wrapper-one h3 {
+.emply-main-header {
     margin: 1rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .employee-table {
-    height: 94%;
     width: 100%;
-    
-    background-color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.11)
-     0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
-} 
-
-.employee-table table {
-    border-collapse: collapse;
-    padding: 0 .3rem;
+    height: 100%;
 }
 
-.employee-table table th {
-    width: 100%;
-    text-align: start;
-    padding: 1rem;
-    border-radius: 4px;
-    background-color: rgb(233, 236, 236);
-}
+.employeemain-area-two {
+    grid-column: 2;
+    grid-row: 1;
 
-.employee-table table tr td {
-    padding: .9rem;
-    border-bottom: 1px solid rgb(218, 211, 211);
-}
 
-.employee-table table td p {
-    background-color: rgb(187, 245, 226);
-}
-
-.employee-table table td img {
-    height: 2.3rem;
-    border-radius: 50%;
-    vertical-align: middle;
-    padding-right: .7rem;
-}
-
-.wrapper-two {
-    grid-column: 4 / span 7;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
-}
-
-.wrapper-two h3 {
-    margin: 1rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.employee-details {
-    width: 100%;
-    height: 94%;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
-}
-
-.details-header {
-    height: 10rem;
-    background-color: #f2f2ff;
-    border-bottom: 1px solid rgb(219, 218, 218);
-    display: flex;
-    align-items: center;
-    padding: 2rem;
-}
-
-.details-header img {
-    height: 6.5rem;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.employee-title {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 1.3rem;
-}
-
-.employee-title p {
-    color: rgb(148, 147, 147);
-}
-
-.details-header h5 {
-    color: rgb(188, 189, 188);
-    background-color: aquamarine;
-    border-radius: 9px;
-}
-
-.details-header button {
-    right: 0;
-    width: 13rem;
-    height: 2rem;
-    background-color: #f2f2ff;
-    border: 2px solid rgb(152, 143, 230);
-    cursor: pointer;
-}
-
-.personal-details {
-    height: 40%;
-    border-bottom: 1px solid rgb(219, 218, 218);
-}
-
-.psdetails-header {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-}
-
-.psdetails-header h4 {
-    font-weight: 500;
-}
-
-.psdetails-header button {
-    width: 3.5rem;
-    background-color: #e7e5e5;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.psdetails-main {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    gap: 2.5rem;
-    padding: 1rem;
-}
-
-.psdetails-wrapper {
-    width: 100%;
-}
-
-.psdetails-item {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-top: .5rem;
-}
-
-.psdetails-item h4 {
-    color: rgb(131, 128, 128);
-    font-weight: 500;
-}
-
-.psdetails-item h3{
-    font-size: 17px;
-    margin: 0 0 2rem 0;
-    font-weight: 500;
-    color: black;
-}
-
-.contract-info {
-    height: 40%;
-    
-}
-
-.contract-main {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    gap: 2.5rem;
-    padding: 1rem;
-}
-
-.contract-wrapper {
-    width: 100%;
 }

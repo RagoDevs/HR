@@ -5,6 +5,10 @@ import Leave from './Pages/Leave/Leave';
 import Staff from './Pages/Staff/Staff';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import Payroll from './Pages/Payroll/Payroll';
+import Calender from './Pages/Calender/Caknder';
+import Documents from './Pages/Documents/Documents';
+import Report from './Pages/Report/Report';
 
 
 function App() {
@@ -28,6 +32,30 @@ function App() {
           path='/Leave'
           element={
             <Leave />
+          }
+        />
+          <Route
+          path='/Payroll'
+          element={
+            <Payroll />
+          }
+        />
+        <Route
+          path='/Calender'
+          element={
+            <Calender />
+          }
+        />
+        <Route
+          path='/Documents'
+          element={
+            <Documents />
+          }
+        />
+        <Route
+          path='/Report'
+          element={
+            <Report/>
           }
         />
         <Route

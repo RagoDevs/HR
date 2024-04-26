@@ -1,0 +1,120 @@
+.employee-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
+}
+
+.details-header {
+    height: 10rem;
+    background-color: #f2f2ff;
+    border-bottom: 1px solid rgb(219, 218, 218);
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+.details-header img {
+    height: 6.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.employee-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.3rem;
+}
+
+.employee-title p {
+    color: rgb(148, 147, 147);
+}
+
+.details-header h5 {
+    color: rgb(188, 189, 188);
+    background-color: aquamarine;
+    border-radius: 9px;
+}
+
+.details-header button {
+    right: 0;
+    width: 13rem;
+    height: 2rem;
+    background-color: #f2f2ff;
+    border: 2px solid rgb(152, 143, 230);
+    cursor: pointer;
+}
+
+.personal-details {
+    height: 40%;
+    border-bottom: 1px solid rgb(219, 218, 218);
+}
+
+.psdetails-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.psdetails-header h4 {
+    font-weight: 500;
+}
+
+.psdetails-header button {
+    width: 3.5rem;
+    background-color: #e7e5e5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.psdetails-main {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.psdetails-wrapper {
+    width: 100%;
+}
+
+.psdetails-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: .5rem;
+}
+
+.psdetails-item h4 {
+    color: rgb(131, 128, 128);
+    font-weight: 500;
+}
+
+.psdetails-item h3{
+    font-size: 17px;
+    margin: 0 0 2rem 0;
+    font-weight: 500;
+    color: black;
+}
+
+.contract-info {
+    height: 40%;
+    
+}
+
+.contract-main {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.contract-wrapper {
+    width: 100%;
+}
