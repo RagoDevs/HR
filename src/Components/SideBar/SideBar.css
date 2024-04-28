@@ -65,3 +65,40 @@ a:-webkit-any-link {
     font-size: 18px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+@media screen and (max-width: 1160px) {
+
+    .sidebar-menu {
+        padding-left: 0rem;
+    }
+    .menu-list  {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: .3rem 0;
+    }
+
+    .menu-list h4 {
+        width: 100%;
+        font-size: .6rem;
+        text-align: center;
+    }
+
+    .menu-list:hover {
+        border-radius: 0;
+    }
+
+    .active {
+        border-radius: 0;
+        padding-top: .5rem;   
+    }
+
+    .menu-list img{
+        padding: 0 .6rem ;
+    }
+    h4:hover  {
+    
+            display: block;
+        
+    }
+  }

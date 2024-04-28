@@ -9,7 +9,7 @@ function TopNav() {
                 <img src={logo} alt="logo" />
                 <div className='topnav-logotext'>
                 <h4>SJUI</h4>
-                <h5>HR systemssss</h5>
+                <h5>HR system</h5>
                 </div>
             </div>
             <div className='topnav-logout'>

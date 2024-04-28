@@ -3,7 +3,7 @@
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 17rem  1fr;
+    grid-template-columns: 15.3rem  1fr;
     grid-template-rows: 5rem 1fr ;
 }
 
@@ -80,4 +80,17 @@
     grid-row: 2;
 
     background-color: white;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgb(230, 225, 225);
 }
+
+
+@media screen and (max-width: 1160px) {
+    .dashboard {
+        display: grid;
+        grid-template-columns: 4rem  1fr;
+    }
+}
+
+/* 857 */

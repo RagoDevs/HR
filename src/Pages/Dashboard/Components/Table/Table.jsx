@@ -5,6 +5,7 @@ function Table() {
     return (
         <div className="dash-table">
             <table>
+                <thead>
                 <tr>
                     <th>No</th>
                     <th>Name</th>
@@ -12,6 +13,7 @@ function Table() {
                     <th>Department</th>
                     <th>Status</th>
                 </tr>
+                </thead>
                 <tr>
                     <td>1</td>
                     <td>John Doe</td>

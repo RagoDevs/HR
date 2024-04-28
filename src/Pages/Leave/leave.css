@@ -45,3 +45,10 @@
     grid-column: 1;
     grid-row: 3;
 }
+
+@media screen and (max-width: 1160px) {
+    .leave {
+        display: grid;
+        grid-template-columns: 4rem  1fr;
+    }
+  }
