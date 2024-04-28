@@ -67,7 +67,9 @@ a:-webkit-any-link {
 }
 
 @media screen and (max-width: 1160px) {
-
+    .sidebar {
+        width: 4rem;
+    }
     .sidebar-menu {
         padding-left: 0rem;
     }
