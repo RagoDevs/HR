@@ -15,10 +15,7 @@ function ReqAnn() {
 
     function submit (e) {
         e.preventDefault();
-        const announceData = {
-            title: form.title,
-            message: form.message,
-        }
+
         
     }
 
