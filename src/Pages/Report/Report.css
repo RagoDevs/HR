@@ -34,3 +34,23 @@
     font-size: 5rem;
     color: rgb(228, 227, 227);
 }
+
+@media screen and (max-width: 1160px) {
+    .report {
+        display: grid;
+        grid-template-columns: 4rem  1fr;
+    }
+  }
+
+
+@media screen and (max-width: 857px) {
+    .report {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+    .sidenav {
+        visibility: hidden;
+    }
+}  

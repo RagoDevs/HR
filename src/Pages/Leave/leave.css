@@ -52,3 +52,16 @@
         grid-template-columns: 4rem  1fr;
     }
   }
+
+
+  @media screen and (max-width: 857px) {
+    .leave {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+    .sidenav {
+        visibility: hidden;
+    }
+} 

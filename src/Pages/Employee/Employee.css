@@ -60,3 +60,16 @@
         grid-template-columns: 4rem  1fr;
     }
   }
+
+
+@media screen and (max-width: 857px) {
+    .employee {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+    .sidenav {
+        visibility: hidden;
+    }
+}  

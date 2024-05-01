@@ -1,13 +1,16 @@
+
 .dashboard {
     width: 100%;
     height: 100vh;
-
+    height: -webkit-fill-available;
     display: grid;
     grid-template-columns: 15.5rem  1fr;
     grid-template-rows: 5rem 1fr ;
 }
 
 .topnav {
+    position: fixed;
+    top: 0;
     grid-column: 1 / span 2;
     grid-row: 1;
 }
@@ -93,4 +96,17 @@
     }
 }
 
-/* 857 */
+
+
+@media screen and (max-width: 857px) {
+    .dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+    .sidenav {
+        visibility: hidden;
+    }
+}
+

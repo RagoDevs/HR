@@ -10,7 +10,7 @@ function Chart() {
         <PieChart
           colors={[
             "#4e79a7",
-            "blue",
+            "#004B95",
             "#f28e2c",
             "#e15759",
             "#76b7b2",
@@ -26,7 +26,7 @@ function Chart() {
               ],
               innerRadius: 30,
               outerRadius: 90,
-              paddingAngle: 2,
+              paddingAngle: 3,
               cornerRadius: 5,
               startAngle: -90,
               endAngle: 360,

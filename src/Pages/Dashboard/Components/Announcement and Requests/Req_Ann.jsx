@@ -8,21 +8,25 @@ function ReqAnn() {
         message: '',
     })
 
-    function handleChange (e) {
-        const {name, value} = e.target
-        setForm({...form, [name]: value})
+    function handleChange(e) {
+        const { name, value } = e.target
+        setForm({ ...form, [name]: value })
     }
 
-    function submit (e) {
+    function submit(e) {
         e.preventDefault();
 
-        
+
     }
 
     const [popup, setPopup] = useState(false)
     const handleClick = () => {
         setPopup(!popup);
-    } 
+    }
+
+    const closePopup = () => {
+        setPopup(false);
+    }
     return (
         <div className='rq-ann-container'>
             <div className='req-wrapper'>
@@ -30,10 +34,10 @@ function ReqAnn() {
                 <div className="req-table">
                     <table>
                         <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                            </tr>
                         </thead>
                         <tr>
                             <td>John Doe</td>
@@ -47,7 +51,7 @@ function ReqAnn() {
                             <td>Jane Doe</td>
                             <td>2-2-2024</td>
                         </tr>
-                         <tr>
+                        <tr>
                             <td>Jane Doe</td>
                             <td>2-2-2024</td>
                         </tr>
@@ -56,37 +60,50 @@ function ReqAnn() {
             </div>
             <div className="ann-wrapper">
                 <h3>Announcements</h3>
-                <div className="announce-list">    
+                <div className="announce-list">
                     <h4>Board Meeting has been postponed</h4>
                     <p>2.2.2024</p>
                 </div>
-                <div className="announce-list">    
+                <div className="announce-list">
                     <h4>Graduation will be on 17th</h4>
                     <p>2.2.2024</p>
                 </div>
                 <div className="create-announce">
-                <button onClick={handleClick}>Create Announcement</button>
+                    <button onClick={handleClick}>Create Announcement</button>
                 </div>
                 {popup ?
-                <div className="announce-popup">
-                    <div className="announce-box">
-                        <h3>Create An Announcement</h3>
-                        <div className="announce-form">
-                            <form>
-                                <label>Title</label>
-                                <input 
-                                type="text" 
-                                className='ann-form'
-                                name='title'
-                                value={form.title}
-                                onChange={handleChange}
-                                />
-                            </form>
+                    <div className="announce-popup">
+                        <div className="announce-box">
+                        <div className="closepopup">
+                            <h2 onClick={closePopup}>X</h2>
                         </div>
-                        <button onClick={submit}>Submit</button>
+                            <h3>Create An Announcement</h3>
+                            <div className="announce-form">
+                                <form>
+                                    <label>Title</label>
+                                    <input
+                                        type="text"
+                                        className='ann-title'
+                                        name='title'
+                                        value={form.title}
+                                        onChange={handleChange}
+                                    />
+                                    <label>Description</label>
+                                    <textarea
+                                        type="text"
+                                        className='ann-message'
+                                        name='message'
+                                        value={form.message}
+                                        onChange={handleChange}
+                                    />
+                                </form>
+                            </div>
+                            <div className="ann-submit">
+                            <button onClick={submit}>Submit</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                : ""}
+                    : ""}
             </div>
         </div>
     )

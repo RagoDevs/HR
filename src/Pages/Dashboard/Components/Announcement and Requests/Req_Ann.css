@@ -116,22 +116,71 @@
     
 }
 
-.announce-box h3 {
-    background-color: aquamarine;
-}
 .announce-box {
     position: absolute;
     top: 15%;
     left: 40%;
     bottom: 50%;
-    min-width: 380px;
-    height: 450px;
+    min-width: 400px;
+    height: 470px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
+    padding: 1rem;
+}
+
+.closepopup {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    font-size: .9rem;
+    margin-bottom: .3rem;
+}
+
+.closepopup h2 {
+    cursor: pointer;
+}
+
+.announce-box h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .9rem;
 }
 
 .announce-box form {
     display: flex;
     flex-direction: column;
+    gap: .3rem;
 }
+
+.ann-title {
+    height: 3rem;
+    font-size: 1.2rem;
+    padding: .3rem;
+}
+
+.ann-message {
+    height: 12rem;
+    margin-bottom: 1rem;
+    padding: .3rem;
+    font-size: 1.1rem;
+}
+
+.ann-submit {
+    display: flex;
+    justify-content: center;
+    height: 2.6rem;
+    width: 100%;
+}
+
+.ann-submit button {
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(94, 94, 207);
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+}
+

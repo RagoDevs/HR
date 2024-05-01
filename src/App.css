@@ -8,9 +8,14 @@
   
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   padding: 0;
   margin: 0;
+  height: -webkit-fill-available;
 }
 
 

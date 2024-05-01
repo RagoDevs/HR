@@ -183,9 +183,50 @@
     filter: invert(100%);
 
 }
-.staff-leave {
-    height: 600px;
+.staff-announce {
     width: 100%;
+    height: 300px;
+    padding: .9rem;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.staff-announce h4{
+    width: 100%;
+    height: 2.4rem;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+.st-announce-list {
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem 0 0 0;
+    overflow-y: scroll;
+}
+
+.st-announce-list::-webkit-scrollbar {
+    display: none;
+}
+
+.st-ann-wrapper {
+    height: 5.5rem;
+    width: 100%;
+    background-color: #F0F0F0;
+    border-radius: 8px;
+}
+.staff-leave {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .9rem;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
     background-color: rgb(255, 255, 255);
@@ -193,7 +234,7 @@
 
 .sflv-header {
     width: 100%;
-    height: 4rem;
+    height: 2.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,15 +249,53 @@
 .lv-history {
     width: 100%;
     height: 9rem;
-    padding: 1.2rem 1rem 0 1rem;
+    padding: 1.3rem .5rem 0 0.5rem;
 }
 
 .lv-history table {
     width: 100%;
-    height: 100%;
+    height: 100%;  
+    padding: .4rem 0;
+    border-collapse: collapse;
+}
+
+.lv-history table tr:nth-child(n + 3) {
+    visibility: hidden;
+}
+
+.lv-history table td {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
 .lv-history table td img {
-    height: 2.3rem;
+    height: 1.6rem;
+    object-fit: cover;
+}
+
+.see-history {
+    height: 1.6rem;
+    width: 100%;
+    text-align: end;
+    color: blue;
+    cursor: pointer;
+}
+
+.st-lv-button {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.st-lv-button button {
+    width: 50%;
+    height: 2.4rem;
+    background-color: rgb(76, 84, 210);
+    border-radius: 8px;
+    color: #fff;
+    border: none;
 }

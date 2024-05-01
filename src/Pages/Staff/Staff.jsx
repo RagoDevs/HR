@@ -72,9 +72,17 @@ function Staff() {
           </div>
         </div>
         <div className="staff-container">
+          <div className="staff-announce">
+            <h4>Announcements</h4>
+            <div className="st-announce-list">
+              <div className="st-ann-wrapper"></div>
+              <div className="st-ann-wrapper"></div>
+          </div>
+          </div>
+         
           <div className="staff-leave">
             <div className="sflv-header">
-              <h4>Leave Requests</h4>
+              <h4>Manage Leaves</h4>
             </div>
             <div className="lv-history">
               <table>
@@ -98,7 +106,15 @@ function Staff() {
                 </tr>
               </table>
               
+              </div>
+              <div className="see-history">
+                <h5>See history</h5>
             </div>
+            <div className="st-lv-button">
+              <button><h4>Request Leave</h4></button>
+              <button><h4>Status</h4></button>
+            </div> 
+             
           </div>
         </div>
       </div>
