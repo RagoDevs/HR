@@ -2,11 +2,12 @@
     width: 100%;
     height: 8rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 .dscard-item {
-    width: 100%;
+    width: calc(33% - 0.66rem);
     height: 8rem;
     background-color: #dce0e6;
     border-radius: 8px;
@@ -37,14 +38,18 @@
 @media screen and (max-width: 788px) {
     .dscards-wrapper {
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
         height: 17rem;
     }
 
     .dscard-item {
-        width: 48.2%;
+        width: calc(50% - 0.5rem);
+        
     }
+
+    .dscard-item:nth-child(3) {
+        width: 50%;
+    }
+
 
     
 }

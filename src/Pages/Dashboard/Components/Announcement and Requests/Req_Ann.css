@@ -195,4 +195,14 @@
     .announce-box {
         left: 11%;
     }
+
 }
+
+@media screen and (max-width: 400px) {
+    .rq-ann-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+

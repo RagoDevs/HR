@@ -61,3 +61,40 @@
         background-color: rgb(171, 180, 187);
     }
 }
+
+@media screen and (max-width: 400px) {
+    .topnav-logo img {
+        height: 2.6rem;
+        margin-right: .3rem;
+    }
+
+    .topnav-logo {
+        margin-left: .3rem;
+    }
+
+    .topnav-logotext {
+        margin: 0 .3rem;
+    }
+
+    .topnav-logotext h4{
+        font-size: .8rem;
+    }
+
+    .topnav-logotext h5 {
+        font-size: .6rem;
+    }
+
+    .topnav-logo .menu-bar img {
+        height: 1.6rem;
+        
+    }
+
+    .topnav-logout img {
+        height: 1rem;
+    }
+
+    .topnav-logout h5 {
+        font-size: .6rem;
+    }
+
+}

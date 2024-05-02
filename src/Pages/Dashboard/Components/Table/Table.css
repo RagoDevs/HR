@@ -2,6 +2,7 @@
     width: 100%;
     background-color: white;
     padding: .5rem;
+    overflow-x: scroll;
 }
 
 .dash-table table {
@@ -25,4 +26,12 @@
 .dash-table table td {
     padding: 1.2rem .8rem;
     border-bottom: 1px solid rgb(241, 237, 237);
+}
+
+
+@media screen and (max-width: 788px) {
+    .dash-table {
+        height: 40rem;
+    }
+
 }
