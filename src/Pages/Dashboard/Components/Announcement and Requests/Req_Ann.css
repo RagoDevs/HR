@@ -184,3 +184,15 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 857px) {
+
+    .announce-box {
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 788px) {
+    .announce-box {
+        left: 11%;
+    }
+}

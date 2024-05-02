@@ -7,7 +7,7 @@
 
 .dscard-item {
     width: 100%;
-    height: 100%;
+    height: 8rem;
     background-color: #dce0e6;
     border-radius: 8px;
     display: flex;
@@ -19,7 +19,6 @@
 .dscard-text {
     display: flex;
     flex-direction: column;
-    align-items: self-start;
 }
 
 .dscard-text h3 {
@@ -32,4 +31,20 @@
     height: 2.3rem;
     object-fit: cover;
     padding-right: .9rem;
+}
+
+
+@media screen and (max-width: 788px) {
+    .dscards-wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        height: 17rem;
+    }
+
+    .dscard-item {
+        width: 48.2%;
+    }
+
+    
 }

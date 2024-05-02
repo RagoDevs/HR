@@ -119,7 +119,7 @@ a:-webkit-any-link {
         top: 5rem;
         left: 0;
         width: 9rem;
-        height: 42vh;
+        height: 24rem;
         border: 1px solid rgb(202, 201, 201);
         border-radius: 8px;
         background-color: rgb(61, 60, 60);
@@ -132,7 +132,7 @@ a:-webkit-any-link {
         display: flex;
         flex-direction: column;
         align-items: start ;
-        padding-top: 2.5rem;
+        padding-top: 1.9rem;
         width: 50%;
         
     }

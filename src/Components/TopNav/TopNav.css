@@ -7,23 +7,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
     z-index: 100;
+    background-color: white;
 }
 
 .menu-bar {
     display: none;
 }
 
-.topnav-logo .menu-bar img{
+.topnav-logo .menu-bar img {
     height: 2.3rem;
-    margin: 0 1rem 0 -.7rem;
+    margin: 0 1rem 0 .7rem;
 }
 
 .topnav-logo {
     display: flex;
     align-items: center;
-    
+    margin-left: 1rem;
 }
 
 .topnav-logo img {
@@ -38,7 +38,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    
+    margin-right: 1rem;
 }
 
 .topnav-logout img {
@@ -55,10 +55,9 @@
 @media screen and (max-width: 857px) {
     .menu-bar {
         display: flex;
-    
     }
 
     .menu-bar img:hover {
-        background-color: rgb(58, 157, 243);
+        background-color: rgb(171, 180, 187);
     }
 }

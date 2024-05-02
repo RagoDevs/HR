@@ -1,15 +1,19 @@
 .leave-cards {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
 }
 
 .leave-card {
-    width: 100%;
+    width: calc(50% - 0.5rem);
     height: 7rem;
+    flex: 1 0 25%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 .9rem;
     background-color: #ffffff;
     border-left: 15px solid rgb(177, 175, 180);
     border-radius: 8px;
@@ -18,22 +22,40 @@
 }
 
 .leave-card img{
-    height: 4rem;
-    margin: 1rem;
+    height: 2.3rem;
+    object-fit: cover;
 }
 
 .lvcard-text {
-    height: 74%;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
 .lvcard-text h3 {
-    font-size: 2.3rem;
+    font-size: 2rem;
 }
 
 .lvcard-text h5 {
     
     color: rgb(97, 95, 95);
 }
+
+@media screen and (max-width: 788px) {
+    .leave-cards {
+        width: 100%;
+        height: 14rem;
+    }
+
+    .leave-card {
+        width: calc(50% - 0.5rem);
+        flex: 1 0 calc(50% - 0.5rem);
+    }
+}
+
+
+    
+
+
+
+

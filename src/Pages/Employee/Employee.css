@@ -50,8 +50,6 @@
 .employeemain-area-two {
     grid-column: 2;
     grid-row: 1;
-
-
 }
 
 @media screen and (max-width: 1160px) {
@@ -73,3 +71,32 @@
         visibility: hidden;
     }
 }  
+
+@media screen and (max-width: 788px) {
+    .employee {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: scroll;
+    } 
+
+    .employee-main {
+        grid-column: 1 ;
+
+        display: grid;
+        grid-template-columns: 4rem 1fr ;
+        grid-template-rows: 23rem 1fr;
+    
+    }
+
+    .employeemain-area-one {
+        grid-column: 1 / span 4;
+        grid-row: 1;
+        
+    }
+
+    .employeemain-area-two {
+        grid-column: 1 / sapn 2;
+        grid-row: 2;
+
+    }
+}
