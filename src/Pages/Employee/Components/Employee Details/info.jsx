@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './info.css'
 import person from '../../../../Assets/employee/person.jpg'
 
 function Info() {
+
     return (
         <div className="employee-details">
             <div className="details-header">
