@@ -22,7 +22,7 @@
 }
 
 .req-table {
-    height: 11rem;
+    height: 13rem;
     padding: .3rem 0;
     overflow-y: scroll;
 }
@@ -106,21 +106,21 @@
 }
 
 .announce-popup {
-    position: fixed;
+    position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 1001;
     background-color: rgb(0, 0, 0, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
 .announce-box {
-    position: absolute;
-    top: 15%;
-    left: 40%;
-    bottom: 50%;
     min-width: 400px;
     height: 470px;
     z-index: 100;
@@ -184,25 +184,19 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 857px) {
 
-    .announce-box {
-        left: 25%;
-    }
-}
-
-@media screen and (max-width: 788px) {
-    .announce-box {
-        left: 11%;
-    }
-
-}
 
 @media screen and (max-width: 500px) {
     .rq-ann-container {
         display: flex;
         flex-direction: column;
     }
+
+    .announce-box {
+        width: 300px;
+    }
+
+  
 
 }
 

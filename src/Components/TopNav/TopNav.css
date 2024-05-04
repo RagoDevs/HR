@@ -62,10 +62,10 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .topnav-logo img {
-        height: 2.6rem;
-        margin-right: .3rem;
+        height: 2rem;
+        margin-right: .1rem;
     }
 
     .topnav-logo {
@@ -77,15 +77,15 @@
     }
 
     .topnav-logotext h4{
-        font-size: .8rem;
-    }
-
-    .topnav-logotext h5 {
         font-size: .6rem;
     }
 
+    .topnav-logotext h5 {
+        font-size: .49rem;
+    }
+
     .topnav-logo .menu-bar img {
-        height: 1.6rem;
+        height: 1.3rem;
         
     }
 

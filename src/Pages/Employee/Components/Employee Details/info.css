@@ -118,3 +118,52 @@
 .contract-wrapper {
     width: 100%;
 }
+
+
+@media screen and (max-width: 500px) {
+
+    
+    .details-header {
+         height: 9rem;
+        
+    padding: 1rem;
+}
+
+    .details-header img {
+        height: 5.2rem;
+        
+    }
+
+    .employee-title {
+        padding-left: .7rem;
+    }
+
+    .employee-title h2 {
+        font-size: 1.1rem;
+    }
+
+    .employee-title p {
+        font-size: .8rem;
+    }
+
+    .details-header button {
+        width: 8rem;
+        height: 1.6rem;
+        font-size: .7rem;
+    }
+
+    .psdetails-main {
+        gap: 1.2rem;
+    }
+
+    .psdetails-item h3 {
+        font-size: .75rem;
+    }
+
+    .psdetails-item h4 {
+        font-size: .8rem;
+    }
+
+
+
+}

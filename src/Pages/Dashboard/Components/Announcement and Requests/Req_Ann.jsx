@@ -39,6 +39,7 @@ function ReqAnn() {
                                 <th>Date</th>
                             </tr>
                         </thead>
+                        <tbody>
                         <tr>
                             <td>John Doe</td>
                             <td>2-2-2024</td>
@@ -55,6 +56,7 @@ function ReqAnn() {
                             <td>Jane Doe</td>
                             <td>2-2-2024</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

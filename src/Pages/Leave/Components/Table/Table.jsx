@@ -25,6 +25,7 @@ function Table() {
                 <div className={toggle === 1 ? 'active-tbcontent' : 'tbcontent'}>
                     <div className="request-table">
                         <table>
+                            <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Employee Name</th>
@@ -35,6 +36,8 @@ function Table() {
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>John Doe</td>
@@ -50,12 +53,14 @@ function Table() {
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
                 <div className={toggle === 2 ? 'active-tbcontent' : 'tbcontent'}>
                     <div className="history-table">
                         <table>
+                            <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Employee Name</th>
@@ -66,6 +71,8 @@ function Table() {
                                 <th>Status</th>
                                 <th>Reviewed by</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>John Doe</td>
@@ -78,6 +85,7 @@ function Table() {
                                     Jane Doe
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

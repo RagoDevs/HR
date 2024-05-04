@@ -88,7 +88,7 @@
 
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 17rem 13.3rem 1fr;
+        grid-template-rows: 17rem auto 1fr;
     }
 
     .lv-header-cards {

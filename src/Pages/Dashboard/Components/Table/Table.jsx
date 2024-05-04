@@ -14,6 +14,7 @@ function Table() {
                     <th>Status</th>
                 </tr>
                 </thead>
+                <tbody>
                 <tr>
                     <td>1</td>
                     <td>John Doe</td>
@@ -50,6 +51,7 @@ function Table() {
                     </td>
                     <td>Present</td>
                 </tr>
+                </tbody>
             </table>
         </div>
     );

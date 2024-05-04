@@ -34,3 +34,9 @@
     vertical-align: middle;
     padding-right: .7rem;
 }
+
+@media screen and (max-width: 500px) {
+    .emply-table table td {
+        font-size: .9rem;
+    }
+}
