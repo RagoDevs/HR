@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './info.css'
 import person from '../../../../Assets/employee/person.jpg'
 
