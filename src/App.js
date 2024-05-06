@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Employee from './Pages/Employee/Employee';
 import Leave from './Pages/Leave/Leave';
@@ -9,15 +10,21 @@ import Payroll from './Pages/Payroll/Payroll';
 import Calender from './Pages/Calender/Caknder';
 import Documents from './Pages/Documents/Documents';
 import Report from './Pages/Report/Report';
+import { AuthProvider } from './RoutesAuth/AuthProvider';
 
 
 function App() {
   return (
-    <>
-    <div className="App">
+    <AuthProvider>
       <Routes>
-        <Route
+      <Route
           path='/'
+          element={
+            <Login />
+          }
+        />
+        <Route
+          path='/Dashboard'
           element={
             <Dashboard />
           }
@@ -65,8 +72,7 @@ function App() {
           }
         />
       </Routes>
-    </div>
-    </>
+      </AuthProvider>
   );
 }
 

@@ -8,7 +8,6 @@ import Table from './Components/Table/Table'
 import './Dashboard.css'
 
 
-
 function Dashboard() {
     
     return (
