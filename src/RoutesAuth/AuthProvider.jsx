@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   let [token, setToken] = useState(localStorage.getItem("siteToken") || "");
   let [role, setRole] = useState(localStorage.getItem("siteRole") || "");
-  let [err , setErr] = useState("")
+  let [err, setErr] = useState("")
   let navigate = useNavigate();
 
   const signin = async (email, password) => {
@@ -23,24 +23,25 @@ export function AuthProvider({ children }) {
         password: password,
       }),
     });
-    if (response.status = 200) {
-    const res = await response.json();
-    const token = res.token.token;
-    const role = res.role;
-    if (token ? role : false) {
-      setToken(token);
-      setRole(role);
-      localStorage.setItem("siteToken", token);
-      localStorage.setItem("siteRole", role);
 
-      navigate('/Dashboard');
+    if (response.status === 200) {
+      const res = await response.json();
+      const token = res.token.token;
+      const role = res.role;
+      if (token ? role : false) {
+        setToken(token);
+        setRole(role);
+        localStorage.setItem("siteToken", token);
+        localStorage.setItem("siteRole", role);
 
+        navigate('/Dashboard');
+
+      }
+    } else {
+      const res = await response.json();
+      const err = res.error;
+      setErr(err)
     }
-  } else {
-    const res = await response.json();
-    const err = res.error;
-    setErr(err)
-  }
 
   }
 
@@ -52,7 +53,7 @@ export function AuthProvider({ children }) {
     return navigate("/");
   };
 
-  let value = { token, role, signin, signout , err};
+  let value = { token, role, signin, signout, err };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
