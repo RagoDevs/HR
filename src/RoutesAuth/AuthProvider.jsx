@@ -24,8 +24,9 @@ export function AuthProvider({ children }) {
       }),
     });
 
+    const res = await response.json();
+    console.log(res)
     if (response.status === 200) {
-      const res = await response.json();
       const token = res.token.token;
       const role = res.role;
       if (token ? role : false) {

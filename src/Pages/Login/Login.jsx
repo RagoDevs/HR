@@ -16,7 +16,7 @@ function Login() {
         },
         validationSchema: Yup.object({
 
-            email: Yup.string().email('Invalid email address').required('Required'),
+            email: Yup.string(),
             password: Yup.string()
                 
                 
@@ -24,6 +24,7 @@ function Login() {
         onSubmit: async values => {
             try {
                 await auth.signin(values.email, values.password);
+                
             } catch (error) {
                 console.log('nipo')
                 setLoginError('Invalid email or password');
@@ -69,7 +70,7 @@ function Login() {
                             {formik.touched.password && formik.errors.password ? (
                                 <div>{formik.errors.password}</div>) : null
                             }
-
+                            {loginError && <div className="login-error">{loginError}</div>}
                             <div className='forgot--password'> Forgot Password?</div>
                             <button
                                 type='submit'
@@ -78,7 +79,7 @@ function Login() {
                                <h3>Login</h3> 
                             </button>
                         </div>
-                        {loginError && <div className="login-error">{loginError}</div>}
+                        
                     </form>
                 </div>
             </div>
