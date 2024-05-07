@@ -13,11 +13,13 @@ function SideBar() {
     return (
         <div className='sidebar'>
             <div className='sidebar-menu'>
+            <NavLink  to='/Dashboard' className={({ isActive }) => (isActive ? "active" : "inactive")}>
                 <div className='menu-list'>
                     <img src={dashboard} alt="" />
                     <h4>Dashboard</h4>
 
                 </div>
+                </NavLink>
                 <NavLink  to='/Employee' className={({ isActive }) => (isActive ? "active" : "inactive")}>
                     <div className='menu-list'>
 
