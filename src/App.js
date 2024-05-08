@@ -11,6 +11,8 @@ import Calender from './Pages/Calender/Caknder';
 import Documents from './Pages/Documents/Documents';
 import Report from './Pages/Report/Report';
 import { AuthProvider } from './RoutesAuth/AuthProvider';
+import { RequireHr } from './RoutesAuth/RequireHr';
+import { RequireStaff } from './RoutesAuth/RequireStaff';
 
 
 function App() {
@@ -26,49 +28,65 @@ function App() {
         <Route
           path='/Dashboard'
           element={
+            <RequireHr>
             <Dashboard />
+            </RequireHr>
           }
         />
          <Route
           path='/Employee'
           element={
+            <RequireHr>
             <Employee />
+            </RequireHr>
           }
         />
          <Route
           path='/Leave'
           element={
+            <RequireHr>
             <Leave />
+            </RequireHr>
           }
         />
           <Route
           path='/Payroll'
           element={
+            <RequireHr>
             <Payroll />
+            </RequireHr>
           }
         />
         <Route
           path='/Calender'
           element={
+            <RequireHr>
             <Calender />
+            </RequireHr>
           }
         />
         <Route
           path='/Documents'
           element={
+            <RequireHr>
             <Documents />
+            </RequireHr>
           }
         />
         <Route
           path='/Report'
           element={
+            <RequireHr>
             <Report/>
+            </RequireHr>
           }
         />
         <Route
           path='/Staff'
           element={
+            <RequireStaff>
             <Staff />
+            </RequireStaff>
           }
         />
       </Routes>

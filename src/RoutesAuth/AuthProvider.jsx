@@ -35,7 +35,11 @@ export function AuthProvider({ children }) {
         localStorage.setItem("siteToken", token);
         localStorage.setItem("siteRole", role);
 
-        navigate('/Dashboard');
+        if (role === 'admin') {
+          return navigate('/Dashboard')
+        } else {
+          return navigate('/Staff')
+        }
 
       }
     } else {

@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import './login.css'
 import logo from '../../Assets/images/logo.png'
 import { useFormik } from "formik";
@@ -6,6 +6,21 @@ import * as Yup from "yup";
 import { useAuth } from '../../RoutesAuth/AuthProvider';
 
 function Login() {
+
+    const [showLoginForm, setShowLoginForm] = useState(false);
+
+    useEffect (() =>{
+        const logoAnimationDuration = 6000;
+
+        const timeoutId = setTimeout(() => {
+            setShowLoginForm(true);
+        }, logoAnimationDuration);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
+
+}, [])
 
     const [loginError, setLoginError] = useState(null);
     let auth = useAuth();
@@ -33,6 +48,11 @@ function Login() {
     });
 
     return (
+        <div className='login-body'>
+        <div className="logo-intro-container">
+             <img src={logo} alt="Logo" />
+        </div>
+        {showLoginForm && (
         <div className="login">
             <div className="lg-container">
                 <div className="lg-logo">
@@ -83,6 +103,8 @@ function Login() {
                     </form>
                 </div>
             </div>
+        </div>
+        )}
         </div>
     )
 }

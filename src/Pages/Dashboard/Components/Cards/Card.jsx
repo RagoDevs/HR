@@ -22,10 +22,10 @@ function Card() {
             <div className="dscard-item">
                 <div className="dscard-text">
                     <h4>
-                        Total <br />
+                        Present <br />
                         Employees
                     </h4>
-                    <h3>200</h3>
+                    <h3>168</h3>
                 </div>
                 <div className="dscard-icon">
                     <img src={present} alt="" />
@@ -34,10 +34,10 @@ function Card() {
             <div className="dscard-item">
                 <div className="dscard-text">
                     <h4>
-                        Total <br />
-                        Employees
+                        Employees <br />
+                        On Leave
                     </h4>
-                    <h3>200</h3>
+                    <h3>32</h3>
                 </div>
                 <div className="dscard-icon">
                     <img src={onleave} alt="" />
