@@ -4,7 +4,7 @@ import person from '../../../../Assets/employee/person.jpg'
 
 const Info = ({ combinedData }) => {
     combinedData = combinedData || {}
-    const contractDetails = combinedData[0]
+    const contractDetails = combinedData[0] || {}
 
     const emailHandleClick = () => {
         const toEmail = combinedData.email

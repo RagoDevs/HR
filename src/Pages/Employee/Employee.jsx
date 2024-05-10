@@ -23,7 +23,7 @@ const Employee = () => {
         .then(data => {
             setEmployees(data);
             if (data.length > 0) {
-                const employee_id = data[0 && 1].employee_id
+                const employee_id = data[0].employee_id
                 handleEmployeeClick(employee_id);
             }
         })
