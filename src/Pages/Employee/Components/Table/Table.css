@@ -19,15 +19,25 @@
     background-color: rgb(233, 236, 236);
 }
 
+.emply-table table tr:hover {
+    background-color: rgb(243, 239, 239);
+    cursor: pointer;
+}
+
 .emply-table table tr td {
     padding: .9rem;
     border-bottom: 1px solid rgb(218, 211, 211);
 }
 
-.emply-table table td p {
-    background-color: rgb(187, 245, 226);
-}
 
+.present p{
+    background-color: rgb(187, 245, 226);
+  }
+  
+  .absent p{
+    background-color: #f59c9c;
+  }
+  
 .emply-table table td img {
     height: 2.3rem;
     border-radius: 50%;

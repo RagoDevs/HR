@@ -103,13 +103,13 @@
 }
 
 .contract-info {
-    height: 40%;
+    height: 43%;
     
 }
 
 .contract-main {
     width: 100%;
-    height: 80%;
+    height: 90%;
     display: flex;
     gap: 2.5rem;
     padding: 1rem;
@@ -117,6 +117,7 @@
 
 .contract-wrapper {
     width: 100%;
+    height: 10rem;
 }
 
 
