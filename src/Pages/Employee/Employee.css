@@ -42,6 +42,7 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
 .employee-table {
     width: 100%;
     height: 100%;
@@ -51,6 +52,12 @@
     grid-column: 2;
     grid-row: 1;
 }
+
+.emply-main-header2 {
+    width: 100%;
+}
+
+
 
 @media screen and (max-width: 1160px) {
     .employee {

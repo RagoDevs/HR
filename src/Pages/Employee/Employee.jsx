@@ -3,6 +3,7 @@ import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
 import Table from './Components/Table/Table'
 import Info from './Components/Employee Details/info'
+import NewEmployee from './Components/NewEmployee/NewEmployee'
 import './Employee.css'
 
 const Employee = () => {
@@ -10,7 +11,6 @@ const Employee = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const token = localStorage.getItem('siteToken');
     
-
     //fetching list of employees
     useEffect (() => {
         fetch('https://hrbe.eadevs.com/auth/employees', {
@@ -88,8 +88,8 @@ const Employee = () => {
                     </div>
                 </div>
                 <div className="employeemain-area-two">
-                <div className="emply-main-header">
-                        <h3>Employee Information</h3>
+                <div className="emply-main-header2">
+                       <NewEmployee />     
                     </div>
                     <div className="employee-info">
                         {selectedEmployee && <Info combinedData={selectedEmployee}/>}
