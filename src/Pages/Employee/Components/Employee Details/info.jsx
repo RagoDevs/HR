@@ -1,6 +1,7 @@
 import React from 'react'
 import './info.css'
 import person from '../../../../Assets/employee/person.jpg'
+import AddContract from '../Contract/AddContract'
 
 const Info = ({ combinedData }) => {
     combinedData = combinedData || {}
@@ -23,7 +24,10 @@ const Info = ({ combinedData }) => {
                     <h2>{combinedData.employee_name}</h2>
                     <p>{combinedData.job_title}</p>
                 </div>
+                <div className="email-contrct">
                 <button onClick={emailHandleClick}>Send Email</button>
+                <AddContract combinedData={combinedData}/>
+                </div>
             </div>
             <div className="personal-details">
                 <div className="psdetails-header">

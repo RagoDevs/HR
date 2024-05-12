@@ -37,7 +37,7 @@ function NewEmployee() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        const isoDate = name === 'dob' || name === 'joining_date' ? new Date(value).toISOString() : value
+        const isoDate = name === 'dob' || name === 'joining_date' ? new Date(value).toISOString().split('T')[0] : value
         const newFormData = {
             ...form,
             [name]: isoDate,

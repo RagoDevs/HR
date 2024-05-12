@@ -39,9 +39,16 @@
     border-radius: 9px;
 }
 
+.email-contrct {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+
 .details-header button {
     right: 0;
-    width: 13rem;
+    width: 8rem;
     height: 2rem;
     background-color: #f2f2ff;
     border: 2px solid rgb(152, 143, 230);
