@@ -299,3 +299,11 @@
     color: #fff;
     border: none;
 }
+
+
+@media screen and (max-width: 730px) {
+    .staff-main {
+        display: flex;
+        flex-direction: column;
+    }
+}

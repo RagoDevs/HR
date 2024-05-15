@@ -11,6 +11,10 @@
     padding: 0 .3rem;
 }
 
+.selected {
+    background-color: #f59c9c;
+}
+
 .emply-table table th {
     width: 100%;
     text-align: start;

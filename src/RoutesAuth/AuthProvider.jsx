@@ -8,6 +8,7 @@ export function AuthProvider({ children }) {
 
   let [token, setToken] = useState(localStorage.getItem("siteToken") || "");
   let [role, setRole] = useState(localStorage.getItem("siteRole") || "");
+  let [employeeId, setEmployeeId] = useState('')
   let [err, setErr] = useState("")
   let navigate = useNavigate();
 
@@ -29,17 +30,28 @@ export function AuthProvider({ children }) {
     if (response.status === 200) {
       const token = res.token.token;
       const role = res.role;
+      const employeeId = res.employee_id;
+      const expire = res.token.expiry
       if (token ? role : false) {
         setToken(token);
         setRole(role);
+        setEmployeeId(employeeId)
         localStorage.setItem("siteToken", token);
         localStorage.setItem("siteRole", role);
+        localStorage.setItem("siteExpiry", expire);
+        
+
 
         if (role === 'admin') {
-          return navigate('/Dashboard')
+          navigate('/Dashboard');
+          navigate('/staff');
+        } else if (role === 'hr') {
+          navigate('/Dashboard');
         } else {
-          return navigate('/Staff')
+          navigate('/Staff');
         }
+
+
 
       }
     } else {
@@ -48,23 +60,24 @@ export function AuthProvider({ children }) {
       setErr(err)
     }
 
-  }
+  };
 
   let signout = () => {
     setToken('');
     setRole(null);
-    localStorage.removeItem("site");
-    localStorage.removeItem("site");
+    localStorage.removeItem("siteToken");
+    localStorage.removeItem("siteRole");
+    localStorage.removeItem('siteExpiry')
     return navigate("/");
   };
 
-  let value = { token, role, signin, signout, err };
+  let value = { token, role, employeeId, signin, signout, err };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+};
 
 
 
 export function useAuth() {
   return useContext(AuthContext);
-}
+};

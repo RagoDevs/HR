@@ -8,7 +8,7 @@ export function RequireStaff({ children }) {
   let auth = useAuth();
   let location = useLocation();
 
-  if (!auth.token || auth.role !== "staff") {
+  if (!auth.token || (auth.role !== "admin" && auth.role !== "staff")) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 

@@ -2,6 +2,8 @@ import React from 'react'
 import './info.css'
 import person from '../../../../Assets/employee/person.jpg'
 import AddContract from '../Contract/AddContract'
+import EditEmployee from '../EditEmployee/EditEmployee'
+import EditContract from '../EditContract/EditContract'
 
 const Info = ({ combinedData }) => {
     combinedData = combinedData || {}
@@ -14,7 +16,7 @@ const Info = ({ combinedData }) => {
     }
     const openAttachment = () => {
         window.open(contractDetails.attachment, '_blank')
-    }
+    };
 
     return (
         <div className="employee-details">
@@ -25,14 +27,14 @@ const Info = ({ combinedData }) => {
                     <p>{combinedData.job_title}</p>
                 </div>
                 <div className="email-contrct">
-                <button onClick={emailHandleClick}>Send Email</button>
-                <AddContract combinedData={combinedData}/>
+                    <button onClick={emailHandleClick}>Send Email</button>
+                    <AddContract combinedData={combinedData} />
                 </div>
             </div>
             <div className="personal-details">
                 <div className="psdetails-header">
                     <h4>General Details</h4>
-                    <button>Edit</button>
+                    <EditEmployee combinedData={combinedData} />
                 </div>
                 <div className="psdetails-main">
                     <div className="psdetails-wrapper">
@@ -74,7 +76,7 @@ const Info = ({ combinedData }) => {
             <div className="contract-info">
                 <div className="psdetails-header">
                     <h4>Contract Information</h4>
-                    <button>Edit</button>
+                    <EditContract combinedData={combinedData} />
                 </div>
                 <div className="contract-main">
                     <div className="contract-wrapper">
@@ -110,6 +112,6 @@ const Info = ({ combinedData }) => {
 
 
     )
-}
+};
 
-export default Info
+export default Info;

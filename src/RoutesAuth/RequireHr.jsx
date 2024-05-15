@@ -8,7 +8,7 @@ export function RequireHr({ children }) {
   let auth = useAuth();
   let location = useLocation();
 
-  if (!auth.token || auth.role !== "admin") {
+  if (!auth.token || (auth.role !== "admin" && auth.role !== "hr")) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 

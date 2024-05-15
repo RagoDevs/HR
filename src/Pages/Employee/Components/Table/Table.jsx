@@ -1,11 +1,12 @@
-import React from 'react'
-import './Table.css'
-import person from '../../../../Assets/employee/person.jpg'
+import React from 'react';
+import './Table.css';
+import person from '../../../../Assets/employee/person.jpg';
 
 const Table = ({employees,  onEmployeeClick}) => {
     const getClassForPresence = (isPresent) => {
         return isPresent ? 'present' : 'absent';
     };
+
     return (
         <div className='emply-table'>
             <table>
@@ -18,7 +19,7 @@ const Table = ({employees,  onEmployeeClick}) => {
                 <tbody>
                     {employees.map((employee) => {
                         return (
-                        <tr key={employee.employee_id} className={getClassForPresence(employee.is_present)} onClick={() => onEmployeeClick(employee.employee_id)}>
+                        <tr key={employee.employee_id} className={getClassForPresence(employee.is_present)} onClick={() => onEmployeeClick(employee.employee_id)} >
                     <td>
                         <img src={person} alt="" />
                         {employee.employee_name}</td>
@@ -30,6 +31,6 @@ const Table = ({employees,  onEmployeeClick}) => {
             </table>
         </div>
     )
-}
+};
 
-export default Table
+export default Table;

@@ -12,13 +12,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: scaleIn 6s forwards;
+    animation: scaleIn 3s forwards;
     z-index: 2;
 }
-
-
-
-
 
 .lg-container {
     display: flex;
@@ -28,7 +24,7 @@
     border-radius: 8px;
     background-color: aliceblue;
     z-index: 5;
-    animation: fadeIn 3s forwards, translateUp 2s forwards;
+    animation: fadeIn 1s forwards, translateUp 1s forwards;
 
 }
 

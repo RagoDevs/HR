@@ -1,47 +1,53 @@
-import React, { useState } from 'react';
-import './NewEmployee.css';
+import React, { useState, useEffect } from 'react'
+import './EditEmployee.css'
 
-function NewEmployee() {
+const EditEmployee = ({ combinedData }) => {
+    combinedData = combinedData || {};
 
-    const storedShowPopup = localStorage.getItem("showPopup");
-    const [showPopup, setShowPopup] = useState(storedShowPopup === "true");
+    const storedEdEShowPopup = localStorage.getItem("EdEshowPopup");
+    const [EdEshowPopup, setEdEShowPopup] = useState(storedEdEShowPopup === "true");
+
+    const dob = combinedData.dob.split('T')[0];
+    const joiningDate = combinedData.joining_date.split('T')[0];
 
     const handleClick = () => {
-        setShowPopup(true);
-        localStorage.setItem("showPopup", "true");
+        setEdEShowPopup(true);
+        localStorage.setItem("EdEshowPopup", "true");
     };
 
     const closePopup = () => {
-        setShowPopup(false);
-        localStorage.setItem("showPopup", "false");
+        setEdEShowPopup(false);
+        localStorage.setItem("EdEshowPopup", "false");
     }
 
-    const [form, setForm] = useState(() => {
-        const storedFormData = localStorage.getItem('formData');
-        return storedFormData ? JSON.parse(storedFormData) : {
-            name: '',
-            dob: '',
-            email: '',
-            phone: '',
-            address: '',
-            department: '',
-            role: '',
-            job_title: '',
-            gender: '',
-            joining_date: '',
-            password: '',
-        };
+    const [form, setForm] = useState({
+        name: combinedData.employee_name,
+        dob: dob,
+        email: combinedData.email,
+        phone: combinedData.phone,
+        address: combinedData.address,
+        department: combinedData.department,
+        role: combinedData.role_name,
+        job_title: combinedData.job_title,
+        gender: combinedData.gender,
+        joining_date: joiningDate,
+        password: combinedData.password,
+
     });
+
+    
+    useEffect(() => {
+        setForm(combinedData || {});
+    }, [combinedData]);
+
 
     function handleChange(e) {
         const { name, value } = e.target;
-        const isoDate = name === 'dob' || name === 'joining_date' ? new Date(value).toISOString().split('T')[0] : value
-        const newFormData = {
+        setForm({
             ...form,
-            [name]: isoDate,
-        };
-        localStorage.setItem('formData', JSON.stringify(newFormData));
-        setForm(newFormData);
+            [name]: value
+        })
+
     }
 
     const [message, setMessage] = useState('');
@@ -50,16 +56,22 @@ function NewEmployee() {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem('siteToken');
+            const token = localStorage.getItem('siteToken')
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/employees", {
-                method: "POST",
+            const isoForm = {
+                ...form,
+                dob: new Date(form.dob).toISOString(),
+                joining_date: new Date(form.joining_date).toISOString(),
+            }
+
+            let res = await fetch("", {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(
-                    form
+                    isoForm
                 ),
             });
             if (res === 201) {
@@ -77,7 +89,6 @@ function NewEmployee() {
                     joining_date: '',
                     password: '',
                 });
-                localStorage.removeItem(FormData)
             } else {
                 setMessage("Some error occurred");
             }
@@ -85,20 +96,18 @@ function NewEmployee() {
             console.log(err);
         }
 
-    };
-
+    }
     return (
-        <div className="new_emply">
-            <h3>Employee Information</h3>
-            <button onClick={handleClick}>Add New Employee</button>
-            {showPopup ?
-                <div className="nwpopup_bg">
-                    <div className="nwpopup_container">
+        <div className="edit_emply">
+            <button onClick={handleClick}>Edit</button>
+            {EdEshowPopup ?
+                <div className="edpopup_bg">
+                    <div className="edpopup_container">
                         <div className="closepopup">
                             <h2 onClick={closePopup}>X</h2>
                         </div>
-                        <h3>Add New Employee</h3>
-                        <div className="nwemply_form">
+                        <h3>Edit Employee Details</h3>
+                        <div className="edemply_form">
                             <form>
                                 <label>Employee Name</label>
                                 <input
@@ -177,7 +186,7 @@ function NewEmployee() {
                                 <label>Joining Date</label>
                                 <input
                                     type="date"
-                                    className='nwemply-date'
+                                    className='edemply-date'
                                     name='joining_date'
                                     value={form.joining_date}
                                     onChange={handleChange}
@@ -199,6 +208,6 @@ function NewEmployee() {
                 : ""}
         </div>
     )
-};
+}
 
-export default NewEmployee;
+export default EditEmployee;
