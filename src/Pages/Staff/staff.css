@@ -284,20 +284,19 @@
 }
 
 .st-lv-button {
-    width: 100%;
+    
     display: flex;
     margin: 1rem 0;
     justify-content: space-around;
     gap: 1rem;
 }
 
-.st-lv-button button {
-    width: 50%;
-    height: 2.4rem;
-    background-color: rgb(76, 84, 210);
-    border-radius: 8px;
-    color: #fff;
-    border: none;
+.request-leave {
+    width: 100%;
+}
+
+.leave-status {
+    width: 100%;
 }
 
 

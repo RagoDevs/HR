@@ -39,6 +39,7 @@ export function AuthProvider({ children }) {
         localStorage.setItem("siteToken", token);
         localStorage.setItem("siteRole", role);
         localStorage.setItem("siteExpiry", expire);
+        localStorage.setItem('siteId', employeeId)
 
         if (role === 'admin') {
           navigate('/Dashboard');
@@ -64,7 +65,8 @@ export function AuthProvider({ children }) {
     setRole(null);
     localStorage.removeItem("siteToken");
     localStorage.removeItem("siteRole");
-    localStorage.removeItem('siteExpiry')
+    localStorage.removeItem('siteExpiry');
+    localStorage.removeItem('siteId')
     return navigate("/");
   };
 

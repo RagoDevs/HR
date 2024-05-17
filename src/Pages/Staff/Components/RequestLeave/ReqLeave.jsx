@@ -1,49 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import './EditContract.css';
+import React, {useState} from 'react'
+import './ReqLeave.css'
 
-const EditContract = ({ combinedData }) => {
+function ReqLeave() {
 
-    combinedData = combinedData || {};
+    const employee_id = localStorage.getItem('siteId');
 
-
-    const employee_id = combinedData.employee_id;
-    const contractDetails = combinedData[0] || {};
-
-    const startDate = contractDetails.start_date?.split('T')[0];
-    const endDate = contractDetails.end_date?.split('T')[0];
-
-    const storedShowPopup = localStorage.getItem("showEdPopup");
-    const [showEdPopup, setShowEdPopup] = useState(storedShowPopup === "true");
+    const ShowPopup = localStorage.getItem("showStaffLvRqPopup");
+    const [showStaffLvRqPopup, setShowStaffLvRqPopup] = useState(ShowPopup === "true");
 
     const handleClick = () => {
-        setShowEdPopup(true);
-        localStorage.setItem("showEdPopup", "true");
+        setShowStaffLvRqPopup(true);
+        localStorage.setItem("showStaffLvRqPopup", "true");
     };
 
     const closePopup = () => {
-        setShowEdPopup(false);
-        localStorage.setItem("showEdPopup", "false");
-    };
+        setShowStaffLvRqPopup(false);
+        localStorage.setItem("showStaffLvRqPopup", "false");
+    }
 
-    useEffect(() => {
-        setForm(combinedData || {});
-    }, [combinedData]);
-
-    const [form, setForm] = useState({
-        employee_id: employee_id,
-        contract_type: contractDetails.contract_type,
-        start_date: startDate,
-        end_date: endDate,
-
+    const [form, setForm] = useState(() => {
+        const storedFormData = localStorage.getItem('formData');
+        return storedFormData ? JSON.parse(storedFormData) : {
+            employee_id:  employee_id,
+            start_date: '',
+            end_date: '',
+            description: '',
+        };
     });
-
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setForm({
+        const newFormData = {
             ...form,
-            [name]: value
-        })
+            [name]: value,
+        };
+        localStorage.setItem('formData', JSON.stringify(newFormData));
+        setForm(newFormData);
+
     }
 
     const [message, setMessage] = useState('');
@@ -60,8 +53,8 @@ const EditContract = ({ combinedData }) => {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/contracts", {
-                method: "PUT",
+            let res = await fetch("https://hrbe.eadevs.com/auth/leaves", {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
@@ -74,11 +67,11 @@ const EditContract = ({ combinedData }) => {
                 setMessage("Form submitted successfully");
                 setForm({
                     employee_id: '',
-                    contract_type: '',
                     start_date: '',
                     end_date: '',
+                    description: '',
                 });
-                localStorage.removeItem('formData')
+                localStorage.removeItem(FormData)
             } else {
                 setMessage("Some error occurred");
             }
@@ -89,18 +82,18 @@ const EditContract = ({ combinedData }) => {
     };
 
     return (
-        <div className="edit-contract">
-            <div className="edcntrct-button">
-                <button onClick={handleClick}>Edit</button>
+        <div className="req-leave">
+            <div className="staffRqLv-button">
+                <button onClick={handleClick}>Request Leave</button>
             </div>
-            {showEdPopup ?
-                <div className="contract-popup-bg">
-                    <div className="cntrctpopup-container">
+            {showStaffLvRqPopup ?
+                <div className="staffRqLv-popup-bg">
+                    <div className="staffRqLv-container">
                         <div className="closepopup">
                             <h2 onClick={closePopup}>X</h2>
                         </div>
-                        <h3>Edit Contract</h3>
-                        <div className="edcontract-form">
+                        <h3>Request Leave</h3>
+                        <div className="staffRqLv-form">
                             <form >
                                 <input
                                     type="text"
@@ -110,10 +103,10 @@ const EditContract = ({ combinedData }) => {
                                     onChange={handleChange}
                                 />
                                 <select id="contract" name="contract_type" onChange={handleChange}>
-                                    <option value=''>Contract Type</option>
-                                    <option value='fixed-term'>Fixed</option>
-                                    <option value='full-time'>Full Time</option>
-                                    <option value='part-time'>Part Time</option>
+                                    <option value=''>To be Approved by</option>
+                                    <option value='fixed-term'>Jane</option>
+                                    <option value='full-time'>John</option>
+                                    <option value='part-time'>Matt</option>
                                     <option value='temporary'>Temporary</option>
                                     <option value='internship'>Internship</option>
                                 </select>
@@ -133,18 +126,26 @@ const EditContract = ({ combinedData }) => {
                                     value={form.end_date}
                                     onChange={handleChange}
                                 />
-                                <button onClick={submit}>Submit</button>
+                                <textarea
+                                    type="text"
+                                    className='textarea'
+                                    name='end_date'
+                                    value={form.description}
+                                    onChange={handleChange}
+                                />
+                                <button onClick={submit}>Request</button>
                             </form>
-                            <div className="contract-error">
-                                {message && <p>{message}</p>}
+                            <div className="staffRqLv-error">
+                            {message && <p>{message}</p>}
                             </div>
                         </div>
                     </div>
                 </div>
                 : ''}
         </div>
+
+
     )
+}
 
-};
-
-export default EditContract;
+export default ReqLeave

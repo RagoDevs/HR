@@ -1,4 +1,18 @@
-.contract-popup-bg {
+.staffRqLv-button {
+    width: 100%;
+}
+.staffRqLv-button button {
+    width: 100%;
+    height: 2.4rem;
+    border-radius: 8px;
+    background-color: rgb(76, 84, 210);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+.staffRqLv-popup-bg {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -14,16 +28,16 @@
 
 
 
-.cntrctpopup-container {
+.staffRqLv-container {
     min-width: 320px;
-    height: 350px;
+    height: 460px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
     padding: 1rem;
 }
 
-.contract-form form{
+.staffRqLv-form form{
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -34,7 +48,7 @@
     display: none;
 }
 
-.contract-form select {
+.staffRqLv-form select {
     height: 2rem;
     font-size: 1rem;
 }
@@ -43,7 +57,13 @@
      font-size: 1.1rem;
 }
 
-.contract-form button {
+.textarea {
+    font-size: 1.1rem;
+    height: 7rem;
+    padding: .5rem;
+}
+
+.staffRqLv-form button {
     width: 100%;
     height: 2.1rem;
     font-size: .9rem;
@@ -54,7 +74,7 @@
     background-color:  rgb(105, 41, 253);
 }
 
-.contract-error {
+.staffRqLv-error {
     width: 100%;
     display: flex;
     align-items: center;

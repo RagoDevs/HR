@@ -6,11 +6,12 @@ import out from '../../Assets/images/exit.png'
 import wave from '../../Assets/staff/wave.png'
 import check from '../../Assets/staff/check.png'
 import "./staff.css";
-import { useAuth} from '../../RoutesAuth/AuthProvider'
+import ReqLeave from "./Components/RequestLeave/ReqLeave";
+import LeaveStatus from "./Components/Status/LeaveStatus";
 
 
 function Staff() {
-  const { employeeId } = useAuth();
+  const employeeId  = localStorage.getItem('siteId')
   const token = localStorage.getItem('siteToken')
 
   const [staff, setStaff] = useState('')
@@ -135,8 +136,12 @@ return (
             <h5>See history</h5>
           </div>
           <div className="st-lv-button">
-            <button><h4>Request Leave</h4></button>
-            <button><h4>Status</h4></button>
+            <div className="request-leave">
+            <ReqLeave />
+            </div>
+            <div className="leave-status">
+            <LeaveStatus />
+            </div>
           </div>
 
         </div>
