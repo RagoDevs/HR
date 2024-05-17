@@ -39,12 +39,9 @@ export function AuthProvider({ children }) {
         localStorage.setItem("siteToken", token);
         localStorage.setItem("siteRole", role);
         localStorage.setItem("siteExpiry", expire);
-        
-
 
         if (role === 'admin') {
           navigate('/Dashboard');
-          navigate('/staff');
         } else if (role === 'hr') {
           navigate('/Dashboard');
         } else {

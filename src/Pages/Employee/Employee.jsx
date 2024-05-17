@@ -18,30 +18,35 @@ const Employee = () => {
         const checkExpiry = () => {
             if (Date.now() / 1000 > expiry) {
                 navigate('/');
-
-            } else {
-                fetch('https://hrbe.eadevs.com/auth/employees', {
+                return true;
+            }
+            return false;
+        };
+        const fetchEmployees = async () => {
+            try {
+                const response = await fetch('https://hrbe.eadevs.com/auth/employees', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                    }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        setEmployees(data);
-                        if (data.length > 0) {
-                            const employee_id = data[0].employee_id
-                            handleEmployeeClick(employee_id);
-                        }
-                    })
-                    .catch(error => console.error('error fetching list:', error));
+                    },
+                });
+                const data = await response.json();
+                setEmployees(data);
+                
+                if (data.length > 0) {
+                    const employee_id = data[0].employee_id
+                    handleEmployeeClick(employee_id);
+                }
             }
-        };
-        if (Date.now() / 1000 <= token.expiry) {
-        const intervalId = setInterval(checkExpiry, 1000);
-
-        return () => clearInterval(intervalId);
+            catch (error) {
+                console.error('Error fetching employees:', error);
+            }
         }
+
+        if (!checkExpiry()) {
+            fetchEmployees();
+        }
+
         // eslint-disable-next-line
     }, [token, expiry, navigate]);
 

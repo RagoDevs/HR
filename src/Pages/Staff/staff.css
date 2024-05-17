@@ -305,5 +305,26 @@
     .staff-main {
         display: flex;
         flex-direction: column;
+        padding: 6rem 0;
+    }
+
+    .staff-logo img {
+        height: 3rem;
+        
+    }
+
+    .logo-title h3 {
+        font-size: .8rem;
+    }
+
+    .logo-title p {
+        font-size: .7rem;
+    }
+
+    .staff-logout h4 {
+        font-size: .7rem;
+    }
+    .staff-logout img {
+        height: 1rem;
     }
 }

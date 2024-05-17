@@ -77,9 +77,15 @@
 .request-table table,
 .history-table table {
     width: 100%;
+    min-width: 750px;
+    overflow: scroll;
     border-collapse: collapse;
     
 }
+
+.hidden {
+    display: none;
+  }
 
 .request-table table th,
 .history-table table th {
@@ -92,7 +98,7 @@
 .request-table table td,
 .history-table table td {
     text-align: center;
-    padding: .5rem;
+    padding: .6rem;
     border-bottom: 1px solid rgb(206, 200, 200);
 }
 

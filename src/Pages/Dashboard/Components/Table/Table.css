@@ -7,6 +7,7 @@
 
 .dash-table table {
     width: 100%;
+    min-width: 560px;
     text-align: center;
     background-color: white;
     border-radius: 8px;
