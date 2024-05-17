@@ -54,7 +54,7 @@ const Info = ({ combinedData }) => {
                     <div className="psdetails-wrapper">
                         <div className="psdetails-item">
                             <h4>Join Date</h4>
-                            <h3>{combinedData.joining_date.split('T')[0]}</h3>
+                            <h3>{combinedData.joining_date.split('T')[0] || ''}</h3>
                         </div>
                         <div className="psdetails-item">
                             <h4>Position Title</h4>
@@ -86,7 +86,7 @@ const Info = ({ combinedData }) => {
                         </div>
                         <div className="psdetails-item">
                             <h4>Start Date</h4>
-                            <h3>{contractDetails.start_date.split('T')[0]}</h3>
+                            <h3>{contractDetails?.start_date?.split('T')[0] || ''}</h3>
                         </div>
                     </div>
                     <div className="contract-wrapper">
@@ -96,7 +96,7 @@ const Info = ({ combinedData }) => {
                         </div>
                         <div className="psdetails-item">
                             <h4>End Date</h4>
-                            <h3>{contractDetails.end_date.split('T')[0]}</h3>
+                            <h3>{contractDetails?.end_date?.split('T')[0] || ''}</h3>
                         </div>
                     </div>
                     <div className="contract-wrapper">

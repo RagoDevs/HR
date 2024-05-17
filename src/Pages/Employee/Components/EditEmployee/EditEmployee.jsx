@@ -7,9 +7,7 @@ const EditEmployee = ({ combinedData }) => {
     const storedEdEShowPopup = localStorage.getItem("EdEshowPopup");
     const [EdEshowPopup, setEdEShowPopup] = useState(storedEdEShowPopup === "true");
 
-    const dob = combinedData.dob.split('T')[0];
-    const joiningDate = combinedData.joining_date.split('T')[0];
-
+    
     const handleClick = () => {
         setEdEShowPopup(true);
         localStorage.setItem("EdEshowPopup", "true");
@@ -22,7 +20,7 @@ const EditEmployee = ({ combinedData }) => {
 
     const [form, setForm] = useState({
         name: combinedData.employee_name,
-        dob: dob,
+        dob: combinedData.dob.split('T')[0],
         email: combinedData.email,
         phone: combinedData.phone,
         address: combinedData.address,
@@ -30,7 +28,7 @@ const EditEmployee = ({ combinedData }) => {
         role: combinedData.role_name,
         job_title: combinedData.job_title,
         gender: combinedData.gender,
-        joining_date: joiningDate,
+        joining_date: combinedData.joining_date.split('T')[0],
         password: combinedData.password,
 
     });
