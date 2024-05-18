@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './ReqLeave.css'
 
 function ReqLeave() {
 
     const employee_id = localStorage.getItem('siteId');
+    const token = localStorage.getItem('siteToken')
 
     const ShowPopup = localStorage.getItem("showStaffLvRqPopup");
     const [showStaffLvRqPopup, setShowStaffLvRqPopup] = useState(ShowPopup === "true");
+    const [hrList, setHrList] = useState([]);
 
     const handleClick = () => {
         setShowStaffLvRqPopup(true);
@@ -22,11 +24,37 @@ function ReqLeave() {
         const storedFormData = localStorage.getItem('formData');
         return storedFormData ? JSON.parse(storedFormData) : {
             employee_id:  employee_id,
+            approved_by: '',
             start_date: '',
             end_date: '',
             description: '',
         };
     });
+
+    useEffect(() => {
+        const fetchHrList = async () => {
+            try {
+                const response = await fetch('/api/hr-list', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                setHrList(data);
+            } catch (error) {
+                console.error('Error fetching HR list:', error);
+            }
+        };
+
+        fetchHrList();
+    }, [token]);
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -102,13 +130,11 @@ function ReqLeave() {
                                     value={form.employee_id}
                                     onChange={handleChange}
                                 />
-                                <select id="contract" name="contract_type" onChange={handleChange}>
+                                <select name="approved_by" onChange={handleChange}>
                                     <option value=''>To be Approved by</option>
-                                    <option value='fixed-term'>Jane</option>
-                                    <option value='full-time'>John</option>
-                                    <option value='part-time'>Matt</option>
-                                    <option value='temporary'>Temporary</option>
-                                    <option value='internship'>Internship</option>
+                                    {hrList.map((hr) => (
+                                    <option value={hr.employee_id}>{hr.name}</option>
+                                    ))}
                                 </select>
                                 <label>Starting Date</label>
                                 <input

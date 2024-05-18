@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../Assets/images/logo.png";
 import person from "../../Assets/employee/person.jpg";
-import down from "../../Assets/images/download.png";
+import eye from "../../Assets/staff/eye.png";
 import out from '../../Assets/images/exit.png'
 import wave from '../../Assets/staff/wave.png'
-import check from '../../Assets/staff/check.png'
 import "./staff.css";
 import ReqLeave from "./Components/RequestLeave/ReqLeave";
 import LeaveStatus from "./Components/Status/LeaveStatus";
+import LeaveHistory from "./Components/LeaveHistory/LeaveHistory";
 
 
 function Staff() {
@@ -32,6 +32,12 @@ function Staff() {
       .catch(error => console.error('error fetching details', error));
 
 }, [employeeId, token]);
+
+const contractPdf = staff.attachement || {}
+
+const openPdf = () => {
+  window.open(contractPdf, '_blank');
+}
 
 return (
   <div className="staff">
@@ -89,8 +95,8 @@ return (
                 <span>Here is the stored pdf of your contract</span>
               </h4>
             </div>
-            <button>
-              <img src={down} alt="" />
+            <button onClick={openPdf}>
+              <img src={eye} alt="" />
               <h4>View Contract</h4>
             </button>
           </div>
@@ -109,28 +115,9 @@ return (
           <div className="sflv-header">
             <h4>Manage Leaves</h4>
           </div>
+          <p>Leave History</p>
           <div className="lv-history">
-            <table>
-              <tr>
-                <td>
-                  <h5>Jun 1, 2023 - Jun 3, 2023</h5>
-                  <p>Annual leave</p>
-                </td>
-                <td>
-                  <img src={check} alt="" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h5>Jun 1, 2023 - Jun 3, 2023</h5>
-                  <p>Annual leave</p>
-                </td>
-                <td>
-                  <img src={check} alt="" />
-                </td>
-              </tr>
-            </table>
-
+            <LeaveHistory />
           </div>
           <div className="see-history">
             <h5>See history</h5>

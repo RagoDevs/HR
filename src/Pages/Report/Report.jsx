@@ -2,7 +2,7 @@ import React from 'react'
 import './Report.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import comming from '../../Assets/images/coming.jpg'
+import comming from '../../Assets/images/coming.png'
 
 function Report() {
     return (
@@ -14,7 +14,7 @@ function Report() {
                 <SideBar />
             </div>
             <div className="report-main">
-                <div className="comming-soon">
+                <div className="coming-soon">
                     <img src={comming} alt="" />
                     <h2>Comming Soon</h2>
                 </div>

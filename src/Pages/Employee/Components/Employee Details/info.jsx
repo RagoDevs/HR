@@ -1,6 +1,7 @@
 import React from 'react'
 import './info.css'
 import person from '../../../../Assets/employee/person.jpg'
+import attach from '../../../../Assets/employee/attach.png'
 import AddContract from '../Contract/AddContract'
 import EditEmployee from '../EditEmployee/EditEmployee'
 import EditContract from '../EditContract/EditContract'
@@ -102,7 +103,10 @@ const Info = ({ combinedData }) => {
                     <div className="contract-wrapper">
                         <div className="psdetails-item">
                             <h4>Attachment</h4>
-                            <h3 onClick={openAttachment}>Contract </h3>
+                            <div className="attach-box"  onClick={openAttachment}>
+                                <img src={attach} alt="" />
+                            <h3>Contract </h3>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -35,6 +35,11 @@
     color: rgb(228, 227, 227);
 }
 
+.comming-soon img {
+    height: 14rem;
+    
+}
+
 
 @media screen and (max-width: 1160px) {
     .calender {

@@ -91,9 +91,11 @@
     font-weight: 600;
 }
 
-.no-data {
+.no-status-data {
     position: relative;
-    text-align: center;
     font-size: 1.3rem;
-    border-bottom: 1px solid red;
+    border-bottom: none !important;
+    box-shadow: none;
+
+    color: rgb(150, 147, 147);
 }

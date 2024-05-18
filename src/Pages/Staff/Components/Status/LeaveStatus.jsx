@@ -50,11 +50,11 @@ function LeaveStatus() {
                         <div className="status-table">
                             <table>
                                 <thead>
-                                    <tr>
-                                        <th className='col-1'>No</th>
-                                        <th className='col-2'>Requested On</th>
-                                        <th className='col-3'>Type</th>
-                                        <th className='col-4'>Status</th>
+                                <tr>
+                                        <th>No</th>
+                                        <th>Requested On</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,7 +70,7 @@ function LeaveStatus() {
                                     ))
                                 ) : (
                                     <tr >
-                                        <td colSpan='4' className='no-data'>
+                                        <td colSpan='4' className='no-status-data'>
                                         No data
                                         </td>
                                     </tr>

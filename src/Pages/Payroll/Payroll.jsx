@@ -2,7 +2,7 @@ import React from 'react'
 import './Payroll.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import comming from '../../Assets/images/coming.jpg'
+import comming from '../../Assets/images/coming.png'
 
 function Payroll() {
     return (

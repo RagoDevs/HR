@@ -16,10 +16,10 @@ function Table() {
     const [leaveHistory, setLeaveHistory] = useState([]);
     const token = localStorage.getItem('siteToken')
     const [unseenCount, setUnseenCount] = useState(0);
+    const [hoveredRow, setHoveredRow] = useState(null);
+    const [hoverPosition, setHoverPosition] = useState({ top: 0, left: 0 });
 
-    //conevrting from iso
-    
-    
+
 
     useEffect(() => {
         fetch('https://hrbe.eadevs.com/auth/leaves', {
@@ -32,29 +32,29 @@ function Table() {
             .then(data => {
                 //console.log('fetched', data)
                 setRequests(data);
-            
 
-        const initialStatuses = data.map(request => ({
-            seen: request.seen,
-            approved: request.approved,
-            statusText: request.seen ? (request.approved ? "Approved" : "Denied"): 'Pending'
-        }));
-        setStatuses(initialStatuses);
 
-        const initialUnseenCount = data.filter(request => !request.seen).length;
-        setUnseenCount(initialUnseenCount);
+                const initialStatuses = data.map(request => ({
+                    seen: request.seen,
+                    approved: request.approved,
+                    statusText: request.seen ? (request.approved ? "Approved" : "Denied") : 'Pending'
+                }));
+                setStatuses(initialStatuses);
 
-    })
+                const initialUnseenCount = data.filter(request => !request.seen).length;
+                setUnseenCount(initialUnseenCount);
 
-        .catch(error => console.error('error fetching details', error));
+            })
+
+            .catch(error => console.error('error fetching details', error));
 
     }, [token]);
 
     const [statuses, setStatuses] = useState(Array(requests.length).fill(""));
 
-    const updateRequestStatus = (id ,seen, approved) => {
+    const updateRequestStatus = (id, seen, approved) => {
         return fetch(`https://hrbe.eadevs.com/auth/leaves/response/${id}`, {
-            method: 'PUT', 
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -65,35 +65,35 @@ function Table() {
     const handleApprove = (index) => {
         const requestId = requests[index].leave_id;
         updateRequestStatus(requestId, true, true).then(() => {
-        const newStatuses = [...statuses];
-        if (!newStatuses[index].seen)  {
-            setUnseenCount(prevCount => prevCount - 1);
-        }
-        newStatuses[index] = {
-            ...newStatuses[index],
-            seen: true,
-            approved: true,
-            statusText: "Approved"
-        };
-        setStatuses(newStatuses);
-    }).catch(error => console.error('Error updating status', error));
+            const newStatuses = [...statuses];
+            if (!newStatuses[index].seen) {
+                setUnseenCount(prevCount => prevCount - 1);
+            }
+            newStatuses[index] = {
+                ...newStatuses[index],
+                seen: true,
+                approved: true,
+                statusText: "Approved"
+            };
+            setStatuses(newStatuses);
+        }).catch(error => console.error('Error updating status', error));
     };
 
     const handleDeny = (index) => {
         const requestId = requests[index].leave_id;
         updateRequestStatus(requestId, true, false).then(() => {
-        const newStatuses = [...statuses];
-        if (!newStatuses[index].seen) {
-            setUnseenCount(prevCount => prevCount - 1);
-        }
-          newStatuses[index] = {
-            ...newStatuses[index],
-            seen: true,
-            approved: false,
-            statusText: "Denied"
-        }
-        setStatuses(newStatuses);
-    }).catch(error => console.error('Error updating status', error));
+            const newStatuses = [...statuses];
+            if (!newStatuses[index].seen) {
+                setUnseenCount(prevCount => prevCount - 1);
+            }
+            newStatuses[index] = {
+                ...newStatuses[index],
+                seen: true,
+                approved: false,
+                statusText: "Denied"
+            }
+            setStatuses(newStatuses);
+        }).catch(error => console.error('Error updating status', error));
     };
 
     useEffect(() => {
@@ -110,16 +110,25 @@ function Table() {
             })
             .catch(error => console.error('error fetching details', error));
 
-            }, [token]);
+    }, [token]);
+
+    const handleMouseEnter = (index, event) => {
+        setHoveredRow(index);
+        setHoverPosition({ top: event.clientY, left: event.clientX });
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredRow(null);
+    };
     return (
         <div className="leave-table">
             <h3>Employee Leaves</h3>
             <div className="leavetb-tabs">
                 <ul>
                     <li className={toggle === 1 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(1)}>Request
-                    
-                        <span className={classNames('notification', {hidden: unseenCount === 0})}>{unseenCount}</span>
-                    
+
+                        <span className={classNames('notification', { hidden: unseenCount === 0 })}>{unseenCount}</span>
+
                     </li>
                     <li className={toggle === 2 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(2)}>History</li>
                 </ul>
@@ -144,7 +153,10 @@ function Table() {
                             <tbody>
                                 {requests.map((request, index) => {
                                     return (
-                                        <tr key={index}>
+                                        <tr key={index}
+                                            onMouseEnter={(e) => handleMouseEnter(index, e)}
+                                            onMouseLeave={handleMouseLeave}
+                                        >
                                             <td>{index + 1}</td>
                                             <td>{request.employee_name}</td>
                                             <td>Administration</td>
@@ -173,6 +185,21 @@ function Table() {
                                 })}
                             </tbody>
                         </table>
+                        {hoveredRow !== null && (
+                            <div
+                                className="description"
+                                style={{
+                                    position: 'absolute',
+                                    top: hoverPosition.top + 10, 
+                                    left: hoverPosition.left + 10, 
+                                    backgroundColor: 'white',
+                                    border: '1px solid #ccc',
+                                    padding: '10px',
+                                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                    zIndex: 10,
+                                  }}>
+                                {requests[hoveredRow].description}
+                            </div>)}
                     </div>
                 </div>
                 <div className={toggle === 2 ? 'active-tbcontent' : 'tbcontent'}>
@@ -191,24 +218,42 @@ function Table() {
                                 </tr>
                             </thead>
                             <tbody>
-                            {leaveHistory.map((leaves, index) => {
+                                {leaveHistory.map((leaves, index) => {
                                     return (
-                                <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{leaves.employee_name}</td>
-                                    <td>Administration</td>
-                                    <td>Annual</td>
-                                    <td>{leaves.start_date.split('T')[0]}</td>
-                                    <td>{leaves.end_date.split('T')[0]}</td>
-                                    <td>Approved</td>
-                                    <td>
-                                        Edit
-                                    </td>
-                                </tr>
+                                        <tr key={index}
+                                        onMouseEnter={(e) => handleMouseEnter(index, e)}
+                                        onMouseLeave={handleMouseLeave}
+                                        >
+                                            <td>{index + 1}</td>
+                                            <td>{leaves.employee_name}</td>
+                                            <td>Administration</td>
+                                            <td>Annual</td>
+                                            <td>{leaves.start_date.split('T')[0]}</td>
+                                            <td>{leaves.end_date.split('T')[0]}</td>
+                                            <td>Approved</td>
+                                            <td>
+                                                Edit
+                                            </td>
+                                        </tr>
                                     )
-})}
+                                })}
                             </tbody>
                         </table>
+                        {hoveredRow !== null && (
+                            <div
+                                className="description"
+                                style={{
+                                    position: 'absolute',
+                                    top: hoverPosition.top + 10, 
+                                    left: hoverPosition.left + 10, 
+                                    backgroundColor: 'white',
+                                    border: '1px solid #ccc',
+                                    padding: '10px',
+                                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                    zIndex: 10,
+                                  }}>
+                                {requests[hoveredRow].description}
+                            </div>)}
                     </div>
                 </div>
             </div>

@@ -35,6 +35,11 @@
     color: rgb(228, 227, 227);
 }
 
+.coming-soon img {
+    height: 14rem;
+    
+}
+
 @media screen and (max-width: 1160px) {
     .report {
         display: grid;
