@@ -37,11 +37,6 @@
     flex-direction: column;
 }
 
-.emply-main-header {
-    margin: 1rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 
 .employee-table {
     width: 100%;

@@ -32,6 +32,7 @@ export function AuthProvider({ children }) {
       const role = res.role;
       const employeeId = res.employee_id;
       const expire = res.token.expiry
+      alert('Successfuly LogingIn')
       if (token ? role : false) {
         setToken(token);
         setRole(role);

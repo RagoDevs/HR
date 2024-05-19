@@ -1,6 +1,38 @@
+.employee-table-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.emply-main-header {
+    margin: 1.5rem 0 .7rem;
+}
+
+.search-component {
+    width: 100%;
+    margin: .3rem 0 0 0;
+    background-color: #dfdfe0;;
+    border: 1px solid rgb(192, 186, 186);
+}
+
+.search-component input {
+    width: 86%;
+    height: 2.3rem;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    border: none;
+    padding: 0 .6rem;
+    background-color: #f2f2ff;
+    outline: none;
+}
+.search-component img{
+    height: 1.3rem;
+    vertical-align: middle;
+    margin-left: 1rem;
+}
 .emply-table {
     width: 100%;
-    height: 100%;
+    height: 88%;
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.11)
      0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;

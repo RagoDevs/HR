@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
+import { useNavigate } from "react-router-dom";
 
 function Table() {
 
     const [employees, setEmployees] = useState([]);
     const token = localStorage.getItem('siteToken');
+    const expiry = localStorage.getItem('siteExpiry')
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://hrbe.eadevs.com/auth/employees', {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+        const checkExpiry = () => {
+            if (Date.now() / 1000 > expiry) {
+                navigate('/');
+                return true;
             }
-        })
-            .then(response => response.json())
-            .then(data => {
+            return false;
+        };
+
+        const fetchEmployees = async () => {
+            try {
+                const response = await fetch('https://hrbe.eadevs.com/auth/employees', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const data = await response.json();
                 setEmployees(data);
-            })
-            .catch(error => console.error('error fetching list:', error));
-    }, [token]);
+
+            }
+            catch (error) {
+                console.error('Error fetching employees:', error);
+            }
+        }
+
+        if (!checkExpiry()) {
+            fetchEmployees();
+        }
+    }, [token, expiry, navigate]);
 
     return (
         <div className="dash-table">
@@ -40,7 +60,7 @@ function Table() {
                                 <td>{employee.employee_name}</td>
                                 <td>{employee.job_title}</td>
                                 <td>
-                                {employee.department}
+                                    {employee.department}
                                 </td>
                                 <td>{employee.is_present ? 'Present' : 'Absent'}</td>
                             </tr>

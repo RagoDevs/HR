@@ -152,6 +152,7 @@ function ReqLeave() {
                                     value={form.end_date}
                                     onChange={handleChange}
                                 />
+                                <label>Reason</label>
                                 <textarea
                                     type="text"
                                     className='textarea'

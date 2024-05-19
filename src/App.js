@@ -15,7 +15,9 @@ import { RequireHr } from './RoutesAuth/RequireHr';
 import { RequireStaff } from './RoutesAuth/RequireStaff';
 
 
+
 function App() {
+ 
   return (
     <AuthProvider>
       <Routes>
@@ -45,6 +47,7 @@ function App() {
           path='/Leave'
           element={
             <RequireHr>
+            
             <Leave />
             </RequireHr>
           }
