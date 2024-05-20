@@ -26,13 +26,12 @@ export function AuthProvider({ children }) {
     });
 
     const res = await response.json();
-    console.log(res)
+  
     if (response.status === 200) {
       const token = res.token.token;
       const role = res.role;
       const employeeId = res.employee_id;
-      const expire = res.token.expiry
-      alert('Successfuly LogingIn')
+      const expire = res.token.expiry;
       if (token ? role : false) {
         setToken(token);
         setRole(role);
@@ -40,7 +39,8 @@ export function AuthProvider({ children }) {
         localStorage.setItem("siteToken", token);
         localStorage.setItem("siteRole", role);
         localStorage.setItem("siteExpiry", expire);
-        localStorage.setItem('siteId', employeeId)
+        localStorage.setItem('siteId', employeeId);
+
 
         if (role === 'admin') {
           navigate('/Dashboard');
@@ -71,7 +71,7 @@ export function AuthProvider({ children }) {
     return navigate("/");
   };
 
-  let value = { token, role, employeeId, signin, signout, err };
+  let value = { token, role, employeeId, signin, signout, err,};
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

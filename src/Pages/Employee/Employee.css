@@ -87,7 +87,7 @@
         display: grid;
         grid-template-columns: 4rem 1fr ;
         grid-template-rows: 26.5rem 1fr;
-        gap: 2rem;
+        gap: 2.4rem;
     }
 
     .employeemain-area-one {

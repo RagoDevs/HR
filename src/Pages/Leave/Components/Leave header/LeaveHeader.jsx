@@ -99,10 +99,9 @@ function LeaveHeader() {
         employee?.employee_name?.toLowerCase().includes(searchTerm)
     );
 
-    const [message, setMessage] = useState('');
 
     let submit = async (e) => {
-        e.preventDefault();
+        
 
         try {
             const token = localStorage.getItem('siteToken');
@@ -125,7 +124,6 @@ function LeaveHeader() {
             });
             if (res.status === 201) {
                 toast.success("Leave Created Succefuly!")
-                setMessage("Form submitted successfully");
                 setForm({
                     employee_id: '',
                     approved_by_id: '',
@@ -135,7 +133,7 @@ function LeaveHeader() {
                 });
                 localStorage.removeItem(FormData)
             } else {
-                setMessage("Some error occurred");
+                
             }
         } catch (err) {
             console.log(err);
@@ -156,12 +154,12 @@ function LeaveHeader() {
             </div>
             {showCreateLeavePopup ?
                 <div className="contract-popup-bg">
-                    <div className="cntrctpopup-container">
+                    <div className="creatalv-popup-container">
                         <div className="closepopup">
                             <h2 onClick={closePopup}>X</h2>
                         </div>
                         <h3>Create Leave</h3>
-                        <div className="contract-form">
+                        <div className="createLv-form">
                             <form >
                                 <input
                                     type="text"
@@ -225,7 +223,7 @@ function LeaveHeader() {
                                 <button onClick={submit}>Create</button>
                             </form>
                             <div className="contract-error">
-                                {message && <p>{message}</p>}
+                                
                             </div>
                         </div>
                     </div>

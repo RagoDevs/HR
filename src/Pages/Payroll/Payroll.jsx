@@ -16,7 +16,7 @@ function Payroll() {
             <div className="payroll-main">
                 <div className="comming-soon">
                     <img src={comming} alt="" />
-                    <h2>Comming Soon</h2>
+                    <h2>Coming Soon</h2>
                 </div>
             </div>
         </div>

@@ -11,17 +11,16 @@
 .search-component {
     width: 100%;
     margin: .3rem 0 0 0;
-    background-color: #dfdfe0;;
     border: 1px solid rgb(192, 186, 186);
 }
 
 .search-component input {
-    width: 86%;
+    width: 89.8%;
     height: 2.3rem;
     font-family: sans-serif;
     font-size: 1.1rem;
     border: none;
-    padding: 0 .6rem;
+    padding: 0 .7rem;
     background-color: #f2f2ff;
     outline: none;
 }

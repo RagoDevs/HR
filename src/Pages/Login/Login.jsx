@@ -4,6 +4,8 @@ import logo from '../../Assets/images/logo.png'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useAuth } from '../../RoutesAuth/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
@@ -40,15 +42,18 @@ function Login() {
             try {
                 await auth.signin(values.email, values.password);
 
+                    toast.success("Login Successfully!");
+
             } catch (error) {
-                console.log('nipo')
                 setLoginError('Invalid email or password');
+                toast.success("Invalid email or password")
             }
         },
     });
 
     return (
         <div className='login-body'>
+             <ToastContainer />
             <div className="logo-intro-container">
                 <img src={logo} alt="Logo" />
             </div>

@@ -17,12 +17,13 @@ const Table = ({ employees, onEmployeeClick }) => {
                     <h3>Employees</h3>
                 </div>
                 <div className="search-component">
+                <img src={searchIcon} alt='search' />
                     <input
                         type="search"
                         placeholder='Search Employee'
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <img src={searchIcon} alt='search' />
+                    
                 </div>
             </div>
             <div className='emply-table'>
@@ -37,7 +38,7 @@ const Table = ({ employees, onEmployeeClick }) => {
                         {employees.filter((employee) => {
                             return search.toLowerCase() === ''
                                 ? employee
-                                : employee.employee_name.toLowerCase().includes(search)
+                                : employee.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
                         }).map((employee) => {
                             return (
                                 <tr key={employee.employee_id} className={getClassForPresence(employee.is_present)} onClick={() => onEmployeeClick(employee.employee_id)} >
