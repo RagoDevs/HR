@@ -44,7 +44,7 @@ const EditContract = ({ combinedData }) => {
             });
 
         }
-    }, [combinedData, contractDetails]);
+    }, [combinedData, contractDetails, employee_id]);
 
 
     function handleChange(e) {
