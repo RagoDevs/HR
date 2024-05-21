@@ -74,16 +74,16 @@ function Table() {
             },
             body: JSON.stringify({ seen, approved })
         })
-        .then(response => response.json())
-        .then(data => {
-            toast.success("Leave status updated successfully!");
-            return data;
-        })
-        .catch(error => {
-            toast.error("Failed to update leave status");
-            console.error('There was a problem with the fetch operation:', error);
-        });
-        
+            .then(response => response.json())
+            .then(data => {
+                toast.success("Leave status updated successfully!");
+                return data;
+            })
+            .catch(error => {
+                toast.error("Failed to update leave status");
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
     };
     const handleApprove = (index) => {
         const requestId = requests[index].leave_id;
@@ -170,7 +170,7 @@ function Table() {
     }
 
     const handleEditSubmit = () => {
-    
+
         const requestId = requests[editIndex].leave_id;
         fetch(`https://hrbe.eadevs.com/auth/leaves/${requestId}`, {
             method: 'PUT',
@@ -193,220 +193,218 @@ function Table() {
                 toast.success("Leave Edited Succefuly!")
             })
             .catch(error => console.error('Error updating leave', error));
-            toast.error("Error editing leave!")
+        toast.error("Error editing leave!")
     };
 
     return (
-        <div className="leave-table">
-            <div className="leave-table-header">
-            <h3>Employee Leaves</h3>
-            <div className="lvsearch-component">
-                <img src={searchIcon} alt='search' />
-                    <input
-                        type="search"
-                        placeholder='Search Employee'
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    
-                </div>
-            </div>
-            
-            <div className="leavetb-tabs">
-                <ul>
-                    <li className={toggle === 1 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(1)}>Request
+        <>
+        <ToastContainer />
+            <div className="leave-table">
+                <div className="leave-table-header">
+                    <h3>Employee Leaves</h3>
+                    <div className="lvsearch-component">
+                        <img src={searchIcon} alt='search' />
+                        <input
+                            type="search"
+                            placeholder='Search Employee'
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
 
-                        <span className={classNames('notification', { hidden: unseenCount === 0 })}>{unseenCount}</span>
-
-                    </li>
-                    <li className={toggle === 2 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(2)}>History</li>
-                </ul>
-            </div>
-            <div className="tb-table">
-                <div className={toggle === 1 ? 'active-tbcontent' : 'tbcontent'}>
-                    <div className="request-table">
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Employee Name</th>
-                                    <th>Department</th>
-                                    <th>Type</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th className='status-column'>Status</th>
-                                    <th className='action_column'>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {requests.filter((request) => {
-                            return search.toLowerCase() === ''
-                                ? request
-                                : request.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
-                        }).map((request, index) => {
-                                
-                                    return (
-                                        <tr key={index}
-                                            onMouseEnter={(e) => handleMouseEnter(index, e)}
-                                            onMouseLeave={handleMouseLeave}
-                                        >
-                                            <td>{index + 1}</td>
-                                            <td>{request.employee_name}</td>
-                                            <td>Administration</td>
-                                            <td>Annual</td>
-                                            <td>{request.start_date.split('T')[0]}</td>
-                                            <td>{request.end_date.split('T')[0]}</td>
-                                            <td>{statuses[index] ? statuses[index].statusText : "Pending"}</td>
-                                            <td>
-                                                {!statuses[index]?.seen ? (
-                                                    <div className="status-icons">
-                                                        <img src={check}
-                                                            alt=''
-                                                            onClick={() => handleApprove(index)}
-                                                        />
-                                                        <img
-                                                            src={deny}
-                                                            alt="Deny"
-                                                            onClick={() => handleDeny(index)}
-                                                        />
-                                                        <img
-                                                            src={edit}
-                                                            alt="Edit"
-                                                            onClick={() => handleEdit(index)}
-                                                        />
-                                                    </div>
-                                                ) : (statuses[index]?.statusText === 'Approved' || statuses[index]?.statusText === "Denied") ? (
-                                                    'Checked'
-                                                ) : (
-                                                    "Edited"
-                                                )}
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
-                        {hoveredRow !== null && (
-                            <div
-                                className="description"
-                                style={{
-                                    position: 'absolute',
-                                    top: hoverPosition.top + 10,
-                                    left: hoverPosition.left + 10,
-                                    backgroundColor: 'white',
-                                    border: '1px solid #ccc',
-                                    padding: '10px',
-                                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-                                    zIndex: 10,
-                                }}>
-                                {requests[hoveredRow].description}
-                            </div>)}
                     </div>
                 </div>
-                {isEditing && (
-                    <div className="edit-popup-bg">
 
-                <div className="edit-popup">
-                <div className="closeEdit-popup">
-                            <h2 onClick={() => setIsEditing(false)}>X</h2>
+                <div className="leavetb-tabs">
+                    <ul>
+                        <li className={toggle === 1 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(1)}>Request
+
+                            <span className={classNames('notification', { hidden: unseenCount === 0 })}>{unseenCount}</span>
+
+                        </li>
+                        <li className={toggle === 2 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(2)}>History</li>
+                    </ul>
+                </div>
+                <div className="tb-table">
+                    <div className={toggle === 1 ? 'active-tbcontent' : 'tbcontent'}>
+                        <div className="request-table">
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Employee Name</th>
+                                        <th>Department</th>
+                                        <th>Type</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th className='status-column'>Status</th>
+                                        <th className='action_column'>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {requests.filter((request) => {
+                                        return search.toLowerCase() === ''
+                                            ? request
+                                            : request.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
+                                    }).map((request, index) => {
+
+                                        return (
+                                            <tr key={index}
+                                                onMouseEnter={(e) => handleMouseEnter(index, e)}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <td>{index + 1}</td>
+                                                <td>{request.employee_name}</td>
+                                                <td>Administration</td>
+                                                <td>Annual</td>
+                                                <td>{request.start_date.split('T')[0]}</td>
+                                                <td>{request.end_date.split('T')[0]}</td>
+                                                <td>{statuses[index] ? statuses[index].statusText : "Pending"}</td>
+                                                <td>
+                                                    {!statuses[index]?.seen ? (
+                                                        <div className="status-icons">
+                                                            <img src={check}
+                                                                alt=''
+                                                                onClick={() => handleApprove(index)}
+                                                            />
+                                                            <img
+                                                                src={deny}
+                                                                alt="Deny"
+                                                                onClick={() => handleDeny(index)}
+                                                            />
+                                                            <img
+                                                                src={edit}
+                                                                alt="Edit"
+                                                                onClick={() => handleEdit(index)}
+                                                            />
+                                                        </div>
+                                                    ) : (statuses[index]?.statusText === 'Approved' || statuses[index]?.statusText === "Denied") ? (
+                                                        'Checked'
+                                                    ) : (
+                                                        "Edited"
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                            {hoveredRow !== null && (
+                                <div
+                                    className="description"
+                                    style={{
+                                        position: 'absolute',
+                                        top: hoverPosition.top + 10,
+                                        left: hoverPosition.left + 10,
+                                        backgroundColor: 'white',
+                                        border: '1px solid #ccc',
+                                        padding: '10px',
+                                        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                        zIndex: 10,
+                                    }}>
+                                    {requests[hoveredRow].description}
+                                </div>)}
                         </div>
-                    <h2>Edit Leave Request</h2>
-                    <form onSubmit={handleEditSubmit}>
-                        <label>
-                            Employee Name:
-                            </label>
-                            <input
-                                type="text"
-                                name="employee_name"
-                                value={editFormData.employee_name}
-                                onChange={handleEditChange}
-                                readOnly
-                            />
-                        
-                        <label>
-                            Start Date:
-                            </label>
-                            <input
-                                type="date"
-                                name="start_date"
-                                value={editFormData.start_date}
-                                onChange={handleEditChange}
-                            />
-                        
-                        <label>
-                            End Date:
-                            </label>
-                            <input
-                                type="date"
-                                name="end_date"
-                                value={editFormData.end_date}
-                                onChange={handleEditChange}
-                            />
-                        
-                        <button type="submit">Save</button>
-                        
-                    </form>
-                </div>
-                </div>
-            )}
-                <div className={toggle === 2 ? 'active-tbcontent' : 'tbcontent'}>
-                    <div className="history-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Employee Name</th>
-                                    <th>Department</th>
-                                    <th>Type</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Status</th>
+                    </div>
+                    {isEditing && (
+                        <div className="edit-popup-bg">
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {leaveHistory.map((leaves, index) => {
-                                    return (
-                                        <tr key={index}
-                                            onMouseEnter={(e) => handleMouseEnter(index, e)}
-                                            onMouseLeave={handleMouseLeave}
-                                        >
-                                            <td>{index + 1}</td>
-                                            <td>{leaves.employee_name}</td>
-                                            <td>Administration</td>
-                                            <td>Annual</td>
-                                            <td>{leaves.start_date.split('T')[0]}</td>
-                                            <td>{leaves.end_date.split('T')[0]}</td>
-                                            <td>Approved</td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
-                        {hoveredRow !== null && (
-                            <div
-                                className="description"
-                                style={{
-                                    position: 'absolute',
-                                    top: hoverPosition.top + 10,
-                                    left: hoverPosition.left + 10,
-                                    backgroundColor: 'white',
-                                    border: '1px solid #ccc',
-                                    padding: '10px',
-                                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-                                    zIndex: 10,
-                                }}>
-                                {requests[hoveredRow].description}
-                            </div>)}
+                            <div className="edit-popup">
+                                <div className="closeEdit-popup">
+                                    <h2 onClick={() => setIsEditing(false)}>X</h2>
+                                </div>
+                                <h2>Edit Leave Request</h2>
+                                <form onSubmit={handleEditSubmit}>
+                                    <label>
+                                        Employee Name:
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="employee_name"
+                                        value={editFormData.employee_name}
+                                        onChange={handleEditChange}
+                                        readOnly
+                                    />
+
+                                    <label>
+                                        Start Date:
+                                    </label>
+                                    <input
+                                        type="date"
+                                        name="start_date"
+                                        value={editFormData.start_date}
+                                        onChange={handleEditChange}
+                                    />
+
+                                    <label>
+                                        End Date:
+                                    </label>
+                                    <input
+                                        type="date"
+                                        name="end_date"
+                                        value={editFormData.end_date}
+                                        onChange={handleEditChange}
+                                    />
+
+                                    <button type="submit">Save</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    )}
+                    <div className={toggle === 2 ? 'active-tbcontent' : 'tbcontent'}>
+                        <div className="history-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Employee Name</th>
+                                        <th>Department</th>
+                                        <th>Type</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Status</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {leaveHistory.map((leaves, index) => {
+                                        return (
+                                            <tr key={index}
+                                                onMouseEnter={(e) => handleMouseEnter(index, e)}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <td>{index + 1}</td>
+                                                <td>{leaves.employee_name}</td>
+                                                <td>Administration</td>
+                                                <td>Annual</td>
+                                                <td>{leaves.start_date.split('T')[0]}</td>
+                                                <td>{leaves.end_date.split('T')[0]}</td>
+                                                <td>Approved</td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                            {hoveredRow !== null && (
+                                <div
+                                    className="description"
+                                    style={{
+                                        position: 'absolute',
+                                        top: hoverPosition.top + 10,
+                                        left: hoverPosition.left + 10,
+                                        backgroundColor: 'white',
+                                        border: '1px solid #ccc',
+                                        padding: '10px',
+                                        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                        zIndex: 10,
+                                    }}>
+                                    {requests[hoveredRow].description}
+                                </div>)}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-
-
+        </>
     )
 }
 
