@@ -36,6 +36,7 @@ const EditContract = ({ combinedData }) => {
 
     useEffect(() => {
         if (combinedData) {
+            const contractDetails = combinedData[0] || {};
             setForm({
                 employee_id: employee_id,
                 contract_type: contractDetails.contract_type,
