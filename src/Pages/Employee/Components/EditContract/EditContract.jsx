@@ -11,8 +11,7 @@ const EditContract = ({ combinedData }) => {
     const employee_id = combinedData.employee_id;
     const contractDetails = combinedData[0] || {};
 
-    const startDate = contractDetails.start_date?.split('T')[0];
-    const endDate = contractDetails.end_date?.split('T')[0];
+
 
     const storedShowPopup = localStorage.getItem("showEdPopup");
     const [showEdPopup, setShowEdPopup] = useState(storedShowPopup === "true");
@@ -27,17 +26,25 @@ const EditContract = ({ combinedData }) => {
         localStorage.setItem("showEdPopup", "false");
     };
 
-    useEffect(() => {
-        setForm(combinedData || {});
-    }, [combinedData]);
-
     const [form, setForm] = useState({
-        employee_id: employee_id,
-        contract_type: contractDetails.contract_type,
-        start_date: startDate,
-        end_date: endDate,
+        employee_id: '',
+        contract_type: '',
+        start_date: '',
+        end_date: '',
 
     });
+
+    useEffect(() => {
+        if (combinedData) {
+            setForm({
+                employee_id: employee_id,
+                contract_type: contractDetails.contract_type,
+                start_date: contractDetails.start_date?.split('T')[0],
+                end_date: contractDetails.end_date?.split('T')[0],
+            });
+
+        }
+    }, [combinedData, contractDetails]);
 
 
     function handleChange(e) {
@@ -85,12 +92,12 @@ const EditContract = ({ combinedData }) => {
         } catch (err) {
             console.log(err);
         }
-
+        localStorage.setItem("showEdPopup", "false");
     };
 
     return (
         <>
-        <ToastContainer />
+            <ToastContainer />
             <div className="edit-contract">
                 <div className="edcntrct-button">
                     <button onClick={handleClick}>Edit</button>
@@ -111,7 +118,7 @@ const EditContract = ({ combinedData }) => {
                                         value={form.employee_id}
                                         onChange={handleChange}
                                     />
-                                    <select id="contract" name="contract_type" onChange={handleChange}>
+                                    <select id="contract" name="contract_type" onChange={handleChange} value={form.contract_type}>
                                         <option value=''>Contract Type</option>
                                         <option value='fixed-term'>Fixed</option>
                                         <option value='full-time'>Full Time</option>

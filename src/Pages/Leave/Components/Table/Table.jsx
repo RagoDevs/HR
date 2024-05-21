@@ -378,11 +378,17 @@ function Table() {
                                     {leaveHistory.map((leaves, index) => {
                                         return (
                                             <tr key={index}
-                                                onMouseEnter={(e) => handleRowClick(index, e)}
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <td>{index + 1}</td>
-                                                <td>{leaves.employee_name}</td>
+                                                <td>
+                                                {leaves.employee_name}
+                                                    <img
+                                                        src={infoIcon}
+                                                        alt=""
+                                                        onClick={(e) => handleRowClick(index, e)}
+                                                    />
+                                                </td>
                                                 <td>Administration</td>
                                                 <td>Annual</td>
                                                 <td>{leaves.start_date.split('T')[0]}</td>

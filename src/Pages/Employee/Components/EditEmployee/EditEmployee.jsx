@@ -10,7 +10,7 @@ const EditEmployee = ({ combinedData }) => {
     const [EdEshowPopup, setEdEShowPopup] = useState(storedEdEShowPopup === "true");
 
     
-    const handleClick = () => {
+    const handleClick = () => {  
         setEdEShowPopup(true);
         localStorage.setItem("EdEshowPopup", "true");
     };
@@ -21,23 +21,38 @@ const EditEmployee = ({ combinedData }) => {
     }
 
     const [form, setForm] = useState({
-        name: combinedData.employee_name,
-        dob: combinedData.dob.split('T')[0],
-        email: combinedData.email,
-        phone: combinedData.phone,
-        address: combinedData.address,
-        department: combinedData.department,
-        role: combinedData.role_name,
-        job_title: combinedData.job_title,
-        gender: combinedData.gender,
-        joining_date: combinedData.joining_date.split('T')[0],
-        password: combinedData.password,
+        name: '',
+        dob: '',
+        email: '',
+        phone: '',
+        address: '',
+        department: '',
+        role: '',
+        job_title: '',
+        gender: '',
+        joining_date: '',
+        password: '',
 
     });
 
     
     useEffect(() => {
-        setForm(combinedData || {});
+        if (combinedData) {
+        setForm({
+            name: combinedData.employee_name,
+            dob: combinedData.dob.split('T')[0],
+            email: combinedData.email,
+            phone: combinedData.phone,
+            address: combinedData.address,
+            department: combinedData.department,
+            role: combinedData.role_name,
+            job_title: combinedData.job_title,
+            gender: combinedData.gender,
+            joining_date: combinedData.joining_date.split('T')[0],
+            password: combinedData.password,
+        });
+        
+    }
     }, [combinedData]);
 
 
@@ -50,7 +65,7 @@ const EditEmployee = ({ combinedData }) => {
 
     }
 
-    let submit = async (e) => {
+    let submit = async () => {
 
         try {
             const token = localStorage.getItem('siteToken')
@@ -93,6 +108,7 @@ const EditEmployee = ({ combinedData }) => {
         } catch (err) {
             console.log(err);
         }
+        localStorage.setItem("EdEshowPopup", "false");
 
     }
     return (
@@ -151,14 +167,14 @@ const EditEmployee = ({ combinedData }) => {
                                 />
                                 <div className="dropdowns">
 
-                                    <select id="departments" name="department" onChange={handleChange}>
+                                    <select id="departments" name="department" onChange={handleChange} value={form.department}>
                                         <option value=''>Pick a Department</option>
                                         <option value='math'>Math</option>
                                         <option value='science'>Science</option>
                                         <option value='iT'>IT</option>
                                         <option value='accounts'>Accounts</option>
                                     </select>
-                                    <select id="role" name="role" onChange={handleChange}>
+                                    <select id="role" name="role" onChange={handleChange} value={form.role}>
                                         <option value=''>Pick a Role</option>
                                         <option value='administration'>Admin</option>
                                         <option value='hr'>Hr</option>
@@ -169,14 +185,14 @@ const EditEmployee = ({ combinedData }) => {
 
                                 <div className="dropdowns">
 
-                                    <select id="job" name="job_title" onChange={handleChange}>
+                                    <select id="job" name="job_title" onChange={handleChange} value={form.job}>
                                         <option value=''>Job Title</option>
                                         <option value='lecturer'>Lecturer</option>
                                         <option value='professor'>Professor</option>
                                         <option value='accountant'>Accountant</option>
                                         <option value='security'>Security</option>
                                     </select>
-                                    <select id="gender" name="gender" onChange={handleChange}>
+                                    <select id="gender" name="gender" onChange={handleChange} value={form.gender}>
                                         <option value=''>Pick a Gender</option>
                                         <option value='male'>Male</option>
                                         <option value='female'>Female</option>

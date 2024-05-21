@@ -42,7 +42,7 @@
     display: none;
 }
 
-.contract-form select {
+.edcontract-form select {
     height: 2rem;
     font-size: 1rem;
 }
