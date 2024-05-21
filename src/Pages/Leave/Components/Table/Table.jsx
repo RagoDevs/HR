@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import check from '../../../../Assets/leave/check.png'
 import deny from '../../../../Assets/leave/delete.png'
 import edit from '../../../../Assets/leave/edit.png'
+import searchIcon from '../../../../Assets/leave/search.png'
 import './Table.css'
 import classNames from 'classnames'
 
 function Table() {
 
     const [toggle, setToggle] = useState(1);
+    const [search, setSearch] = useState('');
 
     function updateToggle(id) {
         setToggle(id)
@@ -181,7 +183,19 @@ function Table() {
 
     return (
         <div className="leave-table">
+            <div className="leave-table-header">
             <h3>Employee Leaves</h3>
+            <div className="lvsearch-component">
+                <img src={searchIcon} alt='search' />
+                    <input
+                        type="search"
+                        placeholder='Search Employee'
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    
+                </div>
+            </div>
+            
             <div className="leavetb-tabs">
                 <ul>
                     <li className={toggle === 1 ? 'active-tabs' : 'tabs'} onClick={() => updateToggle(1)}>Request
@@ -210,7 +224,12 @@ function Table() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {requests.map((request, index) => {
+                            {requests.filter((request) => {
+                            return search.toLowerCase() === ''
+                                ? request
+                                : request.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
+                        }).map((request, index) => {
+                                
                                     return (
                                         <tr key={index}
                                             onMouseEnter={(e) => handleMouseEnter(index, e)}

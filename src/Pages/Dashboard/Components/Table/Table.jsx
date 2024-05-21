@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
 import { useNavigate } from "react-router-dom";
+import searchIcon from '../../../../Assets/dash img/search.png'
 
 function Table() {
 
@@ -8,6 +9,7 @@ function Table() {
     const token = localStorage.getItem('siteToken');
     const expiry = localStorage.getItem('siteExpiry')
     const navigate = useNavigate();
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const checkExpiry = () => {
@@ -41,6 +43,19 @@ function Table() {
     }, [token, expiry, navigate]);
 
     return (
+        <>
+        <div className="dash-table-header">
+            <h3>Employee Leaves</h3>
+            <div className="dashsearch-component">
+                <img src={searchIcon} alt='search' />
+                    <input
+                        type="search"
+                        placeholder='Search'
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    
+                </div>
+            </div>
         <div className="dash-table">
             <table>
                 <thead>
@@ -53,7 +68,11 @@ function Table() {
                     </tr>
                 </thead>
                 <tbody>
-                    {employees.map((employee, index) => {
+                {employees.filter((employee) => {
+                            return search.toLowerCase() === ''
+                                ? employee
+                                : employee.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
+                        }).map((employee, index) => {
                         return (
                             <tr key={index}>
                                 <td>{index + 1}</td>
@@ -70,6 +89,7 @@ function Table() {
                 </tbody>
             </table>
         </div>
+        </>
     );
 };
 

@@ -87,6 +87,43 @@
     display: none;
   }
 
+.leave-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+
+}
+
+.leave-table-header h3 {
+    margin-bottom: .8rem;
+}
+
+.lvsearch-component {
+    width: 30%;
+    margin: .3rem 0 0 0;
+    border: 1px solid rgb(192, 186, 186);
+    background-color: #f2f2ff;
+    border-radius: 7px;
+}
+
+.lvsearch-component input {
+    width: 80.8%;
+    height: 2rem;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    border: none;
+    padding: 0 .7rem;
+    background-color: #f2f2ff;
+    outline: none;
+}
+.lvsearch-component img{
+    height: 1.3rem;
+    vertical-align: middle;
+    margin-left: 1rem;
+    background-color: #f2f2ff;
+}
+
 .request-table table th,
 .history-table table th {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

@@ -30,7 +30,7 @@ function Dashboard() {
                     <Chart />
                 </div>
                 <div className="dashmain-area-three">
-                    <h3>All Employees</h3>
+                    
                     <Table />
                 </div>
                 <div className="dashmain-area-four"></div>
