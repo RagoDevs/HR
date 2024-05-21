@@ -72,7 +72,7 @@ const EditEmployee = ({ combinedData }) => {
                 ),
             });
             if (res === 201) {
-                setMessage("Form submitted successfully");
+                
                 setForm({
                     name: '',
                     dob: '',

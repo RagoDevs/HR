@@ -64,7 +64,6 @@ const AddContract = ({ combinedData }) => {
                 ),
             });
             if (res === 201) {
-                setMessage("Form submitted successfully");
                 setForm({
                     employee_id: '',
                     contract_type: '',
