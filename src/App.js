@@ -28,7 +28,7 @@ function App() {
           }
         />
         <Route
-          path='/Dashboard'
+          path='/dashboard'
           element={
             <RequireHr>
             <Dashboard />
@@ -36,7 +36,7 @@ function App() {
           }
         />
          <Route
-          path='/Employee'
+          path='/employee'
           element={
             <RequireHr>
             <Employee />
@@ -44,7 +44,7 @@ function App() {
           }
         />
          <Route
-          path='/Leave'
+          path='/leave'
           element={
             <RequireHr>
             
@@ -53,7 +53,7 @@ function App() {
           }
         />
           <Route
-          path='/Payroll'
+          path='/payroll'
           element={
             <RequireHr>
             <Payroll />
@@ -61,7 +61,7 @@ function App() {
           }
         />
         <Route
-          path='/Calender'
+          path='/calender'
           element={
             <RequireHr>
             <Calender />
@@ -69,7 +69,7 @@ function App() {
           }
         />
         <Route
-          path='/Documents'
+          path='/documents'
           element={
             <RequireHr>
             <Documents />
@@ -77,7 +77,7 @@ function App() {
           }
         />
         <Route
-          path='/Report'
+          path='/report'
           element={
             <RequireHr>
             <Report/>
@@ -85,7 +85,7 @@ function App() {
           }
         />
         <Route
-          path='/Staff'
+          path='/staff'
           element={
             <RequireStaff>
             <Staff />

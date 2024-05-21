@@ -12,6 +12,8 @@
     width: 100%;
     margin: .3rem 0 0 0;
     border: 1px solid rgb(192, 186, 186);
+    background-color: #f2f2ff;
+    border-radius: 6px;
 }
 
 .search-component input {
@@ -80,8 +82,23 @@
     padding-right: .7rem;
 }
 
+
+@media screen and (max-width: 982px) {
+    .emply-table table td {
+        font-size: .9rem;
+    }
+
+    .search-component input {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .emply-table table td {
         font-size: .9rem;
+    }
+
+    .search-component input {
+        width: 80%;
     }
 }

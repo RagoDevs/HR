@@ -3,6 +3,7 @@ import check from '../../../../Assets/leave/check.png'
 import deny from '../../../../Assets/leave/delete.png'
 import edit from '../../../../Assets/leave/edit.png'
 import searchIcon from '../../../../Assets/leave/search.png'
+import infoIcon from '../../../../Assets/leave/info.png'
 import './Table.css'
 import classNames from 'classnames'
 import { ToastContainer, toast } from 'react-toastify';
@@ -136,7 +137,7 @@ function Table() {
 
     }, [token]);
 
-    const handleMouseEnter = (index, e) => {
+    const handleRowClick = (index, e) => {
         if (!e.target.closest('.status-icons')) {
             const rect = e.target.getBoundingClientRect();
             setHoveredRow(index);
@@ -198,7 +199,7 @@ function Table() {
 
     return (
         <>
-        <ToastContainer />
+            <ToastContainer />
             <div className="leave-table">
                 <div className="leave-table-header">
                     <h3>Employee Leaves</h3>
@@ -206,7 +207,7 @@ function Table() {
                         <img src={searchIcon} alt='search' />
                         <input
                             type="search"
-                            placeholder='Search Employee'
+                            placeholder='Search '
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
@@ -249,11 +250,18 @@ function Table() {
 
                                         return (
                                             <tr key={index}
-                                                onMouseEnter={(e) => handleMouseEnter(index, e)}
+
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <td>{index + 1}</td>
-                                                <td>{request.employee_name}</td>
+                                                <td>{<div className="name-desc">
+                                                    {request.employee_name}
+                                                    <img
+                                                        src={infoIcon}
+                                                        alt=""
+                                                        onClick={(e) => handleRowClick(index, e)}
+                                                    />
+                                                </div>}</td>
                                                 <td>Administration</td>
                                                 <td>Annual</td>
                                                 <td>{request.start_date.split('T')[0]}</td>
@@ -370,7 +378,7 @@ function Table() {
                                     {leaveHistory.map((leaves, index) => {
                                         return (
                                             <tr key={index}
-                                                onMouseEnter={(e) => handleMouseEnter(index, e)}
+                                                onMouseEnter={(e) => handleRowClick(index, e)}
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <td>{index + 1}</td>

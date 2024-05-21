@@ -42,7 +42,7 @@ function Login() {
             try {
                 await auth.signin(values.email, values.password);
 
-                    toast.success("Login Successfully!");
+                toast.success("Login Successfully!");
 
             } catch (error) {
                 setLoginError('Invalid email or password');
@@ -52,65 +52,68 @@ function Login() {
     });
 
     return (
-        <div className='login-body'>
-             <ToastContainer />
-            <div className="logo-intro-container">
-                <img src={logo} alt="Logo" />
-            </div>
-            {showLoginForm && (
-                <div className="login">
-                    <div className="lg-container">
-                        <div className="lg-logo">
-                            <h2>Welcome Back!</h2>
-                            <img src={logo} alt="" />
-                        </div>
+        <>
+            <ToastContainer />
+            <div className='login-body'>
+                <ToastContainer />
+                <div className="logo-intro-container">
+                    <img src={logo} alt="Logo" />
+                </div>
+                {showLoginForm && (
+                    <div className="login">
+                        <div className="lg-container">
+                            <div className="lg-logo">
+                                <h2>Welcome Back!</h2>
+                                <img src={logo} alt="" />
+                            </div>
 
-                        <div className="lg-form">
-                            <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
-                                <div className='login--inputs'>
+                            <div className="lg-form">
+                                <form onSubmit={(e) => { e.preventDefault(); formik.handleSubmit() }}>
+                                    <div className='login--inputs'>
 
-                                    <input
-                                        type='email'
-                                        className='input'
-                                        placeholder='Email'
-                                        name='email'
-                                        value={formik.values.email}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        required
-                                    />
-                                    {formik.touched.email && formik.errors.email ? (
-                                        <div>{formik.errors.email}</div>) : null
-                                    }
-                                    <input
-                                        type='password'
-                                        className='input'
-                                        placeholder='Password'
-                                        name='password'
-                                        value={formik.values.password}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        required
-                                    />
-                                    {formik.touched.password && formik.errors.password ? (
-                                        <div>{formik.errors.password}</div>) : null
-                                    }
-                                    {loginError && <div className="login-error">{loginError}</div>}
-                                    <div className='forgot--password'> Forgot Password?</div>
-                                    <button
-                                        type='submit'
-                                        className='lg-submit'
-                                    >
-                                        <h3>Login</h3>
-                                    </button>
-                                </div>
+                                        <input
+                                            type='email'
+                                            className='input'
+                                            placeholder='Email'
+                                            name='email'
+                                            value={formik.values.email}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            required
+                                        />
+                                        {formik.touched.email && formik.errors.email ? (
+                                            <div>{formik.errors.email}</div>) : null
+                                        }
+                                        <input
+                                            type='password'
+                                            className='input'
+                                            placeholder='Password'
+                                            name='password'
+                                            value={formik.values.password}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            required
+                                        />
+                                        {formik.touched.password && formik.errors.password ? (
+                                            <div>{formik.errors.password}</div>) : null
+                                        }
+                                        {loginError && <div className="login-error">{loginError}</div>}
+                                        <div className='forgot--password'> Forgot Password?</div>
+                                        <button
+                                            type='submit'
+                                            className='lg-submit'
+                                        >
+                                            <h3>Login</h3>
+                                        </button>
+                                    </div>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </>
     )
 };
 
