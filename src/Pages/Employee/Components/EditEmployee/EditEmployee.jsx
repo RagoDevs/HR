@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './EditEmployee.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditEmployee = ({ combinedData }) => {
     combinedData = combinedData || {};
@@ -48,10 +50,7 @@ const EditEmployee = ({ combinedData }) => {
 
     }
 
-    const [message, setMessage] = useState('');
-
     let submit = async (e) => {
-        e.preventDefault();
 
         try {
             const token = localStorage.getItem('siteToken')
@@ -87,8 +86,9 @@ const EditEmployee = ({ combinedData }) => {
                     joining_date: '',
                     password: '',
                 });
+                toast.success("Edited Succefuly!")
             } else {
-                setMessage("Some error occurred");
+                toast.error("Some Error Occurred!")
             }
         } catch (err) {
             console.log(err);
@@ -96,6 +96,8 @@ const EditEmployee = ({ combinedData }) => {
 
     }
     return (
+    <>
+    <ToastContainer />
         <div className="edit_emply">
             <button onClick={handleClick}>Edit</button>
             {EdEshowPopup ?
@@ -199,12 +201,12 @@ const EditEmployee = ({ combinedData }) => {
                                 />
                                 <button onClick={submit}>Submit</button>
                             </form>
-                            {message && <p>{message}</p>}
                         </div>
                     </div>
                 </div>
                 : ""}
         </div>
+        </>
     )
 }
 

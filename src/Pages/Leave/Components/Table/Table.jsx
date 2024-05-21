@@ -5,6 +5,8 @@ import edit from '../../../../Assets/leave/edit.png'
 import searchIcon from '../../../../Assets/leave/search.png'
 import './Table.css'
 import classNames from 'classnames'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Table() {
 
@@ -71,7 +73,17 @@ function Table() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ seen, approved })
-        }).then(response => response.json());
+        })
+        .then(response => response.json())
+        .then(data => {
+            toast.success("Leave status updated successfully!");
+            return data;
+        })
+        .catch(error => {
+            toast.error("Failed to update leave status");
+            console.error('There was a problem with the fetch operation:', error);
+        });
+        
     };
     const handleApprove = (index) => {
         const requestId = requests[index].leave_id;
@@ -105,6 +117,7 @@ function Table() {
             }
             setStatuses(newStatuses);
         }).catch(error => console.error('Error updating status', error));
+        toast.error("Error Occured!")
     };
 
     useEffect(() => {
@@ -177,8 +190,10 @@ function Table() {
                 setRequests(newRequests);
                 setIsEditing(false);
                 setEditIndex(null);
+                toast.success("Leave Edited Succefuly!")
             })
             .catch(error => console.error('Error updating leave', error));
+            toast.error("Error editing leave!")
     };
 
     return (
