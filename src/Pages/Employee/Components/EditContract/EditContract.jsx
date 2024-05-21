@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './EditContract.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,7 +9,7 @@ const EditContract = ({ combinedData }) => {
 
 
     const employee_id = combinedData.employee_id;
-    const contractDetails = combinedData[0] || {};
+    const contractDetails = useMemo(() => combinedData[0] || {}, [combinedData]);
 
 
 
@@ -35,8 +35,8 @@ const EditContract = ({ combinedData }) => {
     });
 
     useEffect(() => {
-        if (combinedData) {
-            const contractDetails = combinedData[0] || {};
+        if (contractDetails) {
+            
             setForm({
                 employee_id: employee_id,
                 contract_type: contractDetails.contract_type,
@@ -45,7 +45,7 @@ const EditContract = ({ combinedData }) => {
             });
 
         }
-    }, [combinedData, contractDetails, employee_id]);
+    }, [contractDetails, employee_id]);
 
 
     function handleChange(e) {
