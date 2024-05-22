@@ -19,6 +19,7 @@ const AddContract = ({ combinedData }) => {
     const closePopup = () => {
         setShowContractPopup(false);
         localStorage.setItem("showContractPopup", "false");
+        localStorage.removeItem(FormData)
     }
 
     const [form, setForm] = useState(() => {

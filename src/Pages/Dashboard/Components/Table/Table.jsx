@@ -45,7 +45,7 @@ function Table() {
     return (
         <>
         <div className="dash-table-header">
-            <h3>Employee Leaves</h3>
+            <h3>Employees</h3>
             <div className="dashsearch-component">
                 <img src={searchIcon} alt='search' />
                     <input

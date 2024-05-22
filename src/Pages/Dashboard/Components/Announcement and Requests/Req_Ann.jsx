@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Req_Ann.css'
 
 function ReqAnn() {
+    const token = localStorage.getItem('siteToken')
+    const [request, setRequest] = useState([]);
+    const [popup, setPopup] = useState(false)
 
+    const handleClick = () => {
+        setPopup(!popup);
+    }
+
+    const closePopup = () => {
+        setPopup(false);
+    }
     const [form, setForm] = useState({
         title: '',
         message: '',
@@ -19,14 +29,24 @@ function ReqAnn() {
 
     }
 
-    const [popup, setPopup] = useState(false)
-    const handleClick = () => {
-        setPopup(!popup);
-    }
 
-    const closePopup = () => {
-        setPopup(false);
-    }
+    useEffect(() => {
+        fetch('https://hrbe.eadevs.com/auth/leaves', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                //console.log('fetched', data)
+                const unseenRequests = data.filter(item => item.seen === false);
+                setRequest(unseenRequests)
+            })
+
+            .catch(error => console.error('error fetching details', error));
+
+    }, [token]);
     return (
         <div className='rq-ann-container'>
             <div className='req-wrapper'>
@@ -40,22 +60,21 @@ function ReqAnn() {
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>2-2-2024</td>
+                    {request && request.length > 0 ? (
+                    request.map((item, index) => {
+                        return (
+                        <tr key={index}>
+                            <td>{item.employee_name}</td>
+                            <td>{item.created_at.split('T')[0]}</td>
                         </tr>
-                        <tr>
-                            <td>Jane Doe</td>
-                            <td>2-2-2024</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Doe</td>
-                            <td>2-2-2024</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Doe</td>
-                            <td>2-2-2024</td>
-                        </tr>
+                        )})
+                    ) : (
+                        <tr className="dash-no-data" >
+                        <td  >                    
+                        No Requests
+                        </td>
+                    </tr>
+                    )}
                         </tbody>
                     </table>
                 </div>

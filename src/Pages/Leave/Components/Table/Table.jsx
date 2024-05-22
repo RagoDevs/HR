@@ -381,13 +381,14 @@ function Table() {
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <td>{index + 1}</td>
-                                                <td>
+                                                <td>{<div className="name-desc">
                                                 {leaves.employee_name}
                                                     <img
                                                         src={infoIcon}
                                                         alt=""
                                                         onClick={(e) => handleRowClick(index, e)}
-                                                    />
+                                                       />                              
+                                                        </div>}                                                   
                                                 </td>
                                                 <td>Administration</td>
                                                 <td>Annual</td>
@@ -395,29 +396,29 @@ function Table() {
                                                 <td>{leaves.end_date.split('T')[0]}</td>
                                                 <td>Approved</td>
                                             </tr>
-                                        )
+                                )
                                     })}
-                                </tbody>
-                            </table>
-                            {hoveredRow !== null && (
-                                <div
-                                    className="description"
-                                    style={{
-                                        position: 'absolute',
-                                        top: hoverPosition.top + 10,
-                                        left: hoverPosition.left + 10,
-                                        backgroundColor: 'white',
-                                        border: '1px solid #ccc',
-                                        padding: '10px',
-                                        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-                                        zIndex: 10,
-                                    }}>
-                                    {requests[hoveredRow].description}
-                                </div>)}
-                        </div>
+                            </tbody>
+                        </table>
+                        {hoveredRow !== null && (
+                            <div
+                                className="description"
+                                style={{
+                                    position: 'absolute',
+                                    top: hoverPosition.top + 10,
+                                    left: hoverPosition.left + 10,
+                                    backgroundColor: 'white',
+                                    border: '1px solid #ccc',
+                                    padding: '10px',
+                                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                    zIndex: 10,
+                                }}>
+                                {requests[hoveredRow].description}
+                            </div>)}
                     </div>
                 </div>
             </div>
+        </div >
         </>
     )
 }

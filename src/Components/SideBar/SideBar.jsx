@@ -13,14 +13,14 @@ function SideBar() {
     return (
         <div className='sidebar'>
             <div className='sidebar-menu'>
-            <NavLink  to='/Dashboard' className={({ isActive }) => (isActive ? "active" : "inactive")}>
+            <NavLink  to='/dashboard' className={({ isActive }) => (isActive ? "active" : "inactive")}>
                 <div className='menu-list'>
                     <img src={dashboard} alt="" />
                     <h4>Dashboard</h4>
 
                 </div>
                 </NavLink>
-                <NavLink  to='/Employee' className={({ isActive }) => (isActive ? "active" : "inactive")}>
+                <NavLink  to='/employee' className={({ isActive }) => (isActive ? "active" : "inactive")}>
                     <div className='menu-list'>
 
                         <img src={employee} alt="" />
@@ -29,31 +29,31 @@ function SideBar() {
 
                     </div>
                 </NavLink>
-                <NavLink to='/Leave'>
+                <NavLink to='/leave'>
                     <div className='menu-list'>
                         <img src={leave} alt="" />
                         <h4>Leave</h4>
                     </div>
                 </NavLink>
-                <NavLink to='/Payroll'>
+                <NavLink to='/payroll'>
                 <div className='menu-list'>
                     <img src={money} alt="" />
                     <h4>Payroll</h4>
                 </div>
                 </NavLink>
-                <NavLink to='/Calender'>
+                <NavLink to='/calender'>
                 <div className='menu-list'>
                     <img src={calender} alt="" />
                     <h4>Calender</h4>
                 </div>
                 </NavLink>
-                <NavLink to='/Documents'>
+                <NavLink to='/documents'>
                 <div className='menu-list'>
                     <img src={documents} alt="" />
                     <h4>Documents</h4>
                 </div>
                 </NavLink>
-                <NavLink to='/Report'>
+                <NavLink to='/report'>
                 <div className='menu-list'>
                     <img src={report} alt="" />
                     <h4>Report</h4>

@@ -16,6 +16,7 @@ function NewEmployee() {
     const closePopup = () => {
         setShowPopup(false);
         localStorage.setItem("showPopup", "false");
+        localStorage.removeItem(FormData)
     }
 
     const [form, setForm] = useState(() => {

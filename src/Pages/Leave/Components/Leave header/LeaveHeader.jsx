@@ -58,6 +58,7 @@ function LeaveHeader() {
     const closePopup = () => {
         setShowCreateLeavePopup(false);
         localStorage.setItem("showCreateLeavePopup", "false");
+        localStorage.removeItem(FormData)
     }
 
     const [form, setForm] = useState(() => {
@@ -131,14 +132,14 @@ function LeaveHeader() {
                     end_date: '',
                     description: '',
                 });
-                localStorage.removeItem(FormData)
+              
             } else {
                 
             }
         } catch (err) {
             console.log(err);
         }
-
+        localStorage.removeItem(FormData)
         localStorage.setItem("showCreateLeavePopup", "false");
 
     };

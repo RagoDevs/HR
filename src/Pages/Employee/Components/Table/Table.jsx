@@ -45,7 +45,9 @@ const Table = ({ employees, onEmployeeClick }) => {
                                     <td>
                                         <img src={person} alt="" />
                                         {employee.employee_name}</td>
-                                    <td><p>{employee.is_present ? 'Present' : 'Absent'}</p></td>
+                            
+                                    <td><p class="{{employee.is_present ? 'present' : 'absent'}}"><span class="dot"></span>{employee.is_present ? 'Present' : 'Absent'}</p></td>
+
                                 </tr>
                             )
                         })}
