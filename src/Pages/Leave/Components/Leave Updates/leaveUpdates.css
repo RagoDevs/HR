@@ -10,6 +10,7 @@
     background-color: #ffff;
     box-shadow: rgba(0, 0, 0, 0.11)
     0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
+    overflow-y: scroll;
 }
 
 .onleave-table h4 {
@@ -19,6 +20,7 @@
 .onleave-table table {
     width: 100%;
     padding: 0 1rem;
+    overflow-y: scroll;
 }
 
 .onleave-table table th {

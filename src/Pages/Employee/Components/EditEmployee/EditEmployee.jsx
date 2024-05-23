@@ -86,7 +86,7 @@ const EditEmployee = ({ combinedData }) => {
                     isoForm
                 ),
             });
-            if (res === 201) {
+            if (res.status === 201) {
                 
                 setForm({
                     name: '',

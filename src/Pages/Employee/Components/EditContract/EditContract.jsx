@@ -36,7 +36,7 @@ const EditContract = ({ combinedData }) => {
 
     useEffect(() => {
         if (contractDetails) {
-            
+
             setForm({
                 employee_id: employee_id,
                 contract_type: contractDetails.contract_type,
@@ -78,7 +78,7 @@ const EditContract = ({ combinedData }) => {
                     isoForm
                 ),
             });
-            if (res === 201) {
+            if (res.status === 201) {
                 setForm({
                     employee_id: '',
                     contract_type: '',
@@ -121,9 +121,7 @@ const EditContract = ({ combinedData }) => {
                                     />
                                     <select id="contract" name="contract_type" onChange={handleChange} value={form.contract_type}>
                                         <option value=''>Contract Type</option>
-                                        <option value='fixed-term'>Fixed</option>
-                                        <option value='full-time'>Full Time</option>
-                                        <option value='part-time'>Part Time</option>
+                                        <option value='permanent'>Permanent</option>
                                         <option value='temporary'>Temporary</option>
                                         <option value='internship'>Internship</option>
                                     </select>

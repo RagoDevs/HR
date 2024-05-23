@@ -1,53 +1,154 @@
 import React, { useState, useEffect } from 'react'
 import './Req_Ann.css'
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ReqAnn() {
     const token = localStorage.getItem('siteToken')
+    const expiry = localStorage.getItem('siteExpiry')
+    const employeeId = localStorage.getItem('siteId')
     const [request, setRequest] = useState([]);
-    const [popup, setPopup] = useState(false)
+    const [announcements, setAnnouncements] = useState([]);
+    const [announcePopup, setannouncePopup] = useState(false)
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        setPopup(!popup);
+        setannouncePopup(!announcePopup);
     }
 
     const closePopup = () => {
-        setPopup(false);
+        setannouncePopup(false);
+        localStorage.removeItem('formData');
     }
-    const [form, setForm] = useState({
-        title: '',
-        message: '',
-    })
-
-    function handleChange(e) {
-        const { name, value } = e.target
-        setForm({ ...form, [name]: value })
+ 
+    const checkExpiry = () => {
+        if (Date.now() / 1000 > expiry) {
+            navigate('/');
+            return true;
+        }
+        return false;
     }
-
-    function submit(e) {
-        e.preventDefault();
-
-
-    }
-
 
     useEffect(() => {
-        fetch('https://hrbe.eadevs.com/auth/leaves', {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
+       
+        const fetchLeaveRequest = async () => {
+            try {
+                const response = await fetch('https://hrbe.eadevs.com/auth/leaves', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const data = await response.json()
                 //console.log('fetched', data)
                 const unseenRequests = data.filter(item => item.seen === false);
                 setRequest(unseenRequests)
-            })
 
-            .catch(error => console.error('error fetching details', error));
+            }
+            catch (error) {
+                console.error('Error fetching employees:', error);
+            }
+    }
+    if (!checkExpiry()) {
+    fetchLeaveRequest();
+   
+    }
+     // eslint-disable-next-line 
+    }, [token, expiry, navigate]);
 
-    }, [token]);
+    useEffect(() => {
+       
+        const fetchAnnouncement = async () => {
+            try {
+                const response = await fetch('https://hrbe.eadevs.com/auth/announcements', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const data = await response.json()
+                //console.log('fetched', data)
+                setAnnouncements(data)
+            }
+            catch (error) {
+                console.error('Error fetching employees:', error);
+            }
+    }
+    if (!checkExpiry()) {
+    fetchAnnouncement();
+   
+    }
+     // eslint-disable-next-line 
+    }, [token, expiry, navigate]);
+
+    const [form, setForm] = useState(() => {
+        const storedFormData = localStorage.getItem('formData');
+        return storedFormData ? JSON.parse(storedFormData) : {
+            createdby_id: employeeId,
+            description: '',
+            date: '',
+          
+        };
+    });
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        const isoDate = name === 'date'? new Date(value).toISOString().split('T')[0] : value
+        const newFormData = {
+            ...form,
+            [name]: isoDate,
+        };
+        localStorage.setItem('formData', JSON.stringify(newFormData));
+        setForm(newFormData);
+    }
+
+
+    let submit = async () => {
+
+        if (checkExpiry()){
+            return;
+        }
+
+        try {
+            const token = localStorage.getItem('siteToken');
+            const currentDate = new Date().toISOString();
+
+            const updatedForm = {
+                ...form,
+                date: currentDate,
+            };
+
+            let res = await fetch("https://hrbe.eadevs.com/auth/announcements", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify(
+                    updatedForm
+                ),
+            });
+            if (res.status === 201) {
+                setForm({
+                    createdby_id: '',
+                    description: '',
+                    date: '',
+                });
+                localStorage.removeItem(FormData)
+                toast.success("Created Succefuly!")
+            } else {
+                toast.error("Some Error Occurred!")
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        setannouncePopup(false);
+
+    };
     return (
+        <>
+        <ToastContainer />
         <div className='rq-ann-container'>
             <div className='req-wrapper'>
                 <h3>New Leave Requests</h3>
@@ -81,19 +182,21 @@ function ReqAnn() {
             </div>
             <div className="ann-wrapper">
                 <h3>Announcements</h3>
-                <div className="announce-list">
-                    <h4>Board Meeting has been postponed</h4>
-                    <p>2.2.2024</p>
+                <div className="announcements-container">
+                {announcements.map((item, index) => {
+                return (
+                <div className="announce-list" key={index}>
+                    <h4>{item.description}</h4>
+                    <p>{item.announcement_date.split('T')[0]}</p>
                 </div>
-                <div className="announce-list">
-                    <h4>Graduation will be on 17th</h4>
-                    <p>2.2.2024</p>
+                    );
+                })}
                 </div>
                 <div className="create-announce">
                     <button onClick={handleClick}>Create Announcement</button>
                 </div>
-                {popup ?
-                    <div className="announce-popup">
+                {announcePopup ?
+                    <div className="announce-announcePopup">
                         <div className="announce-box">
                         <div className="closepopup">
                             <h2 onClick={closePopup}>X</h2>
@@ -101,20 +204,12 @@ function ReqAnn() {
                             <h3>Create An Announcement</h3>
                             <div className="announce-form">
                                 <form>
-                                    <label>Title</label>
-                                    <input
-                                        type="text"
-                                        className='ann-title'
-                                        name='title'
-                                        value={form.title}
-                                        onChange={handleChange}
-                                    />
                                     <label>Description</label>
                                     <textarea
                                         type="text"
                                         className='ann-message'
-                                        name='message'
-                                        value={form.message}
+                                        name='description'
+                                        value={form.description}
                                         onChange={handleChange}
                                     />
                                 </form>
@@ -127,6 +222,7 @@ function ReqAnn() {
                     : ""}
             </div>
         </div>
+        </>
     )
 }
 

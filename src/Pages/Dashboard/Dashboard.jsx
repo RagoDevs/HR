@@ -5,6 +5,7 @@ import Card from '../Dashboard/Components/Cards/Card'
 import ReqAnn from './Components/Announcement and Requests/Req_Ann';
 import Chart from './Components/Chart/Chart';
 import Table from './Components/Table/Table'
+import activity from '../../Assets/dash img/activity.png'
 import './Dashboard.css'
 
 
@@ -33,7 +34,14 @@ function Dashboard() {
                     
                     <Table />
                 </div>
-                <div className="dashmain-area-four"></div>
+                <div className="dashmain-area-four">
+                    <div className="area-four-items">
+                        <h3>Activity Section</h3>
+                        <img src={activity} alt="activity Icon" />
+                        <h4>Coming soon</h4>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     )

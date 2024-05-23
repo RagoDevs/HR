@@ -64,7 +64,7 @@ const AddContract = ({ combinedData }) => {
                     isoForm
                 ),
             });
-            if (res === 201) {
+            if (res.status === 201) {
                 setForm({
                     employee_id: '',
                     contract_type: '',
@@ -79,7 +79,7 @@ const AddContract = ({ combinedData }) => {
         } catch (err) {
             console.log(err);
         }
-
+        localStorage.setItem("showContractPopup", "false");
     };
 
     return (

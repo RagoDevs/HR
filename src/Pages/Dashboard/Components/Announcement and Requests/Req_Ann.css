@@ -1,6 +1,5 @@
 .rq-ann-container {
     width: 100%;
-    height: 100%;
     display: flex;
     gap: 1rem;
 }
@@ -90,10 +89,15 @@
     font-family: sans-serif;
 }
 
+.announcements-container {
+    height: 8rem;
+    overflow-y: scroll;
+}
+
 .announce-list {
     margin-top: .3rem;
     border-bottom: 1px solid #dfdcdc;
-    padding: .5rem .3rem;
+    padding: .5rem .3rem 0;
 }
 
 .announce-list h4{
@@ -136,7 +140,7 @@
 
 .announce-box {
     min-width: 400px;
-    height: 470px;
+    height: 410px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
@@ -211,7 +215,7 @@
     }
 
     .ann-wrapper {
-        height: 16rem;
+        height: 17rem;
     }
 
   

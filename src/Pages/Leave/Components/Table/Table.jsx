@@ -195,6 +195,8 @@ function Table() {
             })
             .catch(error => console.error('Error updating leave', error));
         toast.error("Error editing leave!")
+
+        setIsEditing(false);
     };
 
     return (

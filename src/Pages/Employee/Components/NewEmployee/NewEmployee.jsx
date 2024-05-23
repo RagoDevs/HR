@@ -63,7 +63,7 @@ function NewEmployee() {
                     form
                 ),
             });
-            if (res === 201) {
+            if (res.status === 201) {
                 setForm({
                     name: '',
                     dob: '',
@@ -85,7 +85,7 @@ function NewEmployee() {
         } catch (err) {
             console.log(err);
         }
-
+        localStorage.setItem("showPopup", "false");
     };
 
     return (
