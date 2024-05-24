@@ -186,7 +186,7 @@ function ReqAnn() {
                     <h3>Announcements</h3>
                     <div className="announcements-container">
                         {announcements.length === 0 ? (
-                            <div>No data available</div>
+                            <div><h3>No data available</h3></div>
                         ) : (
                             announcements.map((item, index) => (
                                 <div className="announce-list" key={index}>
@@ -200,7 +200,7 @@ function ReqAnn() {
                         <button onClick={handleClick}>Create Announcement</button>
                     </div>
                     {announcePopup ?
-                        <div className="announce-announcePopup">
+                        <div className="announce-popup">
                             <div className="announce-box">
                                 <div className="closepopup">
                                     <h2 onClick={closePopup}>X</h2>
@@ -208,6 +208,14 @@ function ReqAnn() {
                                 <h3>Create An Announcement</h3>
                                 <div className="announce-form">
                                     <form>
+                                    <label>Announcement Date</label>
+                                        <input
+                                            type="date"
+                                            className='ann-date'
+                                            name='date'
+                                            value={form.date}
+                                            onChange={handleChange}
+                                        />
                                         <label>Description</label>
                                         <textarea
                                             type="text"
