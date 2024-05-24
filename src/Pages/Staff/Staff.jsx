@@ -8,10 +8,11 @@ import "./staff.css";
 import ReqLeave from "./Components/RequestLeave/ReqLeave";
 import LeaveStatus from "./Components/Status/LeaveStatus";
 import LeaveHistory from "./Components/LeaveHistory/LeaveHistory";
+import StaffAnnouncement from "./Announcements/StaffAnnouncement";
 
 
 function Staff() {
-  const employeeId  = localStorage.getItem('siteId')
+  const employeeId = localStorage.getItem('siteId')
   const token = localStorage.getItem('siteToken')
 
   const [staff, setStaff] = useState('')
@@ -31,111 +32,107 @@ function Staff() {
 
       .catch(error => console.error('error fetching details', error));
 
-}, [employeeId, token]);
+  }, [employeeId, token]);
 
-const contractPdf = staff.attachement || {}
+  const contractPdf = staff.attachement || {}
 
-const openPdf = () => {
-  window.open(contractPdf, '_blank');
-}
+  const openPdf = () => {
+    window.open(contractPdf, '_blank');
+  }
 
-return (
-  <div className="staff">
-    <div className="staff-header">
-      <div className="header-mid">
-        <div className="staff-logo">
-          <img src={logo} alt="" />
-          <div className="logo-title">
-            <h3>SJUT</h3>
-            <p>Staff</p>
+  return (
+    <div className="staff">
+      <div className="staff-header">
+        <div className="header-mid">
+          <div className="staff-logo">
+            <img src={logo} alt="" />
+            <div className="logo-title">
+              <h3>SJUT</h3>
+              <p>Staff</p>
+            </div>
+          </div>
+          <div className="staff-logout">
+            <img src={out} alt="" />
+            <h4>LOGOUT</h4>
           </div>
         </div>
-        <div className="staff-logout">
-          <img src={out} alt="" />
-          <h4>LOGOUT</h4>
+      </div>
+      <div className="staff-main">
+        <div className="staff-container">
+          <div className="title-wrapper">
+            <img src={wave} alt="" />
+            <h3>Welcome {staff.employee_name?.split(' ')[0]}</h3>
+          </div>
+          <div className="staff-profile">
+            <div className="profile-header">
+              <img src={person} alt="" />
+              <div className="profile-title">
+                <h3>John Doe</h3>
+                <h5>Administrator</h5>
+              </div>
+            </div>
+            <div className="staff-contacts">
+              <div className="contact-wrapper">
+                <div className="wr-min">
+                  <h4>Phone Number</h4>
+                  <p>0712345678</p>
+                </div>
+                <div className="wr-min">
+                  <h4>Email </h4>
+                  <p>johndoe@email.com</p>
+                </div>
+              </div>
+              <div className="contact-wrapper">
+                <div className="wr-min">
+                  <h4>Address</h4>
+                  <p>House 1, Kikuyu, Dodoma</p>
+                </div>
+              </div>
+            </div>
+            <div className="staff-contract">
+              <div className="contract-header">
+                <h4>
+                  Looking for your contract?
+                  <span>Here is the stored pdf of your contract</span>
+                </h4>
+              </div>
+              <button onClick={openPdf}>
+                <img src={eye} alt="" />
+                <h4>View Contract</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="staff-container">
+          <div className="staff-announce">
+            <h4>Announcements</h4>
+            <div className="st-announce-list">
+              <StaffAnnouncement />
+            </div>
+          </div>
+
+          <div className="staff-leave">
+            <div className="sflv-header">
+              <h4>Manage Leaves</h4>
+            </div>
+            <p>Leave History</p>
+            <div className="lv-history">
+              <LeaveHistory />
+            </div>
+            <div className="st-lv-button">
+              <div className="request-leave">
+                <ReqLeave />
+              </div>
+              <div className="leave-status">
+                <LeaveStatus />
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-    <div className="staff-main">
-      <div className="staff-container">
-        <div className="title-wrapper">
-          <img src={wave} alt="" />
-          <h3>Welcome {staff.employee_name}</h3>
-        </div>
-        <div className="staff-profile">
-          <div className="profile-header">
-            <img src={person} alt="" />
-            <div className="profile-title">
-              <h3>John Doe</h3>
-              <h5>Administrator</h5>
-            </div>
-          </div>
-          <div className="staff-contacts">
-            <div className="contact-wrapper">
-              <div className="wr-min">
-                <h4>Phone Number</h4>
-                <p>0712345678</p>
-              </div>
-              <div className="wr-min">
-                <h4>Email </h4>
-                <p>johndoe@email.com</p>
-              </div>
-            </div>
-            <div className="contact-wrapper">
-              <div className="wr-min">
-                <h4>Address</h4>
-                <p>House 1, Kikuyu, Dodoma</p>
-              </div>
-            </div>
-          </div>
-          <div className="staff-contract">
-            <div className="contract-header">
-              <h4>
-                Looking for your contract?
-                <span>Here is the stored pdf of your contract</span>
-              </h4>
-            </div>
-            <button onClick={openPdf}>
-              <img src={eye} alt="" />
-              <h4>View Contract</h4>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="staff-container">
-        <div className="staff-announce">
-          <h4>Announcements</h4>
-          <div className="st-announce-list">
-            <div className="st-ann-wrapper"></div>
-            <div className="st-ann-wrapper"></div>
-          </div>
-        </div>
-
-        <div className="staff-leave">
-          <div className="sflv-header">
-            <h4>Manage Leaves</h4>
-          </div>
-          <p>Leave History</p>
-          <div className="lv-history">
-            <LeaveHistory />
-          </div>
-          <div className="see-history">
-            <h5>See history</h5>
-          </div>
-          <div className="st-lv-button">
-            <div className="request-leave">
-            <ReqLeave />
-            </div>
-            <div className="leave-status">
-            <LeaveStatus />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-);
+  );
 }
 
 export default Staff;

@@ -244,28 +244,27 @@ function Table() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {requests.filter((request) => {
+                                    {requests && requests.length > 0 ? (
+                                    requests.filter((request) => {
                                         return search.toLowerCase() === ''
                                             ? request
-                                            : request.employee_name.toLowerCase().includes(search.toLocaleLowerCase())
-                                    }).map((request, index) => {
-
-                                        return (
+                                            : request.employee_name.toLowerCase().includes(search.toLocaleLowerCase());
+                                    }).map((request, index) => (
                                             <tr key={index}
 
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <td>{index + 1}</td>
-                                                <td>{<div className="name-desc">
+                                                <td><div className="name-desc">
                                                     {request.employee_name}
                                                     <img
                                                         src={infoIcon}
                                                         alt=""
                                                         onClick={(e) => handleRowClick(index, e)}
                                                     />
-                                                </div>}</td>
-                                                <td>Administration</td>
-                                                <td>Annual</td>
+                                                </div></td>
+                                                <td>{request.department}</td>
+                                                <td>{request.leave_type}</td>
                                                 <td>{request.start_date.split('T')[0]}</td>
                                                 <td>{request.end_date.split('T')[0]}</td>
                                                 <td>{statuses[index] ? statuses[index].statusText : "Pending"}</td>
@@ -287,15 +286,24 @@ function Table() {
                                                                 onClick={() => handleEdit(index)}
                                                             />
                                                         </div>
-                                                    ) : (statuses[index]?.statusText === 'Approved' || statuses[index]?.statusText === "Denied") ? (
+                                                    ) : (
+                                                        statuses[index]?.statusText === 'Approved' || statuses[index]?.statusText === "Denied" ? (
                                                         'Checked'
                                                     ) : (
                                                         "Edited"
+                                                    )
                                                     )}
                                                 </td>
                                             </tr>
-                                        )
-                                    })}
+                                        ))
+                                    ) : (
+                                        <tr>
+                                        <td colSpan='8' className='no-data'>
+                                            No data
+                                        </td>
+                                    </tr>
+                                    
+                                    )}
                                 </tbody>
                             </table>
                             {hoveredRow !== null && (
@@ -377,8 +385,12 @@ function Table() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {leaveHistory.map((leaves, index) => {
-                                        return (
+                                    {leaveHistory && leaveHistory.length > 0 ? (
+                                    leaveHistory.filter((leaves) => {
+                                        return search.toLowerCase() === ''
+                                            ? true 
+                                            : leaves.employee_name.toLowerCase().includes(search.toLocaleLowerCase());
+                                    }).map((leaves, index) => (
                                             <tr key={index}
                                                 onMouseLeave={handleMouseLeave}
                                             >
@@ -392,14 +404,20 @@ function Table() {
                                                        />                              
                                                         </div>}                                                   
                                                 </td>
-                                                <td>Administration</td>
-                                                <td>Annual</td>
+                                                <td>{leaves.department}</td>
+                                                <td>{leaves.leave_type}</td>
                                                 <td>{leaves.start_date.split('T')[0]}</td>
                                                 <td>{leaves.end_date.split('T')[0]}</td>
                                                 <td>Approved</td>
                                             </tr>
-                                )
-                                    })}
+                                    ))
+                                ) : (
+                                    <tr >
+                                        <td colSpan='2' className='no-data'>
+                                            No data
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                         {hoveredRow !== null && (
