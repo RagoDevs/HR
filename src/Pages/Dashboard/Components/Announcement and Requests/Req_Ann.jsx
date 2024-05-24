@@ -61,7 +61,7 @@ function ReqAnn() {
        
         const fetchAnnouncement = async () => {
             try {
-                const response = await fetch('https://hrbe.eadevs.com/auth/announcements', {
+                const response = await fetch(`https://hrbe.eadevs.com/auth/announcements/${new Date().toISOString()}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
