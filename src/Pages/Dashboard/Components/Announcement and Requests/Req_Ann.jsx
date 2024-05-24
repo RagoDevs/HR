@@ -21,7 +21,7 @@ function ReqAnn() {
         setannouncePopup(false);
         localStorage.removeItem('formData');
     }
- 
+
     const checkExpiry = () => {
         if (Date.now() / 1000 > expiry) {
             navigate('/');
@@ -31,7 +31,7 @@ function ReqAnn() {
     }
 
     useEffect(() => {
-       
+
         const fetchLeaveRequest = async () => {
             try {
                 const response = await fetch('https://hrbe.eadevs.com/auth/leaves', {
@@ -47,14 +47,14 @@ function ReqAnn() {
 
             }
             catch (error) {
-                console.error('Error fetching employees:', error);
+                console.error('Error fetching requests:', error);
             }
-    }
-    if (!checkExpiry()) {
-    fetchLeaveRequest();
-   
-    }
-     // eslint-disable-next-line 
+        }
+        if (!checkExpiry()) {
+            fetchLeaveRequest();
+
+        }
+        // eslint-disable-next-line 
     }, [token, expiry, navigate]);
 
     useEffect(() => {
@@ -82,19 +82,20 @@ function ReqAnn() {
      // eslint-disable-next-line 
     }, [token, expiry, navigate]);
 
+
     const [form, setForm] = useState(() => {
         const storedFormData = localStorage.getItem('formData');
         return storedFormData ? JSON.parse(storedFormData) : {
             createdby_id: employeeId,
             description: '',
             date: '',
-          
+
         };
     });
 
     function handleChange(e) {
         const { name, value } = e.target;
-        const isoDate = name === 'date'? new Date(value).toISOString().split('T')[0] : value
+        const isoDate = name === 'date' ? new Date(value).toISOString().split('T')[0] : value
         const newFormData = {
             ...form,
             [name]: isoDate,
@@ -106,7 +107,7 @@ function ReqAnn() {
 
     let submit = async () => {
 
-        if (checkExpiry()){
+        if (checkExpiry()) {
             return;
         }
 
@@ -148,80 +149,83 @@ function ReqAnn() {
     };
     return (
         <>
-        <ToastContainer />
-        <div className='rq-ann-container'>
-            <div className='req-wrapper'>
-                <h3>New Leave Requests</h3>
-                <div className="req-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    {request && request.length > 0 ? (
-                    request.map((item, index) => {
-                        return (
-                        <tr key={index}>
-                            <td>{item.employee_name}</td>
-                            <td>{item.created_at.split('T')[0]}</td>
-                        </tr>
-                        )})
-                    ) : (
-                        <tr className="dash-no-data" >
-                        <td  >                    
-                        No Requests
-                        </td>
-                    </tr>
-                    )}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div className="ann-wrapper">
-                <h3>Announcements</h3>
-                <div className="announcements-container">
-                {announcements.map((item, index) => {
-                return (
-                <div className="announce-list" key={index}>
-                    <h4>{item.description}</h4>
-                    <p>{item.announcement_date.split('T')[0]}</p>
-                </div>
-                    );
-                })}
-                </div>
-                <div className="create-announce">
-                    <button onClick={handleClick}>Create Announcement</button>
-                </div>
-                {announcePopup ?
-                    <div className="announce-announcePopup">
-                        <div className="announce-box">
-                        <div className="closepopup">
-                            <h2 onClick={closePopup}>X</h2>
-                        </div>
-                            <h3>Create An Announcement</h3>
-                            <div className="announce-form">
-                                <form>
-                                    <label>Description</label>
-                                    <textarea
-                                        type="text"
-                                        className='ann-message'
-                                        name='description'
-                                        value={form.description}
-                                        onChange={handleChange}
-                                    />
-                                </form>
-                            </div>
-                            <div className="ann-submit">
-                            <button onClick={submit}>Submit</button>
-                            </div>
-                        </div>
+            <ToastContainer />
+            <div className='rq-ann-container'>
+                <div className='req-wrapper'>
+                    <h3>New Leave Requests</h3>
+                    <div className="req-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {request && request.length > 0 ? (
+                                    request.map((item, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{item.employee_name}</td>
+                                                <td>{item.created_at.split('T')[0]}</td>
+                                            </tr>
+                                        )
+                                    })
+                                ) : (
+                                    <tr className="dash-no-data" >
+                                        <td  >
+                                            No Requests
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
                     </div>
-                    : ""}
+                </div>
+                <div className="ann-wrapper">
+                    <h3>Announcements</h3>
+                    <div className="announcements-container">
+                        {announcements.length === 0 ? (
+                            <div>No data available</div>
+                        ) : (
+                            announcements.map((item, index) => (
+                                <div className="announce-list" key={index}>
+                                    <h4>{item.description}</h4>
+                                    <p>{item.announcement_date.split('T')[0]}</p>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                    <div className="create-announce">
+                        <button onClick={handleClick}>Create Announcement</button>
+                    </div>
+                    {announcePopup ?
+                        <div className="announce-announcePopup">
+                            <div className="announce-box">
+                                <div className="closepopup">
+                                    <h2 onClick={closePopup}>X</h2>
+                                </div>
+                                <h3>Create An Announcement</h3>
+                                <div className="announce-form">
+                                    <form>
+                                        <label>Description</label>
+                                        <textarea
+                                            type="text"
+                                            className='ann-message'
+                                            name='description'
+                                            value={form.description}
+                                            onChange={handleChange}
+                                        />
+                                    </form>
+                                </div>
+                                <div className="ann-submit">
+                                    <button onClick={submit}>Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        : ""}
+                </div>
             </div>
-        </div>
         </>
     )
 }
