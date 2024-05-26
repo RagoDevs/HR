@@ -103,22 +103,30 @@ function NewEmployee() {
                             <h3>Add New Employee</h3>
                             <div className="nwemply_form">
                                 <form>
+                                    <div className="input-split">
+                                        <div className="name-input">
                                     <label>Employee Name</label>
                                     <input
                                         type="text"
-                                        className='hhhh'
+                                        className='hhhhn'
                                         name='name'
                                         value={form.name}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    <div className="date-input">
                                     <label>Date of Birth</label>
                                     <input
                                         type="date"
-                                        className='hhhh'
+                                        className='hhhhd'
                                         name='dob'
                                         value={form.dob}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    </div>
+                                    <div className="input-split">
+                                        <div className="email-input">
                                     <label>Email</label>
                                     <input
                                         type="text"
@@ -127,6 +135,8 @@ function NewEmployee() {
                                         value={form.email}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    <div className="number-input">
                                     <label>Phone Number</label>
                                     <input
                                         type="text"
@@ -135,6 +145,8 @@ function NewEmployee() {
                                         value={form.phone}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    </div>
                                     <label>Address</label>
                                     <input
                                         type="text"
@@ -177,6 +189,9 @@ function NewEmployee() {
 
                                         </select>
                                     </div>
+                                    <div className="input-split">
+                                        <div className="join-input">
+                                    
                                     <label>Joining Date</label>
                                     <input
                                         type="date"
@@ -185,6 +200,8 @@ function NewEmployee() {
                                         value={form.joining_date}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    <div className="password-input">
                                     <label>Password</label>
                                     <input
                                         type="text"
@@ -193,6 +210,8 @@ function NewEmployee() {
                                         value={form.password}
                                         onChange={handleChange}
                                     />
+                                    </div>
+                                    </div>
                                     <button onClick={submit}>Submit</button>
                                 </form>
 

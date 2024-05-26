@@ -6,10 +6,18 @@ import * as Yup from "yup";
 import { useAuth } from '../../RoutesAuth/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import eyeIcon from '../../Assets/login/watch.png'
+import eyeSlashIcon from '../../Assets/login/hidden.png'
 
 function Login() {
 
     const [showLoginForm, setShowLoginForm] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     useEffect(() => {
         const logoAnimationDuration = 3000;
@@ -63,8 +71,8 @@ function Login() {
                     <div className="login">
                         <div className="lg-container">
                             <div className="lg-logo">
-                                <h2>Welcome Back!</h2>
                                 <img src={logo} alt="" />
+                                <h2>Welcome Back!</h2>
                             </div>
 
                             <div className="lg-form">
@@ -84,16 +92,24 @@ function Login() {
                                         {formik.touched.email && formik.errors.email ? (
                                             <div>{formik.errors.email}</div>) : null
                                         }
-                                        <input
-                                            type='password'
-                                            className='input'
-                                            placeholder='Password'
-                                            name='password'
-                                            value={formik.values.password}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                            required
-                                        />
+                                        <div className="password-wrapper">
+                                            <input
+                                                type={showPassword ? 'text' : 'password'}
+                                                className='input'
+                                                placeholder='Password'
+                                                name='password'
+                                                value={formik.values.password}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                required
+                                            />
+                                            <img
+                                                src={showPassword ? eyeSlashIcon : eyeIcon}
+                                                alt="Toggle Password Visibility"
+                                                className="eye-icon"
+                                                onClick={togglePasswordVisibility}
+                                            />
+                                        </div>
                                         {formik.touched.password && formik.errors.password ? (
                                             <div>{formik.errors.password}</div>) : null
                                         }

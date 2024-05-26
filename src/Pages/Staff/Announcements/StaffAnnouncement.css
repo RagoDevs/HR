@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+    font-family: sans-serif;
 }
 
 .announcer-header img {
@@ -45,4 +46,5 @@
     font-size: .8rem;
     color: rgb(150, 150, 150);
     padding-left: .7rem;
+    font-family: sans-serif;
 }

@@ -94,7 +94,7 @@ return (
                             )
                         })
                     ) : (
-                        <tr className="dash-no-data" >
+                        <tr className="leave-no-data" >
                             <td  >
                                 No-One Leave
                             </td>
@@ -125,7 +125,7 @@ return (
                             )
                         })
                     ) : (
-                        <tr className="dash-no-data" >
+                        <tr className="leave-no-data" >
                             <td  >
                                 No Upcoming Leave
                             </td>

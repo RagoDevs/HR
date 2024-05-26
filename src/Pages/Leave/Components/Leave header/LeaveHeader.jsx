@@ -216,7 +216,7 @@ function LeaveHeader() {
                                 <label>Reason</label>
                                 <textarea
                                     type="text"
-                                    className='textarea'
+                                    className='textarea1'
                                     name='description'
                                     value={form.description}
                                     onChange={handleChange}

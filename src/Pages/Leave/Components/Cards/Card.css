@@ -33,10 +33,11 @@
 
 .lvcard-text h3 {
     font-size: 2rem;
+    font-family: sans-serif;
 }
 
 .lvcard-text h5 {
-    
+    font-family: sans-serif;
     color: rgb(97, 95, 95);
 }
 

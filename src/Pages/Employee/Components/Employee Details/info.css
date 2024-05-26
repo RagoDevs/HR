@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
 }
 
@@ -53,6 +54,8 @@
     background-color: #f2f2ff;
     border: 2px solid rgb(152, 143, 230);
     cursor: pointer;
+    border-radius: 6px;
+    font-family: sans-serif;
 }
 
 .personal-details {
@@ -67,7 +70,8 @@
 }
 
 .psdetails-header h4 {
-    font-weight: 500;
+    font-weight: 600;
+    font-family: sans-serif;
 }
 
 
@@ -93,6 +97,7 @@
 .psdetails-item h4 {
     color: rgb(131, 128, 128);
     font-weight: 500;
+    font-family: sans-serif;
 }
 
 .psdetails-item h3{
@@ -100,6 +105,7 @@
     margin: 0 0 2rem 0;
     font-weight: 500;
     color: black;
+    font-family: sans-serif;
 }
 
 .contract-info {

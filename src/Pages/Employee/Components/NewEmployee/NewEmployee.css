@@ -3,6 +3,7 @@
    display: flex;
    justify-content: space-between;
    padding: 1rem .3rem;
+   font-family: sans-serif;
 }
 
 .new_emply button {
@@ -13,6 +14,7 @@
     background-color:  rgb(105, 41, 253);
     border-radius: 5px;
     cursor: pointer;
+    font-family: sans-serif;
 }
 
 .nwpopup_bg {
@@ -37,6 +39,7 @@
     border-radius: 9px;
     padding: 1rem;
     margin: 4rem 0;
+    overflow: scroll;
 }
 
 .nwpopup_container h3 {
@@ -50,6 +53,7 @@
     width: 100%;
     height: 87%;
     background-color: aliceblue;
+    padding-top: .3rem;
 }
 
 .nwemply_form form {
@@ -58,6 +62,35 @@
     gap: .3rem;
 }
 
+.input-split label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: .5rem;
+}
+.input-split {
+    display: flex;
+    gap: .4rem;
+}
+
+.hhhhn {
+    height: 2rem;
+    padding: 0 .5rem;
+    outline: none;
+    font-size: 1rem;
+}
+
+.hhhhd {
+    width: 100%;
+    height: 2rem;
+    padding: 0 .5rem;
+    outline: none;
+    font-size: 1rem;
+}
+
+.date-input {
+    width: 100%;
+}
 .hhhh {
     height: 2rem;
     padding: 0 .5rem;
@@ -88,6 +121,11 @@
     padding: 0 .5rem;
     outline: none;
     font-size: 1rem;
+    width: 100%;
+}
+
+.join-input {
+    width: 100%;
 }
 
 .nwemply_form button {

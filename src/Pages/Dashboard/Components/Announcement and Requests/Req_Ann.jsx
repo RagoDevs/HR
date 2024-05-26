@@ -12,6 +12,18 @@ function ReqAnn() {
     const [announcements, setAnnouncements] = useState([]);
     const [announcePopup, setannouncePopup] = useState(false)
     const navigate = useNavigate();
+    
+
+    
+    const [form, setForm] = useState(() => {
+        const storedFormData = localStorage.getItem('formData');
+        return storedFormData ? JSON.parse(storedFormData) : {
+            createdby_id: employeeId,
+            description: '',
+            date: '',
+
+        };
+    });
 
     const handleClick = () => {
         setannouncePopup(!announcePopup);
@@ -72,7 +84,7 @@ function ReqAnn() {
                 setAnnouncements(data)
             }
             catch (error) {
-                console.error('Error fetching employees:', error);
+                console.error('Error fetching announcements:', error);
             }
     }
     if (!checkExpiry()) {
@@ -83,15 +95,6 @@ function ReqAnn() {
     }, [token, expiry, navigate]);
 
 
-    const [form, setForm] = useState(() => {
-        const storedFormData = localStorage.getItem('formData');
-        return storedFormData ? JSON.parse(storedFormData) : {
-            createdby_id: employeeId,
-            description: '',
-            date: '',
-
-        };
-    });
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -136,7 +139,8 @@ function ReqAnn() {
                     description: '',
                     date: '',
                 });
-                localStorage.removeItem(FormData)
+                
+                localStorage.removeItem('formData')
                 toast.success("Created Succefuly!")
             } else {
                 toast.error("Some Error Occurred!")
@@ -144,8 +148,9 @@ function ReqAnn() {
         } catch (err) {
             console.log(err);
         }
-        setannouncePopup(false);
+        setannouncePopup(false)
 
+        localStorage.removeItem('formData')
     };
     return (
         <>
@@ -186,7 +191,7 @@ function ReqAnn() {
                     <h3>Announcements</h3>
                     <div className="announcements-container">
                         {announcements.length === 0 ? (
-                            <div><h3>No data available</h3></div>
+                            <div><h5>No data available</h5></div>
                         ) : (
                             announcements.map((item, index) => (
                                 <div className="announce-list" key={index}>

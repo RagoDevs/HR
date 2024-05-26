@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 .ann-wrapper {
@@ -94,10 +94,12 @@
     overflow-y: scroll;
 }
 
-.announcements-container h3 {
+.announcements-container h5 {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 4rem;
+    color: rgb(128, 121, 121);
 }
 
 .announce-list {
@@ -146,11 +148,12 @@
 
 .ann-date {
     height: 2.1rem;
+    width: 60%;
 }
 
 .announce-box {
     min-width: 400px;
-    height: 450px;
+    height: 410px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
@@ -189,10 +192,12 @@
 }
 
 .ann-message {
-    height: 12rem;
+    height: 8rem;
     margin-bottom: 1rem;
     padding: .3rem;
     font-size: 1.1rem;
+    font-family: sans-serif;
+    font-weight: 500;
 }
 
 .ann-submit {

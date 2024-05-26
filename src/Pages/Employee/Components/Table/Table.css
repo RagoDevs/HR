@@ -5,7 +5,7 @@
 }
 
 .emply-main-header {
-    margin: 1.5rem 0 .7rem;
+    margin: 1rem 0 .7rem;
 }
 
 .search-component {
@@ -20,7 +20,7 @@
     width: 89.8%;
     height: 2.3rem;
     font-family: sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border: none;
     padding: 0 .7rem;
     background-color: #f2f2ff;
@@ -54,6 +54,7 @@
     padding: 1rem;
     border-radius: 4px;
     background-color: rgb(233, 236, 236);
+    font-family: sans-serif;
 }
 
 .emply-table table tr:hover {
@@ -64,6 +65,7 @@
 .emply-table table tr td {
     padding: .9rem;
     border-bottom: 1px solid rgb(218, 211, 211);
+    font-family: sans-serif;
 }
 
 

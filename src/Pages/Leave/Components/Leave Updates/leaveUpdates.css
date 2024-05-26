@@ -28,16 +28,26 @@
     width: 75%;
     padding: .5rem;
     background-color: aliceblue;
+    font-family: sans-serif;
+    font-weight: 500;
 }
 
 .onleave-table table td {
     padding: .6rem 0.3rem;
+    font-family: sans-serif;
 }
 
 .onleave-table table img {
     height: 1.8rem;
     vertical-align: middle;
     padding-right: .7rem;
+}
+
+.leave-no-data td{
+    height: 6rem;
+    text-align: center;
+    margin-top: 4rem;
+    font-family: sans-serif;
 }
 
 @media screen and (max-width: 500px) {
