@@ -126,6 +126,7 @@ function ReqLeave() {
                         <div className="staffRqLv-form">
                             <form >
                                 <input
+                                    
                                     type="text"
                                     className='employeeid'
                                     name='email'
@@ -134,8 +135,8 @@ function ReqLeave() {
                                 />
                                 <select name="approved_by" onChange={handleChange}>
                                     <option value=''>To be Approved by</option>
-                                    {hrList.map((hr) => (
-                                    <option value={hr.employee_id}>{hr.name}</option>
+                                    {hrList.map((hr, index) => (
+                                    <option key={index} value={hr.employee_id}>{hr.name}</option>
                                     ))}
                                 </select>
                                 <label>Starting Date</label>
