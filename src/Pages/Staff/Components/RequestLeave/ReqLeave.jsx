@@ -99,7 +99,7 @@ function ReqLeave() {
                     end_date: '',
                     description: '',
                 });
-                localStorage.removeItem(FormData)
+                localStorage.removeItem('formData')
             } else {
                 setMessage("Some error occurred");
             }
@@ -107,7 +107,7 @@ function ReqLeave() {
             console.log(err);
         }
 
-        localStorage
+        localStorage.removeItem('formData')
 
     };
 
