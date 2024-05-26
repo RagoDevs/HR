@@ -12,6 +12,12 @@
     /* background-image: radial-gradient(circle at 30% 94%, rgba(245, 245, 245, 0.06) 0%, rgba(245, 245, 245, 0.06) 50%, rgba(21, 21, 21, 0.06) 50%, rgba(21, 21, 21, 0.06) 100%), radial-gradient(circle at 59% 19%, rgba(248, 248, 248, 0.06) 0%, rgba(248, 248, 248, 0.06) 50%, rgba(87, 87, 87, 0.06) 50%, rgba(87, 87, 87, 0.06) 100%), radial-gradient(circle at 7% 11%, rgba(148, 148, 148, 0.06) 0%, rgba(148, 148, 148, 0.06) 50%, rgba(254, 254, 254, 0.06) 50%, rgba(254, 254, 254, 0.06) 100%), linear-gradient(90deg, rgb(189, 189, 189), rgb(205, 205, 205));*/
 }
 
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .logo-intro-container {
     display: flex;
     align-items: center;
@@ -118,20 +124,21 @@
 }
 
 .password-wrapper {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     border-bottom: 2px solid;
 }
 
 .password-wrapper input {
     border-bottom: none;
+    width: 97%;
 }
 
 
 .password-wrapper img{
     height: 1.7rem;
     cursor: pointer;
-    margin: .3rem .5rem 0;
+    margin: .3rem 0 0 0;
 }
 
 .forgot--password:hover {
