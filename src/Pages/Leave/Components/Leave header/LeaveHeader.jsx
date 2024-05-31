@@ -16,8 +16,8 @@ function LeaveHeader() {
     const [employees, setEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedEmployee, setSelectedEmployee] = useState(null);
-    
-   
+
+
 
     useEffect(() => {
         const checkExpiry = () => {
@@ -66,6 +66,7 @@ function LeaveHeader() {
         return storedFormData ? JSON.parse(storedFormData) : {
             employee_id: '',
             approved_by_id: employeeId,
+            leave_type: '',
             start_date: '',
             end_date: '',
             description: '',
@@ -84,7 +85,7 @@ function LeaveHeader() {
     }
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
-        setSelectedEmployee(null); 
+        setSelectedEmployee(null);
     };
 
     const handleEmployeeSelect = (employee) => {
@@ -102,7 +103,7 @@ function LeaveHeader() {
 
 
     let submit = async (e) => {
-        
+
 
         try {
             const token = localStorage.getItem('siteToken');
@@ -128,13 +129,14 @@ function LeaveHeader() {
                 setForm({
                     employee_id: '',
                     approved_by_id: '',
+                    leave_type: '',
                     start_date: '',
                     end_date: '',
                     description: '',
                 });
-              
+
             } else {
-                
+
             }
         } catch (err) {
             console.log(err);
@@ -144,11 +146,11 @@ function LeaveHeader() {
 
     };
 
-  
+
 
     return (
         <>
-        <ToastContainer />
+            <ToastContainer />
             <div className="leave-header">
                 <h3>Leave</h3>
                 <button onClick={handleClick}>Create Leave</button>
@@ -177,9 +179,9 @@ function LeaveHeader() {
                                     onChange={handleSearchChange}
                                     placeholder='Type employee name'
                                 />
-                                <div className="form-group" style={{position: 'relative'}}>
-                                 {searchTerm && !selectedEmployee && (
-                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, border: '1px solid #ccc', maxHeight: '100px', overflowY: 'auto', position: 'absolute', backgroundColor: '#fff', width: '18rem', zIndex: 1}}>
+                                <div className="form-group" style={{ position: 'relative' }}>
+                                    {searchTerm && !selectedEmployee && (
+                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, border: '1px solid #ccc', maxHeight: '100px', overflowY: 'auto', position: 'absolute', backgroundColor: '#fff', width: '18rem', zIndex: 1 }}>
                                             {filteredEmployees.map((employee, index) => (
                                                 <li
                                                     key={index}
@@ -191,12 +193,20 @@ function LeaveHeader() {
                                             ))}
                                         </ul>
                                     )}
-                                     {selectedEmployee && (
+                                    {selectedEmployee && (
                                         <div style={{ padding: '5px', border: '1px solid #ccc', backgroundColor: '#fff' }}>
-                                         {selectedEmployee.employee_name}
+                                            {selectedEmployee.employee_name}
                                         </div>
                                     )}
-                                    </div>
+                                </div>
+
+                                <select id="leave-type" name="leave_type" onChange={handleChange}>
+                                    <option value=''>Leave Type</option>
+                                    <option value='annual'>Annual</option>
+                                    <option value='paid'>Paid</option>
+                                    <option value='sick'>Sick</option>
+                                    <option value='personal'>Personal</option>
+                                </select>
                                 <label>Starting Date</label>
                                 <input
                                     type="date"
@@ -224,7 +234,7 @@ function LeaveHeader() {
                                 <button onClick={submit}>Create</button>
                             </form>
                             <div className="contract-error">
-                                
+
                             </div>
                         </div>
                     </div>

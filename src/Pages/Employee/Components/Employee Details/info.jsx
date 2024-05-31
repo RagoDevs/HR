@@ -68,6 +68,10 @@ const Info = ({ combinedData }) => {
                     </div>
                     <div className="psdetails-wrapper">
                         <div className="psdetails-item">
+                            <h4>Department</h4>
+                            <h3>{combinedData.department}</h3>
+                        </div>
+                        <div className="psdetails-item">
                             <h4>Address</h4>
                             <h3>{combinedData.address}</h3>
                         </div>

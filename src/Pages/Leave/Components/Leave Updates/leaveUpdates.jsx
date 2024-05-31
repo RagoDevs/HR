@@ -95,8 +95,8 @@ return (
                         })
                     ) : (
                         <tr className="leave-no-data" >
-                            <td  >
-                                No-One Leave
+                            <td  colSpan='2'>
+                                No-One is on Leave
                             </td>
                         </tr>
                     )}
@@ -126,7 +126,7 @@ return (
                         })
                     ) : (
                         <tr className="leave-no-data" >
-                            <td  >
+                            <td  colSpan='2'>
                                 No Upcoming Leave
                             </td>
                         </tr>

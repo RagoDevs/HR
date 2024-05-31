@@ -30,7 +30,7 @@
 
 .staffRqLv-container {
     min-width: 320px;
-    height: 485px;
+    height: 510px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
@@ -59,7 +59,7 @@
 
 .textarea {
     font-size: 1.1rem;
-    height: 7rem;
+    height: 6rem;
     padding: .5rem;
 }
 

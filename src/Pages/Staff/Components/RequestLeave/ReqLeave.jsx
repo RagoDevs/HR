@@ -25,6 +25,7 @@ function ReqLeave() {
         return storedFormData ? JSON.parse(storedFormData) : {
             employee_id:  employee_id,
             approved_by: '',
+            levae_type: '',
             start_date: '',
             end_date: '',
             description: '',
@@ -95,6 +96,8 @@ function ReqLeave() {
                 setMessage("Form submitted successfully");
                 setForm({
                     employee_id: '',
+                    approved_by: '',
+                    levae_type: '',
                     start_date: '',
                     end_date: '',
                     description: '',
@@ -138,6 +141,13 @@ function ReqLeave() {
                                     {hrList.map((hr, index) => (
                                     <option key={index} value={hr.employee_id}>{hr.name}</option>
                                     ))}
+                                </select>
+                                <select id="leave-type" name="leave_type" onChange={handleChange}>
+                                    <option value=''>Leave Type</option>
+                                    <option value='annual'>Annual</option>
+                                    <option value='paid'>Paid</option>
+                                    <option value='sick'>Sick</option>
+                                    <option value='personal'>Personal</option>
                                 </select>
                                 <label>Starting Date</label>
                                 <input
