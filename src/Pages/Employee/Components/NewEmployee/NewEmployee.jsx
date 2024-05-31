@@ -17,6 +17,7 @@ function NewEmployee() {
         setShowPopup(false);
         localStorage.setItem("showPopup", "false");
         localStorage.removeItem(FormData)
+        localStorage.removeItem('formData')
     }
 
     const [form, setForm] = useState(() => {
@@ -38,20 +39,32 @@ function NewEmployee() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        const isoDate = name === 'dob' || name === 'joining_date' ? new Date(value).toISOString().split('T')[0] : value
+        
         const newFormData = {
             ...form,
-            [name]: isoDate,
+            [name]: value,
         };
-        localStorage.setItem('formData', JSON.stringify(newFormData));
+        
         setForm(newFormData);
     }
 
 
     let submit = async (e) => {
+        e.preventDefault();
+
+        localStorage.setItem("showPopup", "false");
+        localStorage.removeItem('formData')
+        setShowPopup(false);
 
         try {
             const token = localStorage.getItem('siteToken');
+    
+            const isoForm = {
+                ...form,
+    
+                dob: new Date(form.dob).toISOString(),
+                joining_date: new Date(form.joining_date).toISOString(),
+            };
 
             let res = await fetch("https://hrbe.eadevs.com/auth/employees", {
                 method: "POST",
@@ -60,7 +73,7 @@ function NewEmployee() {
                     "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(
-                    form
+                    isoForm
                 ),
             });
             if (res.status === 201) {
@@ -85,7 +98,7 @@ function NewEmployee() {
         } catch (err) {
             console.log(err);
         }
-        localStorage.setItem("showPopup", "false");
+       
     };
 
     return (

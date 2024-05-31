@@ -57,7 +57,10 @@ const EditContract = ({ combinedData }) => {
     }
 
 
-    let submit = async () => {
+    let submit = async (e) => {
+
+        e.preventDefault();
+        setShowEdPopup(false);
 
         try {
             const token = localStorage.getItem('siteToken');

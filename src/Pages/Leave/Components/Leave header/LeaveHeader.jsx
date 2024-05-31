@@ -103,7 +103,8 @@ function LeaveHeader() {
 
 
     let submit = async (e) => {
-
+        e.preventDefault();
+        setShowCreateLeavePopup(false);
 
         try {
             const token = localStorage.getItem('siteToken');

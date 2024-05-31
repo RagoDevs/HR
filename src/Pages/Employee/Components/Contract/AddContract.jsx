@@ -43,8 +43,9 @@ const AddContract = ({ combinedData }) => {
 
     }
 
-    let submit = async () => {
-
+    let submit = async (e) => {
+        e.preventDefault();
+        setShowContractPopup(false);
         try {
             const token = localStorage.getItem('siteToken');
 
