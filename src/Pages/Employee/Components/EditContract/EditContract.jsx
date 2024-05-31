@@ -68,7 +68,7 @@ const EditContract = ({ combinedData }) => {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/contracts", {
+            let res = await fetch(`https://hrbe.eadevs.com/auth/contracts/${contractDetails.contract_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
