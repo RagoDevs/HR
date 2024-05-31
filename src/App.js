@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Employee from './Pages/Employee/Employee';
@@ -14,9 +14,8 @@ import { AuthProvider } from './RoutesAuth/AuthProvider';
 import { RequireHr } from './RoutesAuth/RequireHr';
 import { RequireStaff } from './RoutesAuth/RequireStaff';
 
-
-
 function App() {
+
  
   return (
     <AuthProvider>

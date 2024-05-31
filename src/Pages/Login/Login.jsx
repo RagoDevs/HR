@@ -8,16 +8,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import eyeIcon from '../../Assets/login/watch.png'
 import eyeSlashIcon from '../../Assets/login/hidden.png'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
     const [showLoginForm, setShowLoginForm] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    
 
     useEffect(() => {
         const logoAnimationDuration = 3000;
@@ -31,6 +35,26 @@ function Login() {
         };
 
     }, []);
+
+    
+    const isTokenValid = () => {
+        const token = localStorage.getItem('siteToken');
+        const expiryTime = localStorage.getItem('siteExpiry');
+
+        if (!token || !expiryTime) {
+            return false;
+          }
+      
+          const now = new Date().getTime();
+          return now / 1000 < expiryTime;
+    };
+
+    useEffect(() => {
+        if (isTokenValid()) {
+          // Redirect to dashboard if token is valid
+          navigate('/dashboard');
+        }
+      }, [navigate]);
 
     const [loginError, setLoginError] = useState(null);
     let auth = useAuth();
@@ -58,6 +82,7 @@ function Login() {
             }
         },
     });
+
 
     return (
         <>

@@ -23,7 +23,7 @@
 
 .edpopup_container {
     min-width: 320px;
-    height: 730px;
+    height: auto;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
@@ -49,6 +49,14 @@
     gap: .3rem;
 }
 
+.date-input {
+    width: 100%;
+}
+
+.join-input {
+    width: 56%;
+}
+
 .hhhh {
     height: 2rem;
     padding: 0 .5rem;
@@ -59,6 +67,20 @@
 .hhhh:focus {
     border-left: 6px solid rgb(137, 137, 235);
     outline: none;
+}
+
+.password-input {
+    width: 60%;
+}
+
+.password-wrapper input{
+    border: none;
+    width: 100%;
+}
+
+.password-wrapper img {
+    background-color: white;
+
 }
 
 .dropdowns {
@@ -79,6 +101,7 @@
     padding: 0 .5rem;
     outline: none;
     font-size: 1rem;
+    width: 100%;
 }
 
 .edemply_form button {

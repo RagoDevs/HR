@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react'
 import './EditEmployee.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import eyeIcon from '../../../../Assets/login/watch.png'
+import eyeSlashIcon from '../../../../Assets/login/hidden.png'
 
 const EditEmployee = ({ combinedData }) => {
     combinedData = combinedData || {};
 
     const storedEdEShowPopup = localStorage.getItem("EdEshowPopup");
     const [EdEshowPopup, setEdEShowPopup] = useState(storedEdEShowPopup === "true");
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     
     const handleClick = () => {  
@@ -76,7 +83,7 @@ const EditEmployee = ({ combinedData }) => {
                 joining_date: new Date(form.joining_date).toISOString(),
             }
 
-            let res = await fetch("", {
+            let res = await fetch(`https://hrbe.eadevs.com/auth/employees/${combinedData.employee_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -125,6 +132,8 @@ const EditEmployee = ({ combinedData }) => {
                         <h3>Edit Employee Details</h3>
                         <div className="edemply_form">
                             <form>
+                            <div className="input-split">
+                            <div className="name-input">
                                 <label>Employee Name</label>
                                 <input
                                     type="text"
@@ -133,14 +142,20 @@ const EditEmployee = ({ combinedData }) => {
                                     value={form.name}
                                     onChange={handleChange}
                                 />
+                                </div>
+                                <div className="date-input">
                                 <label>Date of Birth</label>
                                 <input
                                     type="date"
-                                    className='hhhh'
+                                    className='hhhhd'
                                     name='dob'
                                     value={form.dob}
                                     onChange={handleChange}
                                 />
+                                </div>
+                                </div>
+                                <div className="input-split">
+                                <div className="email-input">
                                 <label>Email</label>
                                 <input
                                     type="text"
@@ -149,6 +164,8 @@ const EditEmployee = ({ combinedData }) => {
                                     value={form.email}
                                     onChange={handleChange}
                                 />
+                                </div>
+                                <div className="number-input">
                                 <label>Phone Number</label>
                                 <input
                                     type="text"
@@ -157,6 +174,8 @@ const EditEmployee = ({ combinedData }) => {
                                     value={form.phone}
                                     onChange={handleChange}
                                 />
+                                </div>
+                                </div>
                                 <label>Address</label>
                                 <input
                                     type="text"
@@ -199,6 +218,8 @@ const EditEmployee = ({ combinedData }) => {
 
                                     </select>
                                 </div>
+                                <div className="input-split">
+                                <div className="join-input">
                                 <label>Joining Date</label>
                                 <input
                                     type="date"
@@ -207,14 +228,30 @@ const EditEmployee = ({ combinedData }) => {
                                     value={form.joining_date}
                                     onChange={handleChange}
                                 />
+                                </div>
+                                <div className="password-input">
                                 <label>Password</label>
-                                <input
-                                    type="text"
-                                    className='hhhh'
-                                    name='password'
-                                    value={form.password}
-                                    onChange={handleChange}
-                                />
+                                
+                                 <div className="password-wrapper">
+                                            <input
+                                                type={showPassword ? 'text' : 'password'}
+                                                className='hhhh'
+                
+                                                name='password'
+                                                value={form.password}
+                                                onChange={handleChange}
+                                            
+                                                required
+                                            />
+                                            <img
+                                                src={showPassword ? eyeSlashIcon : eyeIcon}
+                                                alt="Toggle Password Visibility"
+                                                className="eye-icon"
+                                                onClick={togglePasswordVisibility}
+                                            />
+                                        </div>
+                                </div>
+                                </div>
                                 <button onClick={submit}>Submit</button>
                             </form>
                         </div>

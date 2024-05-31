@@ -43,11 +43,11 @@ export function AuthProvider({ children }) {
 
 
         if (role === 'admin') {
-          navigate('/Dashboard');
+          navigate('/dashboard');
         } else if (role === 'hr') {
-          navigate('/Dashboard');
+          navigate('/dashboard');
         } else {
-          navigate('/Staff');
+          navigate('/staff');
         }
 
 
@@ -70,6 +70,8 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('siteId')
     return navigate("/");
   };
+
+ 
 
   let value = { token, role, employeeId, signin, signout, err,};
 
