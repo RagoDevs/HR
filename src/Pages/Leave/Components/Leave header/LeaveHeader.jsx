@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './LeaveHeader.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -104,6 +104,7 @@ function LeaveHeader() {
 
     let submit = async (e) => {
         e.preventDefault();
+        
         setShowCreateLeavePopup(false);
 
         try {
@@ -144,6 +145,7 @@ function LeaveHeader() {
         }
         localStorage.removeItem(FormData)
         localStorage.setItem("showCreateLeavePopup", "false");
+        window.location.reload();
 
     };
 

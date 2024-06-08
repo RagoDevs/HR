@@ -118,6 +118,7 @@ const EditEmployee = ({ combinedData }) => {
             console.log(err);
         }
         localStorage.setItem("EdEshowPopup", "false");
+        window.location.reload();
 
     }
     return (

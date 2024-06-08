@@ -35,7 +35,7 @@
 
 .creatalv-popup-container{
     min-width: 370px;
-    height: 519px;
+    height: 539px;
     z-index: 100;
     background-color: white;
     border-radius: 9px;
@@ -75,6 +75,8 @@
 .textarea1 {
     height: 6rem;
     font-family: sans-serif;
+    padding: .4rem;
+    font-size: 1rem;
 }
 
 .createLv-form button {

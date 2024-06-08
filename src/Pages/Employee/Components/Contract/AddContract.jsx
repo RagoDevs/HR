@@ -81,6 +81,7 @@ const AddContract = ({ combinedData }) => {
             console.log(err);
         }
         localStorage.setItem("showContractPopup", "false");
+        window.location.reload();
     };
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import {  NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './SideBar.css'
 import dashboard from '../../Assets/dash img/dashboard.png'
 import employee from '../../Assets/dash img/employee.png'
@@ -13,14 +13,14 @@ function SideBar() {
     return (
         <div className='sidebar'>
             <div className='sidebar-menu'>
-            <NavLink  to='/dashboard' className={({ isActive }) => (isActive ? "active" : "inactive")}>
-                <div className='menu-list'>
-                    <img src={dashboard} alt="" />
-                    <h4>Dashboard</h4>
+                <NavLink to='/dashboard' className={({ isActive }) => (isActive ? "active" : "inactive")}>
+                    <div className='menu-list'>
+                        <img src={dashboard} alt="" />
+                        <h4>Dashboard</h4>
 
-                </div>
+                    </div>
                 </NavLink>
-                <NavLink  to='/employee' className={({ isActive }) => (isActive ? "active" : "inactive")}>
+                <NavLink to='/employee' className={({ isActive }) => (isActive ? "active" : "inactive")}>
                     <div className='menu-list'>
 
                         <img src={employee} alt="" />
@@ -36,28 +36,28 @@ function SideBar() {
                     </div>
                 </NavLink>
                 <NavLink to='/payroll'>
-                <div className='menu-list'>
-                    <img src={money} alt="" />
-                    <h4>Payroll</h4>
-                </div>
+                    <div className='menu-list'>
+                        <img src={money} alt="" />
+                        <h4>Payroll</h4>
+                    </div>
                 </NavLink>
                 <NavLink to='/calender'>
-                <div className='menu-list'>
-                    <img src={calender} alt="" />
-                    <h4>Calender</h4>
-                </div>
+                    <div className='menu-list'>
+                        <img src={calender} alt="" />
+                        <h4>Calender</h4>
+                    </div>
                 </NavLink>
                 <NavLink to='/documents'>
-                <div className='menu-list'>
-                    <img src={documents} alt="" />
-                    <h4>Documents</h4>
-                </div>
+                    <div className='menu-list'>
+                        <img src={documents} alt="" />
+                        <h4>Documents</h4>
+                    </div>
                 </NavLink>
                 <NavLink to='/report'>
-                <div className='menu-list'>
-                    <img src={report} alt="" />
-                    <h4>Report</h4>
-                </div>
+                    <div className='menu-list'>
+                        <img src={report} alt="" />
+                        <h4>Report</h4>
+                    </div>
                 </NavLink>
             </div>
         </div>

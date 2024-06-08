@@ -150,7 +150,8 @@ function ReqAnn() {
         }
         setannouncePopup(false)
 
-        localStorage.removeItem('formData')
+        localStorage.removeItem('formData');
+        window.location.reload();
     };
     return (
         <>

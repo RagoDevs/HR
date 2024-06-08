@@ -97,6 +97,7 @@ const EditContract = ({ combinedData }) => {
             console.log(err);
         }
         localStorage.setItem("showEdPopup", "false");
+        window.location.reload();
     };
 
     return (
