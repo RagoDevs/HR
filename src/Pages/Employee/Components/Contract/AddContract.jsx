@@ -55,7 +55,7 @@ const AddContract = ({ combinedData }) => {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/contracts", {
+            let res = await fetch("https://hrbe.ragodevs.com/auth/contracts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

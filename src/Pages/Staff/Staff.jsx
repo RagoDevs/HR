@@ -18,7 +18,7 @@ function Staff() {
   const [staff, setStaff] = useState('')
 
   useEffect(() => {
-    fetch(`https://hrbe.eadevs.com/auth/employees/${employeeId}`, {
+    fetch(`https://hrbe.ragodevs.com/auth/employees/${employeeId}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'

@@ -30,7 +30,7 @@ function LeaveHeader() {
 
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.eadevs.com/auth/employees', {
+                const response = await fetch('https://hrbe.ragodevs.com/auth/employees', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ function LeaveHeader() {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/leaves", {
+            let res = await fetch("https://hrbe.ragodevs.com/auth/leaves", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

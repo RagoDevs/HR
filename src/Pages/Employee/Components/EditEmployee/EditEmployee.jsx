@@ -85,7 +85,7 @@ const EditEmployee = ({ combinedData }) => {
                 joining_date: new Date(form.joining_date).toISOString(),
             }
 
-            let res = await fetch(`https://hrbe.eadevs.com/auth/employees/${combinedData.employee_id}`, {
+            let res = await fetch(`https://hrbe.ragodevs.com/auth/employees/${combinedData.employee_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

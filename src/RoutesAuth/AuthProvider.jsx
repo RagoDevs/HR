@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
   const signin = async (email, password) => {
 
-    const response = await fetch("https://hrbe.eadevs.com/login", {
+    const response = await fetch("https://hrbe.ragodevs.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

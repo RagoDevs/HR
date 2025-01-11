@@ -23,7 +23,7 @@ function LeaveHistory() {
 
 
     useEffect(() => {
-        fetch(`https://hrbe.eadevs.com/auth/leaves/employee/${employeeId}`, {
+        fetch(`https://hrbe.ragodevs.com/auth/leaves/employee/${employeeId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

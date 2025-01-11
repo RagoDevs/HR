@@ -21,7 +21,7 @@ function LeaveUpdates() {
         };
         const fetchOnLeave = async () => {
             try {
-                const response = await fetch('https://hrbe.eadevs.com/auth/leaves/onleave', {
+                const response = await fetch('https://hrbe.ragodevs.com/auth/leaves/onleave', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ useEffect(() => {
     };
     const fetchUpcoming = async () => {
         try {
-            const response = await fetch('https://hrbe.eadevs.com/auth/leaves/upcoming', {
+            const response = await fetch('https://hrbe.ragodevs.com/auth/leaves/upcoming', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

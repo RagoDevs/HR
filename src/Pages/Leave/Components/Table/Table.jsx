@@ -36,7 +36,7 @@ function Table() {
 
 
     useEffect(() => {
-        fetch('https://hrbe.eadevs.com/auth/leaves', {
+        fetch('https://hrbe.ragodevs.com/auth/leaves', {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ function Table() {
     const [statuses, setStatuses] = useState(Array(requests.length).fill(""));
 
     const updateRequestStatus = (id, seen, approved) => {
-        return fetch(`https://hrbe.eadevs.com/auth/leaves/response/${id}`, {
+        return fetch(`https://hrbe.ragodevs.com/auth/leaves/response/${id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -122,7 +122,7 @@ function Table() {
     };
 
     useEffect(() => {
-        fetch('https://hrbe.eadevs.com/auth/leaves/approved', {
+        fetch('https://hrbe.ragodevs.com/auth/leaves/approved', {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ function Table() {
     const handleEditSubmit = () => {
 
         const requestId = requests[editIndex].leave_id;
-        fetch(`https://hrbe.eadevs.com/auth/leaves/${requestId}`, {
+        fetch(`https://hrbe.ragodevs.com/auth/leaves/${requestId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,

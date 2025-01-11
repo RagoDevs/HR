@@ -66,7 +66,7 @@ function NewEmployee() {
                 joining_date: new Date(form.joining_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/employees", {
+            let res = await fetch("https://hrbe.ragodevs.com/auth/employees", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

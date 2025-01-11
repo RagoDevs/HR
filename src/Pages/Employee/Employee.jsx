@@ -24,7 +24,7 @@ const Employee = () => {
         };
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.eadevs.com/auth/employees', {
+                const response = await fetch('https://hrbe.ragodevs.com/auth/employees', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const Employee = () => {
 
     const handleEmployeeClick = (employee_id,) => {
         //fetching full details
-        const fetchEmployeeDetails = fetch(`https://hrbe.eadevs.com/auth/employees/${employee_id}`, {
+        const fetchEmployeeDetails = fetch(`https://hrbe.ragodevs.com/auth/employees/${employee_id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const Employee = () => {
 
             .catch(error => console.error('error fetching details', error));
 
-        const fetchContractDetails = fetch(`https://hrbe.eadevs.com/auth/contracts/${employee_id}`, {
+        const fetchContractDetails = fetch(`https://hrbe.ragodevs.com/auth/contracts/${employee_id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

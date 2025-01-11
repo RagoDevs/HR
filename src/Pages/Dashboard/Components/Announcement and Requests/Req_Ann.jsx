@@ -46,7 +46,7 @@ function ReqAnn() {
 
         const fetchLeaveRequest = async () => {
             try {
-                const response = await fetch('https://hrbe.eadevs.com/auth/leaves', {
+                const response = await fetch('https://hrbe.ragodevs.com/auth/leaves', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function ReqAnn() {
        
         const fetchAnnouncement = async () => {
             try {
-                const response = await fetch(`https://hrbe.eadevs.com/auth/announcements/${new Date().toISOString()}`, {
+                const response = await fetch(`https://hrbe.ragodevs.com/auth/announcements/${new Date().toISOString()}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -123,7 +123,7 @@ function ReqAnn() {
                 date: currentDate,
             };
 
-            let res = await fetch("https://hrbe.eadevs.com/auth/announcements", {
+            let res = await fetch("https://hrbe.ragodevs.com/auth/announcements", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
