@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './ReqLeave.css'
+import { base_url } from '../../../../constant';
 
 function ReqLeave() {
 
@@ -35,7 +36,7 @@ function ReqLeave() {
     useEffect(() => {
         const fetchHrList = async () => {
             try {
-                const response = await fetch("https://hrbe.ragodevs.com/auth/leaves/approvers", {
+                const response = await fetch(`${base_url}/auth/leaves/approvers`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -82,7 +83,7 @@ function ReqLeave() {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.ragodevs.com/auth/leaves", {
+            let res = await fetch(`${base_url}/auth/leaves`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AddContract.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../../../constant';
 
 const AddContract = ({ combinedData }) => {
 
@@ -55,7 +56,7 @@ const AddContract = ({ combinedData }) => {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.ragodevs.com/auth/contracts", {
+            let res = await fetch(`${base_url}/auth/contracts`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

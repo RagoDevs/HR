@@ -8,6 +8,7 @@ import './Table.css'
 import classNames from 'classnames'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../constant'
 
 function Table() {
 
@@ -36,7 +37,7 @@ function Table() {
 
 
     useEffect(() => {
-        fetch('https://hrbe.ragodevs.com/auth/leaves', {
+        fetch(`${base_url}/auth/leaves`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ function Table() {
     const [statuses, setStatuses] = useState(Array(requests.length).fill(""));
 
     const updateRequestStatus = (id, seen, approved) => {
-        return fetch(`https://hrbe.ragodevs.com/auth/leaves/response/${id}`, {
+        return fetch(`${base_url}/auth/leaves/response/${id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -122,7 +123,7 @@ function Table() {
     };
 
     useEffect(() => {
-        fetch('https://hrbe.ragodevs.com/auth/leaves/approved', {
+        fetch(`${base_url}/auth/leaves/approved`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -173,7 +174,7 @@ function Table() {
     const handleEditSubmit = () => {
 
         const requestId = requests[editIndex].leave_id;
-        fetch(`https://hrbe.ragodevs.com/auth/leaves/${requestId}`, {
+        fetch(`${base_url}/auth/leaves/${requestId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,

@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import eyeIcon from '../../../../Assets/login/watch.png'
 import eyeSlashIcon from '../../../../Assets/login/hidden.png'
+import { base_url } from '../../constant'
 
 const EditEmployee = ({ combinedData }) => {
     combinedData = combinedData || {};
@@ -85,7 +86,7 @@ const EditEmployee = ({ combinedData }) => {
                 joining_date: new Date(form.joining_date).toISOString(),
             }
 
-            let res = await fetch(`https://hrbe.ragodevs.com/auth/employees/${combinedData.employee_id}`, {
+            let res = await fetch(`${base_url}/auth/employees/${combinedData.employee_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

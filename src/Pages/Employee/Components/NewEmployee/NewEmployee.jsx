@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './NewEmployee.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../../../constant';
 
 function NewEmployee() {
 
@@ -66,7 +67,7 @@ function NewEmployee() {
                 joining_date: new Date(form.joining_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.ragodevs.com/auth/employees", {
+            let res = await fetch(`${base_url}/auth/employees`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

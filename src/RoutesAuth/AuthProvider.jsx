@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createContext, useContext } from "react"
 import { useNavigate } from "react-router-dom";
+import { base_url } from "../constant";
 
 let AuthContext = createContext();
 
@@ -14,7 +15,7 @@ export function AuthProvider({ children }) {
 
   const signin = async (email, password) => {
 
-    const response = await fetch("https://hrbe.ragodevs.com/login", {
+    const response = await fetch(`${base_url}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import './Req_Ann.css'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../../../constant';
 
 function ReqAnn() {
     const token = localStorage.getItem('siteToken')
@@ -46,7 +47,7 @@ function ReqAnn() {
 
         const fetchLeaveRequest = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/leaves', {
+                const response = await fetch(`${base_url}/auth/leaves`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -73,7 +74,7 @@ function ReqAnn() {
        
         const fetchAnnouncement = async () => {
             try {
-                const response = await fetch(`https://hrbe.ragodevs.com/auth/announcements/${new Date().toISOString()}`, {
+                const response = await fetch(`${base_url}/auth/announcements/${new Date().toISOString()}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -123,7 +124,7 @@ function ReqAnn() {
                 date: currentDate,
             };
 
-            let res = await fetch("https://hrbe.ragodevs.com/auth/announcements", {
+            let res = await fetch(`${base_url}/auth/announcements`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

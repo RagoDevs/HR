@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './StaffAnnouncement.css'
 import { useNavigate } from 'react-router-dom'
 import user from '../../../Assets/staff/user.png'
+import { base_url } from '../../constant'
 
 function StaffAnnouncement() {
     const token = localStorage.getItem('siteToken')
@@ -21,7 +22,7 @@ function StaffAnnouncement() {
        
         const fetchAnnouncement = async () => {
             try {
-                const response = await fetch(`https://hrbe.ragodevs.com/auth/announcements/${new Date().toISOString()}`, {
+                const response = await fetch(`${base_url}/auth/announcements/${new Date().toISOString()}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

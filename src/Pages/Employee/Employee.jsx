@@ -6,6 +6,7 @@ import Info from './Components/Employee Details/info'
 import NewEmployee from './Components/NewEmployee/NewEmployee'
 import './Employee.css'
 import { useNavigate } from 'react-router-dom'
+import { base_url } from '../../constant'
 
 const Employee = () => {
     const [employees, setEmployees] = useState([]);
@@ -24,7 +25,7 @@ const Employee = () => {
         };
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/employees', {
+                const response = await fetch(`${base_url}/auth/employees`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -52,7 +53,7 @@ const Employee = () => {
 
     const handleEmployeeClick = (employee_id,) => {
         //fetching full details
-        const fetchEmployeeDetails = fetch(`https://hrbe.ragodevs.com/auth/employees/${employee_id}`, {
+        const fetchEmployeeDetails = fetch(`${base_url}/auth/employees/${employee_id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -62,7 +63,7 @@ const Employee = () => {
 
             .catch(error => console.error('error fetching details', error));
 
-        const fetchContractDetails = fetch(`https://hrbe.ragodevs.com/auth/contracts/${employee_id}`, {
+        const fetchContractDetails = fetch(`${base_url}/auth/contracts/${employee_id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

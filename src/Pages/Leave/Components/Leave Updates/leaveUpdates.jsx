@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './leaveUpdates.css'
 import personal from '../../../../Assets/leave/user.png'
 import { useNavigate } from 'react-router-dom';
+import { base_url } from '../../constant'
 
 
 function LeaveUpdates() {
@@ -21,7 +22,7 @@ function LeaveUpdates() {
         };
         const fetchOnLeave = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/leaves/onleave', {
+                const response = await fetch(`${base_url}/auth/leaves/onleave`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -51,7 +52,7 @@ useEffect(() => {
     };
     const fetchUpcoming = async () => {
         try {
-            const response = await fetch('https://hrbe.ragodevs.com/auth/leaves/upcoming', {
+            const response = await fetch(`${base_url}/auth/leaves/upcoming`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

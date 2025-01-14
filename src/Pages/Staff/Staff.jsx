@@ -9,6 +9,7 @@ import ReqLeave from "./Components/RequestLeave/ReqLeave";
 import LeaveStatus from "./Components/Status/LeaveStatus";
 import LeaveHistory from "./Components/LeaveHistory/LeaveHistory";
 import StaffAnnouncement from "./Announcements/StaffAnnouncement";
+import { base_url } from '../../constant'
 
 
 function Staff() {
@@ -18,7 +19,7 @@ function Staff() {
   const [staff, setStaff] = useState('')
 
   useEffect(() => {
-    fetch(`https://hrbe.ragodevs.com/auth/employees/${employeeId}`, {
+    fetch(`${base_url}/auth/employees/${employeeId}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'

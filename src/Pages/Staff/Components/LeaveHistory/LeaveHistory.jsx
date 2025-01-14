@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './leaveHistory.css'
 import check from '../../../../Assets/staff/check.png'
+import { base_url } from '../../constant'
 
 function LeaveHistory() {
     const token = localStorage.getItem('siteToken')
@@ -23,7 +24,7 @@ function LeaveHistory() {
 
 
     useEffect(() => {
-        fetch(`https://hrbe.ragodevs.com/auth/leaves/employee/${employeeId}`, {
+        fetch(`${base_url}/auth/leaves/employee/${employeeId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

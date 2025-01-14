@@ -23,7 +23,7 @@ function Card() {
 
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/leaves/counts', {
+                const response = await fetch('${base_url}/auth/leaves/counts', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

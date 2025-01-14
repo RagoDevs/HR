@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Table.css";
 import { useNavigate } from "react-router-dom";
 import searchIcon from '../../../../Assets/dash img/search.png'
+import { base_url } from '../../constant'
 
 function Table() {
 
@@ -22,7 +23,7 @@ function Table() {
 
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/employees', {
+                const response = await fetch(`${base_url}/auth/employees`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './EditContract.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../constant'
 
 const EditContract = ({ combinedData }) => {
 
@@ -71,7 +72,7 @@ const EditContract = ({ combinedData }) => {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch(`https://hrbe.ragodevs.com/auth/contracts/${contractDetails.contract_id}`, {
+            let res = await fetch(`${base_url}/auth/contracts/${contractDetails.contract_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

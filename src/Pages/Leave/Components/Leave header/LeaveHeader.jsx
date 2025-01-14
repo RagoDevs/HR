@@ -3,6 +3,7 @@ import './LeaveHeader.css'
 import { useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { base_url } from '../../../../constant';
 
 
 function LeaveHeader() {
@@ -30,7 +31,7 @@ function LeaveHeader() {
 
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('https://hrbe.ragodevs.com/auth/employees', {
+                const response = await fetch(`${base_url}/auth/employees`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ function LeaveHeader() {
                 end_date: new Date(form.end_date).toISOString(),
             };
 
-            let res = await fetch("https://hrbe.ragodevs.com/auth/leaves", {
+            let res = await fetch(`${base_url}/auth/leaves`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

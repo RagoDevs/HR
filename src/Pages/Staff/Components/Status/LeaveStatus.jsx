@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './LeaveStatus.css'
+import { base_url } from '../../constant'
 
 function LeaveStatus() {
     const token = localStorage.getItem('siteToken')
@@ -20,7 +21,7 @@ function LeaveStatus() {
     }
 
     useEffect(() => {
-        fetch(`https://hrbe.ragodevs.com/auth/leaves/employee/${employeeId}`, {
+        fetch(`${base_url}/auth/leaves/employee/${employeeId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
