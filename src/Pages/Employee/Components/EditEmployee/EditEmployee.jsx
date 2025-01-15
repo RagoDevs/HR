@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import eyeIcon from '../../../../Assets/login/watch.png'
 import eyeSlashIcon from '../../../../Assets/login/hidden.png'
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant';
 
 const EditEmployee = ({ combinedData }) => {
     combinedData = combinedData || {};

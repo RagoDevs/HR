@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './leaveUpdates.css'
 import personal from '../../../../Assets/leave/user.png'
 import { useNavigate } from 'react-router-dom';
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant';
 
 
 function LeaveUpdates() {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './leaveHistory.css'
 import check from '../../../../Assets/staff/check.png'
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant'
 
 function LeaveHistory() {
     const token = localStorage.getItem('siteToken')

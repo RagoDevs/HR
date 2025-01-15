@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './LeaveStatus.css'
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant'
 
 function LeaveStatus() {
     const token = localStorage.getItem('siteToken')

@@ -5,6 +5,7 @@ import personal from '../../../../Assets/leave/user.png'
 import paid from '../../../../Assets/leave/pay.png'
 import annual from '../../../../Assets/leave/annual.png'
 import { useNavigate } from 'react-router-dom'
+import { base_url } from '../../../../constant'
 
 function Card() {
     const token = localStorage.getItem('siteToken');
@@ -23,7 +24,7 @@ function Card() {
 
         const fetchEmployees = async () => {
             try {
-                const response = await fetch('${base_url}/auth/leaves/counts', {
+                const response = await fetch(`${base_url}/auth/leaves/counts`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

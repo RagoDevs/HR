@@ -8,7 +8,7 @@ import './Table.css'
 import classNames from 'classnames'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant'
 
 function Table() {
 

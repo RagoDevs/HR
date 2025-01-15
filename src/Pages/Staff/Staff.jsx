@@ -9,7 +9,7 @@ import ReqLeave from "./Components/RequestLeave/ReqLeave";
 import LeaveStatus from "./Components/Status/LeaveStatus";
 import LeaveHistory from "./Components/LeaveHistory/LeaveHistory";
 import StaffAnnouncement from "./Announcements/StaffAnnouncement";
-import { base_url } from '../../constant'
+import { base_url } from "../../constant";
 
 
 function Staff() {

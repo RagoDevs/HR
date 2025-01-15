@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './EditContract.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { base_url } from '../../constant'
+import { base_url } from '../../../../constant';
 
 const EditContract = ({ combinedData }) => {
 
