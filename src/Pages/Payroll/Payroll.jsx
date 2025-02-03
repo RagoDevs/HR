@@ -2,7 +2,7 @@ import React from 'react'
 import './Payroll.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import comming from '../../Assets/images/coming.png'
+import Payheader from './Components/Payheader/Payheader'
 
 function Payroll() {
     return (
@@ -14,10 +14,7 @@ function Payroll() {
                 <SideBar />
             </div>
             <div className="payroll-main">
-                <div className="comming-soon">
-                    <img src={comming} alt="" />
-                    <h2>Coming Soon</h2>
-                </div>
+                <Payheader />
             </div>
         </div>
     )

@@ -3,7 +3,7 @@
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 17rem  1fr;
+    grid-template-columns: 15.5rem  1fr;
     grid-template-rows: 5rem 1fr ;
 }
 
@@ -20,25 +20,14 @@
 .payroll-main {
     grid-column: 2 ;
     grid-row: 2;
-    padding: 1rem;
+    padding: .4rem;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column;
     background-color: #fff;
-    text-align: center;
 }
 
-.payroll-main h2 {
-    font-size: 5rem;
-    color: rgb(228, 227, 227);
-}
 
-.comming-soon img {
-    height: 14rem;
-    
-}
 
 
 @media screen and (max-width: 1160px) {
