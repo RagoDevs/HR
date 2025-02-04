@@ -3,6 +3,7 @@ import './Payroll.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
 import Payheader from './Components/Payheader/Payheader'
+import PayTable from './Components/Paytable/PayTable'
 
 function Payroll() {
     return (
@@ -15,6 +16,7 @@ function Payroll() {
             </div>
             <div className="payroll-main">
                 <Payheader />
+                <PayTable />
             </div>
         </div>
     )
