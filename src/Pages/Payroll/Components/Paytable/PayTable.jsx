@@ -23,17 +23,18 @@ const columns = [
         title: 'S/N',
         dataIndex: 'key',
         rowScope: 'row',
+        fixed: 'left'
       },
   {
     title: 'Employee',
-    width: 100,
+    width: 160,
     dataIndex: 'name',
     key: 'name',
     fixed: 'left',
   },
   {
     title: 'Basic Salary',
-    width: 100,
+    width: 150,
     dataIndex: 'age',
     key: 'age',
     fixed: 'left',
@@ -143,7 +144,7 @@ const columns = [
     title: 'Edit',
     key: 'operation',
     fixed: 'right',
-    width: 100,
+    width: 70,
     render: () => <a>action</a>,
   },
 ];
