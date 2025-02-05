@@ -22,7 +22,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-            cd /var/www/hr/HR
+            cd /var/www/lugano/HR
 
             git pull 
 
