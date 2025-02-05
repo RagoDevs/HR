@@ -1,6 +1,8 @@
 import React from 'react';
-import  Table  from 'antd/es/table';
+import Table from 'antd/es/table';
 import { createStyles } from 'antd-style';
+import './Paytable.css';
+import dataSource from './datasource';
 const useStyle = createStyles(({ css, token }) => {
   const { antCls } = token;
   return {
@@ -19,12 +21,13 @@ const useStyle = createStyles(({ css, token }) => {
   };
 });
 const columns = [
-    {
-        title: 'S/N',
-        dataIndex: 'key',
-        rowScope: 'row',
-        fixed: 'left'
-      },
+  {
+    title: 'S/N',
+    width: 60,
+    dataIndex: 'key',
+    rowScope: 'row',
+    fixed: 'left'
+  },
   {
     title: 'Employee',
     width: 160,
@@ -145,35 +148,38 @@ const columns = [
     key: 'operation',
     fixed: 'right',
     width: 70,
-    render: () => <a>action</a>,
+    render: (text, record) => {
+      // Check if the row has data (you can customize this condition based on your data structure)
+      if (record && Object.keys(record).length > 0) {
+        return <a>action</a>;
+      }
+      // Return null if the row has no data
+      return null;
+    },
   },
 ];
-const dataSource = [
-  {
-    key: '1',
-    name: 'Olivia',
-    age: 32,
-    address: 'New York Park',
-  },
-  {
-    key: '2',
-    name: 'Ethan',
-    age: 40,
-    address: 'London Park',
-  },
-];
+
+const tableHeight = 1000;
+const rowHeight = 50;
+const emptyRowCount = Math.max(0, Math.floor(tableHeight / rowHeight) - dataSource.length);
+
+// Add empty rows to the data
+const paddedData = [...dataSource, ...Array(emptyRowCount).fill({})];
 const PayTable = () => {
   const { styles } = useStyle();
   return (
-    <Table
-      className={styles.customTable}
-      pagination={false}
-      columns={columns}
-      dataSource={dataSource}
-      scroll={{
-        x: 'max-content',
-      }}
-    />
+    <div style={{height: tableHeight}}>
+      <Table
+        className={styles.customTable}
+        pagination={false}
+        columns={columns}
+        dataSource={paddedData}
+        scroll={{
+          x: 'max-content',
+          y: tableHeight,
+        }}
+      />
+    </div>
   );
 };
 export default PayTable;

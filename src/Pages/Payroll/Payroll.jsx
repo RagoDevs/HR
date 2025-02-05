@@ -15,8 +15,12 @@ function Payroll() {
                 <SideBar />
             </div>
             <div className="payroll-main">
-                <Payheader />
-                <PayTable />
+                <div className="payroll-header">
+                    <Payheader />
+                </div>
+                <div className="payroll-table">
+                    <PayTable />
+                </div>
             </div>
         </div>
     )

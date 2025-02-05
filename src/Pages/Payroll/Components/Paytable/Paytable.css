@@ -1,0 +1,9 @@
+.custom-row {
+    height: 50px; /* Ensures empty rows have a minimum height */
+  }
+  
+  .ant-table-placeholder {
+    height: 100%;
+    display: table-row-group;
+  }
+  

@@ -27,7 +27,7 @@
 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: 30rem auto;
     gap: 1rem;
     background-color: #f4f6f8;
 }
