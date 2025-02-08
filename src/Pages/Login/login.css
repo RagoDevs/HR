@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: scaleIn 3s forwards;
+    animation: scaleIn 1s forwards;
     z-index: 2;
 }
 

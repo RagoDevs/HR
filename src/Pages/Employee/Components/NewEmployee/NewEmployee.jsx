@@ -92,7 +92,7 @@ function NewEmployee() {
                     password: '',
                 });
                 localStorage.removeItem(FormData)
-                toast.success("Created Succefuly!")
+                toast.success("Created Successfuly!")
             } else {
                 toast.error("Some Error Occurred!")
             }

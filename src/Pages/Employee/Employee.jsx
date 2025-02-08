@@ -14,6 +14,7 @@ const Employee = () => {
     const token = localStorage.getItem('siteToken');
     const expiry = localStorage.getItem('siteExpiry')
     const navigate = useNavigate();
+    
 
     useEffect(() => {
         const checkExpiry = () => {
@@ -88,6 +89,8 @@ const Employee = () => {
             .catch(error => console.error('Error fetching data:', error));
 
     };
+
+    
 
     return (
         <div className='employee'>

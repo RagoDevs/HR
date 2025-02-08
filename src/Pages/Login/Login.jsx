@@ -24,7 +24,7 @@ function Login() {
     
 
     useEffect(() => {
-        const logoAnimationDuration = 3000;
+        const logoAnimationDuration = 1000;
 
         const timeoutId = setTimeout(() => {
             setShowLoginForm(true);
