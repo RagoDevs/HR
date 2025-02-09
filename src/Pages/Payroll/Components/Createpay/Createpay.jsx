@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Modal, Select, Form, Input, Segmented } from 'antd'
+import { Button, Modal, Select, Form, Input, Segmented, message, notification } from 'antd'
 import { base_url } from '../../../../constant'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,7 +16,6 @@ const Createpay = () => {
     const token = localStorage.getItem('siteToken');
     const expiry = localStorage.getItem('siteExpiry')
     const navigate = useNavigate();
-    const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
     const [input1Value, setInput1Value] = useState("");
 
     useEffect(() => {
@@ -50,10 +49,6 @@ const Createpay = () => {
         // eslint-disable-next-line
     }, [token, expiry, navigate]);
 
-    const handleEmployeeSelect = (value) => {
-        console.log("Selected employee ID:", value);
-        setSelectedEmployeeId(value);
-    }
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -65,11 +60,13 @@ const Createpay = () => {
 
             const values = await form.validateFields();
 
-            const formDataE = { ...values, employeeId: selectedEmployeeId };
+            const formDataE = { 
+                ...values, 
+                basic_salary: Number(parseFloat(values.basic_salary).toFixed(2))
+             };
             console.log("Submitting values with employee ID:", formDataE);
 
             form.resetFields();
-            setIsModalOpen(false);
 
 
             let res = await fetch(`${base_url}/auth/payroll`, {
@@ -82,22 +79,28 @@ const Createpay = () => {
                     formDataE
                 ),
             });
-            if (res.status = 201) {
-                toast.success('Created Successfully')
+            if (res.status === 201) {
+                notification.success({
+                    message: 'Form Submitted',
+                    description: 'Your form has been submitted successfully!',
+                    placement: 'topRight',
+                    zIndex: 1002, 
+                  });
             } else {
                 toast.error('Some Error Occurred')
+                message.error('Some error occured')
             }
         } catch (error) {
-           
+
         }
 
 
     };
 
     const handleInput1Change = (e) => {
-        setInput1Value(e.target.value); 
-      };
-    
+        setInput1Value(e.target.value);
+    };
+
 
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -105,7 +108,7 @@ const Createpay = () => {
 
     return (
         <>
-            <ToastContainer />
+           
             <div style={{ width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'end', margin: '7px 0' }}>
                 <Button type='primary' style={{ width: '150px' }} onClick={showModal}>
                     Create Pay
@@ -121,6 +124,7 @@ const Createpay = () => {
                 cancelText='Close'
                 zIndex={1001}
             >
+                 <ToastContainer style={{zIndex: 1003}}/>
                 <Form form={form} layout='horizontal' labelCol={{
                     span: 5,
                 }}>
@@ -135,13 +139,13 @@ const Createpay = () => {
                             showSearch
                             placeholder="Search employee"
                             loading={loading}
-                            onChange={handleEmployeeSelect}
+                            
                             filterOption={(input, option) =>
                                 option.children.toLowerCase().includes(input.toLowerCase())
                             }
                         >
                             {employees.map((employee) => (
-                                <Select.Option key={employee.index} value={employee.employee_id}>
+                                <Select.Option key={employee.employee_id} value={employee.employee_id}>
                                     {employee.employee_name}
                                 </Select.Option>
                             ))}
@@ -154,7 +158,7 @@ const Createpay = () => {
                         name='basic_salary'
                         layout='horizontal'
                     >
-                        <input type='number' onChange={handleInput1Change}/>
+                        <input onChange={handleInput1Change} step={0.01}/>
                     </Form.Item>
 
 
@@ -163,7 +167,7 @@ const Createpay = () => {
                         name='tin'
                         layout='horizontal'
                     >
-                        <input onChange={handleInput1Change}/>
+                        <input onChange={handleInput1Change} />
                     </Form.Item>
 
 
@@ -173,7 +177,7 @@ const Createpay = () => {
                         layout='horizontal'
 
                     >
-                        <input onChange={handleInput1Change}/>
+                        <input onChange={handleInput1Change} />
                     </Form.Item>
 
 
@@ -183,7 +187,7 @@ const Createpay = () => {
                         layout='horizontal'
 
                     >
-                        <input onChange={handleInput1Change}/>
+                        <input onChange={handleInput1Change} />
                     </Form.Item>
                 </Form>
             </Modal>

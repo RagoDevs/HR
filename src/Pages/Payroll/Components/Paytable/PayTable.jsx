@@ -150,7 +150,7 @@ useEffect(() => {
       const data = await response.json(); 
 
       const formattedData = data.map((item, index) => ({
-        key: index, 
+        key: index + 1, 
         basic_salary: item.basic_salary,
         tin: item.tin,
         bank_name: item.bank_name,
