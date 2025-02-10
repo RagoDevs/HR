@@ -7,3 +7,19 @@
     display: table-row-group;
   }
   
+  /* Increase border thickness for table cells 
+.ant-table td, .ant-table th {
+  border-width: 1px !important; /* Increase thickness 
+  border-color: black !important; /* Darker color for visibility 
+}
+
+/* Make the header border even thicker 
+.ant-table-thead > tr > th {
+  border-bottom: 1px solid black !important;
+}
+
+/* Ensure columns have a visible right border 
+.ant-table-cell {
+  border-right: 1px solid black !important;
+}
+*/

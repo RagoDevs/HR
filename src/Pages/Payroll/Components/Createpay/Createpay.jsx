@@ -109,7 +109,7 @@ const Createpay = () => {
     return (
         <>
            
-            <div style={{ width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'end', margin: '7px 0' }}>
+            <div style={{ width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'end', marginTop: '7px' }}>
                 <Button type='primary' style={{ width: '150px' }} onClick={showModal}>
                     Create Pay
                 </Button>

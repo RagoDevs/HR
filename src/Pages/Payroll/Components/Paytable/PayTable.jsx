@@ -56,7 +56,7 @@ const columns = [
     title: 'Total',
     dataIndex: 'total_deductions',
     key: 'total_deductions',
-    width: 90,
+    width: 120,
   },
   {
     title: 'NSSF Employee',
@@ -86,16 +86,19 @@ const columns = [
     title: 'TIN',
     dataIndex: 'tin',
     key: 'tin',
+    width: 100,
   },
   {
     title: 'Bank A/C Number',
     dataIndex: 'bank_account',
     key: 'bank_account',
+    width: 150,
   },
   {
     title: 'Bank Name',
     dataIndex: 'bank_name',
     key: 'bank_name',
+    width: 150,
   },
   {
     title: 'Edit',
@@ -103,7 +106,7 @@ const columns = [
     fixed: 'right',
     width: 70,
     render: (text, record) => {
-      // Check if the row has data (you can customize this condition based on your data structure)
+      
       if (record && Object.keys(record).length > 0) {
         return <a>action</a>;
       }
