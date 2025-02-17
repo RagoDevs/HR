@@ -6,6 +6,16 @@
     height: 100%;
     display: table-row-group;
   }
+  .custom-table .ant-table {
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px;
+  }
+
+  /* CustomTable.css */
+.custom-table .ant-table-thead > tr > th {
+  background-color: aliceblue;  /* Change background color */
+  color: rgb(56, 56, 139);               /* Change text color */
+}
+
   
   /* Increase border thickness for table cells 
 .ant-table td, .ant-table th {

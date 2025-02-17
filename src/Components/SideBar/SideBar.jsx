@@ -6,7 +6,6 @@ import employee from '../../Assets/dash img/employee.png'
 import leave from '../../Assets/dash img/leave.png'
 import money from '../../Assets/dash img/money.png'
 import calender from '../../Assets/dash img/calendar.png'
-import report from '../../Assets/dash img/file.png'
 import documents from '../../Assets/dash img/documents.png'
 
 function SideBar() {
@@ -51,12 +50,6 @@ function SideBar() {
                     <div className='menu-list'>
                         <img src={documents} alt="" />
                         <h4>Documents</h4>
-                    </div>
-                </NavLink>
-                <NavLink to='/report'>
-                    <div className='menu-list'>
-                        <img src={report} alt="" />
-                        <h4>Report</h4>
                     </div>
                 </NavLink>
             </div>

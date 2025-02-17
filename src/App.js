@@ -9,7 +9,6 @@ import { Routes, Route } from 'react-router-dom';
 import Payroll from './Pages/Payroll/Payroll';
 import Calender from './Pages/Calender/Caknder';
 import Documents from './Pages/Documents/Documents';
-import Report from './Pages/Report/Report';
 import { AuthProvider } from './RoutesAuth/AuthProvider';
 import { RequireHr } from './RoutesAuth/RequireHr';
 import { RequireStaff } from './RoutesAuth/RequireStaff';
@@ -72,14 +71,6 @@ function App() {
           element={
             <RequireHr>
             <Documents />
-            </RequireHr>
-          }
-        />
-        <Route
-          path='/report'
-          element={
-            <RequireHr>
-            <Report/>
             </RequireHr>
           }
         />

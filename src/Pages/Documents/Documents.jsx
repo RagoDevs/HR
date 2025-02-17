@@ -2,7 +2,9 @@ import React from 'react'
 import './Document.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import comming from '../../Assets/images/coming.png'
+import FileStorage from './Components/FileStorage'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function Documents() {
     return (
@@ -14,10 +16,9 @@ function Documents() {
                 <SideBar />
             </div>
             <div className="document-main">
-                <div className="comming-soon">
-                    <img src={comming} alt="" />
-                    <h2>Coming Soon</h2>
-                </div>
+                <DndProvider backend={HTML5Backend}>
+                    <FileStorage />
+                </DndProvider>
             </div>
         </div>
     )

@@ -38,7 +38,7 @@
     border-radius: 8px;
     background-color: aliceblue;
     z-index: 5;
-    animation: fadeIn 1s forwards, translateUp 1s forwards;
+   /* animation: fadeIn 1s forwards, translateUp 1s forwards;*/
 
 }
 

@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'antd/es/table';
-import { createStyles } from 'antd-style';
-import './Paytable.css';
+import './CustomTable.css';
 import { base_url } from '../../../../constant'
 import { useNavigate } from 'react-router-dom';
 
 
-const useStyle = createStyles(({ css, token }) => {
-  const { antCls } = token;
-  return {
-    customTable: css`
-      ${antCls}-table {
-        ${antCls}-table-container {
-          ${antCls}-table-body,
-          ${antCls}-table-content {
-            scrollbar-width: thin;
-            scrollbar-color: #eaeaea transparent;
-            scrollbar-gutter: stable;
-          }
-        }
-      }
-    `,
-  };
-});
 const columns = [
   {
     title: 'S/N',
@@ -106,7 +88,7 @@ const columns = [
     fixed: 'right',
     width: 70,
     render: (text, record) => {
-      
+
       if (record && Object.keys(record).length > 0) {
         return <a>action</a>;
       }
@@ -117,83 +99,76 @@ const columns = [
 
 
 const PayTable = () => {
-  const { styles } = useStyle();
+
 
   const token = localStorage.getItem('siteToken');
-const expiry = localStorage.getItem('siteExpiry')
-const navigate = useNavigate();
+  const expiry = localStorage.getItem('siteExpiry')
+  const navigate = useNavigate();
 
-const [dataSource, setDataSource] = useState([]);
-const [loading, setLoading] = useState(true)
+  const [dataSource, setDataSource] = useState([]);
+  const [loading, setLoading] = useState(true)
 
-useEffect(() => {
-  const checkExpiry = () => {
-    if (Date.now() / 1000 > expiry) {
-      navigate("/");
-      return true;
-    }
-    return false;
-  };
-
-  const fetchPay = async () => {
-    if (checkExpiry()) return; 
-
-    try {
-      const response = await fetch(`${base_url}/auth/payroll`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
+  useEffect(() => {
+    const checkExpiry = () => {
+      if (Date.now() / 1000 > expiry) {
+        navigate("/");
+        return true;
       }
+      return false;
+    };
 
-      const data = await response.json(); 
+    const fetchPay = async () => {
+      if (checkExpiry()) return;
 
-      const formattedData = data.map((item, index) => ({
-        key: index + 1, 
-        basic_salary: item.basic_salary,
-        tin: item.tin,
-        bank_name: item.bank_name,
-        bank_account: item.bank_account,
-        employee_name: item.employee_name,
-        taxable_income: item.taxable_income,
-        paye: item.paye,
-        loan: item.loan,
-        total_deductions: item.total_deductions,
-        nssf_employee: item.nssf_employee,
-        nhif_employee: item.nhif_employee,
-      }));
+      try {
+        const response = await fetch(`${base_url}/auth/payroll`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
 
-      setDataSource(formattedData);
-    } catch (error) {
-      console.error("Error fetching employees:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
 
-  fetchPay();
-}, [base_url, token, expiry, navigate]); 
+        const data = await response.json();
 
-const tableHeight = 1100;
-const rowHeight = 50;
-const emptyRowCount = Math.max(0, Math.floor(tableHeight / rowHeight) - dataSource.length);
+        const formattedData = data.map((item, index) => ({
+          key: index + 1,
+          basic_salary: item.basic_salary,
+          tin: item.tin,
+          bank_name: item.bank_name,
+          bank_account: item.bank_account,
+          employee_name: item.employee_name,
+          taxable_income: item.taxable_income,
+          paye: item.paye,
+          loan: item.loan,
+          total_deductions: item.total_deductions,
+          nssf_employee: item.nssf_employee,
+          nhif_employee: item.nhif_employee,
+        }));
 
-// Add empty rows to the data
-const paddedData = [...dataSource, ...Array(emptyRowCount).fill({})];
+        setDataSource(formattedData);
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPay();
+  }, [base_url, token, expiry, navigate]);
+
   return (
-    <div style={{ height: tableHeight }}>
+    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px' }}>
       <Table
-        className={styles.customTable}
-        pagination={false}
+        className='custom-table'
+        pagination={true}
         columns={columns}
-        dataSource={paddedData}
+        dataSource={dataSource}
         scroll={{
-          x: 'max-content',
-          y: tableHeight,
+          x: 'max-content'
         }}
         loading={loading}
       />

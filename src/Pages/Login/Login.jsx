@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-    const [showLoginForm, setShowLoginForm] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -21,20 +20,6 @@ function Login() {
         setShowPassword(!showPassword);
     };
 
-    
-
-    useEffect(() => {
-        const logoAnimationDuration = 1000;
-
-        const timeoutId = setTimeout(() => {
-            setShowLoginForm(true);
-        }, logoAnimationDuration);
-
-        return () => {
-            clearTimeout(timeoutId);
-        };
-
-    }, []);
 
     
     const isTokenValid = () => {
@@ -89,10 +74,10 @@ function Login() {
             <ToastContainer />
             <div className='login-body'>
                 <ToastContainer />
-                <div className="logo-intro-container">
+                {/*<div className="logo-intro-container">
                     <img src={logo} alt="Logo" />
-                </div>
-                {showLoginForm && (
+                </div>*/}
+                
                     <div className="login">
                         <div className="lg-container">
                             <div className="lg-logo">
@@ -152,7 +137,7 @@ function Login() {
                             </div>
                         </div>
                     </div>
-                )}
+                
             </div>
         </>
     )

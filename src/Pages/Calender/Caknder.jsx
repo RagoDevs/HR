@@ -2,7 +2,7 @@ import React from 'react'
 import './Calender.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import comming from '../../Assets/images/coming.png'
+import CalendarAntD from './Components/CalendarAntD'
 
 function Calender() {
     return (
@@ -14,9 +14,8 @@ function Calender() {
                 <SideBar />
             </div>
             <div className="calender-main">
-                <div className="comming-soon">
-                    <img src={comming} alt="" />
-                    <h2>Coming Soon</h2>
+                <div className="cal--body">
+                        <CalendarAntD />
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Modal, Select, Form, Input, Segmented, message, notification } from 'antd'
+import { Button, Modal, Select, Form, message, notification } from 'antd'
 import { base_url } from '../../../../constant'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -39,6 +39,8 @@ const Createpay = () => {
             }
             catch (error) {
                 console.error('Error fetching employees:', error);
+            } finally {
+                setloading(false)
             }
         }
 
@@ -109,7 +111,7 @@ const Createpay = () => {
     return (
         <>
            
-            <div style={{ width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'end', marginTop: '7px' }}>
+            <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'end', marginTop: '7px',height: '35px' }}>
                 <Button type='primary' style={{ width: '150px' }} onClick={showModal}>
                     Create Pay
                 </Button>
@@ -158,7 +160,7 @@ const Createpay = () => {
                         name='basic_salary'
                         layout='horizontal'
                     >
-                        <input onChange={handleInput1Change} step={0.01}/>
+                        <input  value={input1Value} onChange={handleInput1Change} step={0.01}/>
                     </Form.Item>
 
 

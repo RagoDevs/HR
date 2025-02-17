@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 15.5rem  1fr;
     grid-template-rows: 5rem 1fr ;
+    background-color: rgb(242, 244, 247);
 }
 
 .topnav {
@@ -25,7 +26,6 @@
     display: flex;
     flex-direction: column;
     gap: .7rem;
-    background-color: #fff;
     overflow-x: scroll;
     overflow-y: hidden;
 }
