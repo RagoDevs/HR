@@ -2,7 +2,6 @@ import React from 'react'
 import './Payroll.css'
 import TopNav from '../../Components/TopNav/TopNav'
 import SideBar from '../../Components/SideBar/SideBar'
-import Payheader from './Components/Payheader/Payheader'
 import PayTable from './Components/Paytable/PayTable'
 import Createpay from './Components/Createpay/Createpay'
 
@@ -17,9 +16,6 @@ function Payroll() {
             </div>
             <div className="payroll-main">
                 <Createpay />
-                <div className="payroll-header">
-                    <Payheader />
-                </div>
                 <div className="payroll-table">
                     <PayTable />
                 </div>
