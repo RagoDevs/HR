@@ -118,6 +118,7 @@ const PayTable = () => {
 
 
 
+
   useEffect(() => {
     const checkExpiry = () => {
       if (Date.now() / 1000 > expiry) {
@@ -179,9 +180,9 @@ const PayTable = () => {
     fetchPay();
   }, [selectedBank, selectedDepartment]);
 
-  const handleSearchChange = (event) => {
+  {/* const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-  };
+  };**/}
 
   const handleDepartmentChange = (event) => {
     setSelectedDepartment(event.target.value);
@@ -213,7 +214,7 @@ const PayTable = () => {
             </select>
           </div>
 
-          <input type="text" onChange={handleSearchChange} placeholder="Search Employee" />
+          <input type="text"  placeholder="Search Employee" />
         </div>
 
         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px' }}>
