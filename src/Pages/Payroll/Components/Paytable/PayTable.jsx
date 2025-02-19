@@ -223,9 +223,9 @@ const PayTable = () => {
 
             <select id="bank" name="Bank" onChange={handleBankChange} value={selectedBank}>
               <option value="" disabled>By Bank</option>
-              <option value="period1">ABC</option>
-              <option value="period2">CRDB</option>
-              <option value="period3">NMB</option>
+              <option value="ABC">ABC</option>
+              <option value="CRDB">CRDB</option>
+              <option value="NMB">NMB</option>
             </select>
           </div>
 
