@@ -115,6 +115,7 @@ const PayTable = () => {
   const [loading, setLoading] = useState(true)
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedBank, setSelectedBank] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
 
 
@@ -136,9 +137,20 @@ const PayTable = () => {
       const queryParams = new URLSearchParams({
         page: 1,         
         pagesize: 20,               
-        bank: selectedBank || "",  
-        department: selectedDepartment || "", 
+        
       });
+
+      if (selectedBank) {
+        queryParams.append('bank', selectedBank);
+      }
+
+      if (selectedDepartment) {
+        queryParams.append('department', selectedDepartment)
+      }
+
+      if (searchTerm) {
+        queryParams.append('employee', searchTerm)
+      }
 
       try {
         const response = await fetch(`${base_url}/auth/payroll?${queryParams.toString()}`, {
@@ -180,9 +192,9 @@ const PayTable = () => {
     fetchPay();
   }, [selectedBank, selectedDepartment]);
 
-  {/* const handleSearchChange = (event) => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-  };**/}
+  };
 
   const handleDepartmentChange = (event) => {
     setSelectedDepartment(event.target.value);
@@ -201,20 +213,20 @@ const PayTable = () => {
             <select id="station" name="department" onChange={handleDepartmentChange} value={selectedDepartment}>
               <option value="" disabled >By Department</option>
               <option value="math">Math</option>
-              <option value="english">Station 2</option>
-              <option value="station3">Station 3</option>
+              <option value="english">English</option>
+              <option value="IT">IT</option>
               <option value="">All</option>
             </select>
 
             <select id="bank" name="Bank" onChange={handleBankChange} value={selectedBank}>
               <option value="" disabled>please select</option>
-              <option value="period1">Payroll Period 1</option>
-              <option value="period2">Payroll Period 2</option>
-              <option value="period3">Payroll Period 3</option>
+              <option value="period1">Bank 1</option>
+              <option value="period2">Bank 2</option>
+              <option value="period3">Bank 3</option>
             </select>
           </div>
 
-          <input type="text"  placeholder="Search Employee" />
+          <input type="text"  onChange={handleSearchChange} placeholder="Search Employee" />
         </div>
 
         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.11) 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 0.5px 1.5px' }}>
