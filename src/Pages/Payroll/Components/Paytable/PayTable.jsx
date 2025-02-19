@@ -190,7 +190,7 @@ const PayTable = () => {
     };
 
     fetchPay();
-  }, [selectedBank, selectedDepartment]);
+  }, [selectedBank, selectedDepartment, searchTerm]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
