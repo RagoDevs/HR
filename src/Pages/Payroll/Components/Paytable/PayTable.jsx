@@ -190,7 +190,7 @@ const PayTable = () => {
     };
 
     fetchPay();
-  }, [selectedBank, selectedDepartment, searchTerm]);
+  }, [token, expiry, navigate, selectedBank, selectedDepartment, searchTerm]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -215,14 +215,17 @@ const PayTable = () => {
               <option value="math">Math</option>
               <option value="english">English</option>
               <option value="IT">IT</option>
+              <option value="Accounts">Accounts</option>
+              <option value="Hr">Hr</option>
+              <option value="Engineering">Engineering</option>
               <option value="">All</option>
             </select>
 
             <select id="bank" name="Bank" onChange={handleBankChange} value={selectedBank}>
-              <option value="" disabled>please select</option>
-              <option value="period1">Bank 1</option>
-              <option value="period2">Bank 2</option>
-              <option value="period3">Bank 3</option>
+              <option value="" disabled>By Bank</option>
+              <option value="period1">ABC</option>
+              <option value="period2">CRDB</option>
+              <option value="period3">NMB</option>
             </select>
           </div>
 
