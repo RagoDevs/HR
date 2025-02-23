@@ -123,6 +123,10 @@
     font-family: sans-serif;
 }
 
+.email-wrapper input{
+    width: 100%;
+}
+
 .password-wrapper {
     width: 100%;
     display: flex;
@@ -139,6 +143,8 @@
     height: 1.7rem;
     cursor: pointer;
     margin: .3rem 0 0 0;
+    mix-blend-mode: multiply;
+
 }
 
 .forgot--password:hover {
